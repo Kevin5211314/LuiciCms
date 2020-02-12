@@ -313,8 +313,8 @@
                                 <td>Github</td>
                                 <td style="padding-bottom: 0;">
                                     <div class="layui-btn-container">
-                                        <iframe src="https://ghbtns.com/github-btn.html?user=kevin5211314&repo=wechat&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
-                                        <iframe src="https://ghbtns.com/github-btn.html?user=kevin5211314&repo=wechat&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=kevin5211314&repo=LuiciCms&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                                        <iframe src="https://ghbtns.com/github-btn.html?user=kevin5211314&repo=LuiciCms&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
                                     </div>
                                 </td>
                             </tr>
