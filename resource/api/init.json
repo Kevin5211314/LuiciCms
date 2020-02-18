@@ -19,7 +19,7 @@
             "child": [
                 {
                     "title": "控制台",
-                    "href": "./welcome/home.html",
+                    "href": "./home.html",
                     "icon": "fa fa-home",
                     "target": "_self"
                 },

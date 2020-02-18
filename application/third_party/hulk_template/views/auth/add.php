@@ -1,5 +1,5 @@
 <?php /* HULK template engine v0.3
-a:2:{s:9:"/auth/add";i:1581135570;s:9:"auth/from";i:1581133848;}
+a:2:{s:9:"/auth/add";i:1582052507;s:9:"auth/from";i:1581133848;}
 */ ?>
 <!DOCTYPE html>
 <html>
@@ -103,7 +103,7 @@ a:2:{s:9:"/auth/add";i:1581135570;s:9:"auth/from";i:1581133848;}
         $(function(){
             $.ajax({
                  type: "POST",
-                 url: "/authsrule/getparentrule",
+                 url: "/rules/getparentrule",
                  data: {},
                  dataType: "json",
                  success: function(data){
@@ -141,7 +141,7 @@ a:2:{s:9:"/auth/add";i:1581135570;s:9:"auth/from";i:1581133848;}
                 console.log(data)
                 $.ajax({
                     type: "POST",
-                    url: "/authsrule/addruledata",
+                    url: "/rules/addruledata",
                     data: {data:data.field},
                     dataType: "json",
                     beforeSend: function (request) {
@@ -150,7 +150,7 @@ a:2:{s:9:"/auth/add";i:1581135570;s:9:"auth/from";i:1581133848;}
                     success: function (data) {
                         layer.close(index);
                         layer.msg(data.message, { icon: 1, time: 2000}, function(){
-                            window.location.href = '/authsrule/index.html';
+                            window.location.href = '/rules/index.html';
                         });  
                     },
                     error: function (data) {

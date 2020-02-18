@@ -11,7 +11,7 @@
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 19/02/2020 03:09:50
+ Date: 19/02/2020 03:55:21
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ CREATE TABLE `ad_admin` (
 -- Records of ad_admin
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_admin` VALUES (6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '799788777@qq.com', 1, 1582052572, '127.0.0.1', 0, 1579584689, 1582052572);
+INSERT INTO `ad_admin` VALUES (6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '799788777@qq.com', 1, 1582055482, '127.0.0.1', 0, 1579584689, 1582055482);
 INSERT INTO `ad_admin` VALUES (7, 'demo', 'e10adc3949ba59abbe56e057f20f883e', '13800139000', '7777777@qq.com', 1, 1579584732, '127.0.0.1', 0, 1579584732, 1579584732);
 INSERT INTO `ad_admin` VALUES (11, 'jingFei', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '794783766@qq.com', 1, 1582010824, '127.0.0.1', 0, 1580799426, 1582010824);
 INSERT INTO `ad_admin` VALUES (13, 'pross', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '777777777@qq.com', 1, 1582010852, '127.0.0.1', 0, 1580800237, 1582010852);
@@ -139,7 +139,7 @@ CREATE TABLE `ad_auth_group` (
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='权限组';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='权限组';
 
 -- ----------------------------
 -- Records of ad_auth_group
@@ -150,6 +150,7 @@ INSERT INTO `ad_auth_group` VALUES (7, '普通管理员', '普通管理员', '1,
 INSERT INTO `ad_auth_group` VALUES (8, '日常运营员', '日常运营员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,41', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
 INSERT INTO `ad_auth_group` VALUES (9, '测试管理员', '测试管理员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
 INSERT INTO `ad_auth_group` VALUES (10, '撒打算撒打算', '撒打算打算的', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25', 1, '2020-02-09 04:54:37', '2020-02-09 04:55:50');
+INSERT INTO `ad_auth_group` VALUES (11, '敬飞管理员', '敬飞管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34', 1, '2020-02-18 19:33:07', '2020-02-18 19:33:07');
 COMMIT;
 
 -- ----------------------------
@@ -194,7 +195,7 @@ CREATE TABLE `ad_auth_rule` (
   `authority` varchar(255) DEFAULT NULL,
   `checked` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`authorityId`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='权限规则';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='权限规则';
 
 -- ----------------------------
 -- Records of ad_auth_rule
@@ -233,6 +234,7 @@ INSERT INTO `ad_auth_rule` VALUES (31, '-1', '文章管理', 'articles/index', '
 INSERT INTO `ad_auth_rule` VALUES (32, '31', '分类管理', 'categorys/index', '', 0, '2020-02-10 01:56:42', '2020-02-10 01:56:42', '0', 'categorys/index', 0);
 INSERT INTO `ad_auth_rule` VALUES (33, '31', '商品管理', 'products/index', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '0', 'products/index', 0);
 INSERT INTO `ad_auth_rule` VALUES (34, '33', '商品列表', 'products/list', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '1', 'products/list', 0);
+INSERT INTO `ad_auth_rule` VALUES (35, '11', '获取父级列表', 'rules/getparentrule', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '1', 'rules/getparentrule', 0);
 COMMIT;
 
 -- ----------------------------

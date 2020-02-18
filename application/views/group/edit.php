@@ -17,7 +17,7 @@
         $(document).ready(function(){
             $.ajax({
                 type: "POST",
-                url: "/rules/rulelist",
+                url: "/rules/list",
                 data: {limit:100, page:0 },
                 dataType: "json", 
                 success: function (res) {

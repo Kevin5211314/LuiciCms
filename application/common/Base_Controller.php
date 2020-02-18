@@ -15,7 +15,7 @@ class Base_Controller extends CI_Controller
 
     protected $noLogin = []; // 不用登录的方法
 
-    protected $noAuth = ['welcome/index', 'welcome/loginout', 'authsrule/getparentrule', 'authsrule/getrule']; // 不用权限认证的方法
+    protected $noAuth = ['welcome/index', 'welcome/loginout']; // 不用权限认证的方法
 
     /**
      * 架构方法 设置参数

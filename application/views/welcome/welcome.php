@@ -95,55 +95,63 @@
                             <div class="layui-card-body">
                                 <div class="welcome-module">
                                     <div class="layui-row layui-col-space10 layuimini-qiuck">
+
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/menu/index.html" data-title="权限管理" data-icon="fa fa-window-maximize">
-                                                <i class="fa fa-window-maximize"></i>
-                                                <cite>权限管理</cite>
+                                            <a href="javascript:;" data-iframe-tab="/users/index.html?" data-title="会员管理" data-icon="fa fa-user">
+                                                <i class="fa fa-user"></i>
+                                                <cite>会员管理</cite>
                                             </a>
                                         </div>
+
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/systems/setting.html" data-title="系统设置" data-icon="fa fa-gears">
+                                            <a href="javascript:;" data-iframe-tab="/systems/index.html" data-title="系统设置" data-icon="fa fa-gears">
                                                 <i class="fa fa-gears"></i>
                                                 <cite>系统设置</cite>
                                             </a>
                                         </div>
-                                       
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/subgroup/icon.html" data-title="图标列表" data-icon="fa fa-dot-circle-o">
-                                                <i class="fa fa-dot-circle-o"></i>
-                                                <cite>图标列表</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/subgroup/form.html" data-title="表单示例" data-icon="fa fa-calendar">
-                                                <i class="fa fa-calendar"></i>
-                                                <cite>表单示例</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/admins/errors.html" data-title="404页面" data-icon="fa fa-hourglass-end">
-                                                <i class="fa fa-hourglass-end"></i>
-                                                <cite>404页面</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/subgroup/button.html" data-title="按钮示例" data-icon="fa fa-snowflake-o">
-                                                <i class="fa fa-snowflake-o"></i>
-                                                <cite>按钮示例</cite>
-                                            </a>
-                                        </div>
-                                        <div class="layui-col-xs3 layuimini-qiuck-module">
-                                            <a href="javascript:;" data-iframe-tab="/admins/index.html" data-title="弹出层" data-icon="fa fa-shield">
-                                                <i class="fa fa-shield"></i>
-                                                <cite>管理员</cite>
-                                            </a>
-                                        </div>
+
                                         <div class="layui-col-xs3 layuimini-qiuck-module">
                                             <a href="javascript:;" data-iframe-tab="/articles/index.html" data-title="弹出层" data-icon="fa fa-book">
                                                 <i class="fa fa-book"></i>
                                                 <cite>文章管理</cite>
                                             </a>
                                         </div>
+
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="/products/index.html" data-title="图标列表" data-icon="fa fa-file-text">
+                                                <i class="fa fa-file-text"></i>
+                                                <cite>商品管理</cite>
+                                            </a>
+                                        </div>
+
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="/groups/index.html" data-title="权限组" data-icon="fa fa-group">
+                                                <i class="fa fa-group"></i>
+                                                <cite>权限组</cite>
+                                            </a>
+                                        </div>  
+
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="/admins/index.html" data-title="弹出层" data-icon="fa fa-shield">
+                                                <i class="fa fa-shield"></i>
+                                                <cite>管理员</cite>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="/rules/index.html" data-title="规则管理" data-icon="fa fa-calendar">
+                                                <i class="fa fa-calendar"></i>
+                                                <cite>规则管理</cite>
+                                            </a>
+                                        </div>
+
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" data-iframe-tab="/admins/errors.html" data-title="404页面" data-icon="fa fa-hourglass-end">
+                                                <i class="fa fa-hourglass-end"></i>
+                                                <cite>404页面</cite>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

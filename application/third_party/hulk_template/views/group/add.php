@@ -1,5 +1,5 @@
 <?php /* HULK template engine v0.3
-a:2:{s:10:"/group/add";i:1581224207;s:10:"group/from";i:1581221681;}
+a:2:{s:10:"/group/add";i:1582054355;s:10:"group/from";i:1581221681;}
 */ ?>
 <!DOCTYPE html>
 <html>
@@ -74,7 +74,7 @@ a:2:{s:10:"/group/add";i:1581224207;s:10:"group/from";i:1581221681;}
         $(function(){
             $.ajax({
                 type: "POST",
-                url: "/authsgroup/rulelist",
+                url: "/rules/list",
                 data: {limit:100, page:0 },
                 dataType: "json", 
                 success: function (res) {
@@ -145,7 +145,7 @@ a:2:{s:10:"/group/add";i:1581224207;s:10:"group/from";i:1581221681;}
                 console.log(data)
                 $.ajax({
                     type: "POST",
-                    url: "/authsgroup/addgroupdata",
+                    url: "/groups/addgroupdata",
                     data: {data:data.field},
                     dataType: "json",
                     beforeSend: function (request) {
