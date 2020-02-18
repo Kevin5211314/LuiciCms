@@ -1,5 +1,5 @@
 <?php /* HULK template engine v0.3
-a:2:{s:12:"/group/index";i:1581223135;s:19:"base/parent_message";i:1578827846;}
+a:2:{s:12:"/group/index";i:1582052461;s:19:"base/parent_message";i:1578827846;}
 */ ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +66,7 @@ a:2:{s:12:"/group/index";i:1581223135;s:19:"base/parent_message";i:1578827846;}
 
             table.render({
                 elem: '#currentTableId',
-                url: '/authsgroup/list',
+                url: '/groups/list',
                 cols: [[
                     {type: "checkbox", width: 50, fixed: "left"},
                     {field: 'id', width: 100, title: 'ID', sort: true},
@@ -111,7 +111,7 @@ a:2:{s:12:"/group/index";i:1581223135;s:19:"base/parent_message";i:1578827846;}
 
             // 监听添加操作
             $(".data-add-btn").on("click", function () {
-                 window.location.href = '/authsgroup/add.html';
+                 window.location.href = '/groups/add.html';
             });
 
             // 监听删除操作
@@ -120,7 +120,7 @@ a:2:{s:12:"/group/index";i:1581223135;s:19:"base/parent_message";i:1578827846;}
                 layer.confirm('真的删除行么', function (index) {
                     $.ajax({
                          type: "POST",
-                         url: "/authsgroup/detele_all_group",
+                         url: "/groups/detele_all_group",
                          data: {data:data},
                          dataType: "json",
                          success: function(data){
@@ -143,12 +143,12 @@ a:2:{s:12:"/group/index";i:1581223135;s:19:"base/parent_message";i:1578827846;}
             table.on('tool(currentTableFilter)', function (obj) {
                 var data = obj.data;
                 if (obj.event === 'edit') {
-                     window.location.href = '/authsgroup/edit.html?id='+data.id;
+                     window.location.href = '/groups/edit.html?id='+data.id;
                 } else if (obj.event === 'delete') {
                     layer.confirm('真的删除行么', function (index) {
                         $.ajax({
                              type: "POST",
-                             url: "/authsgroup/detele_group",
+                             url: "/groups/detele_group",
                              data: {id:data.id},
                              dataType: "json",
                              success: function(data){

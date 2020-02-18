@@ -2,9 +2,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * AuthsGroup 权限组管理
+ * Groups 权限组管理
  */
-class AuthsGroup extends Base_Controller
+class Groups extends Base_Controller
 {
     private $_count  = 0;  //数据列表总数
 

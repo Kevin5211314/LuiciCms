@@ -18,7 +18,7 @@
         $(function(){
             $.ajax({
                 type: "POST",
-                url: "/authsgroup/rulelist",
+                url: "/rules/rulelist",
                 data: {limit:100, page:0 },
                 dataType: "json", 
                 success: function (res) {
@@ -89,7 +89,7 @@
                 console.log(data)
                 $.ajax({
                     type: "POST",
-                    url: "/authsgroup/addgroupdata",
+                    url: "/groups/addgroupdata",
                     data: {data:data.field},
                     dataType: "json",
                     beforeSend: function (request) {

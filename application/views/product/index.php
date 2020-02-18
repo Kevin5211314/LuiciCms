@@ -8,17 +8,28 @@
                 <div style="margin: 10px;">
                     <form class="layui-form layui-form-pane" action="">
                         <div class="layui-form-item">
-                            
                             <div class="layui-inline">
-                                <label class="layui-form-label">权限组名称</label>
+                                <label class="layui-form-label">管理员姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="username" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">所属权限组</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="name" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
-                                <label class="layui-form-label">描述</label>
+                                <label class="layui-form-label">手机号</label>
                                 <div class="layui-input-inline">
-                                    <input type="text" name="description" autocomplete="off" class="layui-input">
+                                    <input type="text" name="mobile" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">登录次数</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="login_count" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-inline">
@@ -30,12 +41,12 @@
             </fieldset>
 
             <div class="layui-btn-group">
-                <button class="layui-btn data-add-btn">添加权限组</button>
+                <button class="layui-btn data-add-btn">添加</button>
                 <button class="layui-btn layui-btn-danger data-delete-btn">删除</button>
             </div>
             <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
             <script type="text/html" id="currentTableBar">
-                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑权限</a>
+                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             </script>
         </div>
@@ -45,28 +56,25 @@
 <# block carouseJs #>
     <script src="/resource/lib/layui-v2.5.4/layui.js" charset="utf-8"></script>
     <script>
-       
-        layui.use(['form', 'table'], function () {
+        layui.use(['form', 'table','util'], function () {
             var $ = layui.jquery,
                 form = layui.form,
+                util  = layui.util,
                 table = layui.table;
 
             table.render({
                 elem: '#currentTableId',
-                url: '/groups/list',
+                url: '/products/list',
                 cols: [[
                     {type: "checkbox", width: 50, fixed: "left"},
-                    {field: 'id', width: 100, title: 'ID', sort: true},
-                    {field: 'name', width: 240, title: '权限组名称', fixed: "right", align: "center"},
-                    {field: 'description', minwidth: 300, title: '描述', fixed: "right", align: "center"},
-                    {field: 'status', width: 150, title: '状态', align: "center", templet:function(d){
-                            if(d.status == 0){
-                                return '<div class="layui-input-block" style="margin-left:0px;"><input type="checkbox" name="close" lay-skin="switch" lay-text="开启|关闭"></div>';
-                            }else{
-                                return ' <div class="layui-input-block" style="margin-left:0px;"><input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="开启|关闭"></div>';
-                            }
-                    }},
-                    {title: '操作', minwidth: 80, templet: '#currentTableBar', fixed: "right", align: "center"}
+                    {field: 'id', width: 80, title: 'ID', sort: true},
+                    {field: 'cname', width: 130, title: '分类名称'},
+                    {field: 'title', width: 320, title: '商品标题'},
+                    {field: 'price', width: 130, title: '商品价格'},
+                    {field: 'name', width: 200, title: '企业名称'},
+                    {field: 'phone', width: 200, title: '联系电话'},
+                    {field: 'purl', width: 120, title: '商品链接'},
+                    {title: '操作', minWidth: 50, templet: '#currentTableBar', fixed: "right", align: "center"}
                 ]],
                 response: {
                       statusName: 'code' //数据状态的字段名称，默认：code
@@ -98,44 +106,20 @@
 
             // 监听添加操作
             $(".data-add-btn").on("click", function () {
-                 window.location.href = '/groups/add.html';
+                 window.location.href = '/products/add.html';
             });
 
-            // 监听删除操作
-            $(".data-delete-btn").on("click", function () {
-                var checkStatus = table.checkStatus('currentTableId'), data = checkStatus.data;
-                layer.confirm('真的删除行么', function (index) {
-                    $.ajax({
-                         type: "POST",
-                         url: "/groups/detele_all_group",
-                         data: {data:data},
-                         dataType: "json",
-                         success: function(data){
-                            if(data.code == 400){
-                                layer.msg(data.message, {icon: 1,time: 2000}, function () {
-                                    layer.close(index);
-                                    window.location.reload();
-                                });  
-                            }else{
-                                layer.msg(data.message, {icon: 1,time: 2000}, function () {
-                                    layer.close(index);
-                                    window.location.reload();
-                                });
-                            }      
-                         }
-                    });
-                });
-            });
-
+            // 监听表格操作
             table.on('tool(currentTableFilter)', function (obj) {
                 var data = obj.data;
+                console.log(data)
                 if (obj.event === 'edit') {
-                     window.location.href = '/groups/edit.html?id='+data.id;
+                    window.location.href = '/products/edit.html?id='+data.id;
                 } else if (obj.event === 'delete') {
                     layer.confirm('真的删除行么', function (index) {
                         $.ajax({
                              type: "POST",
-                             url: "/groups/detele_group",
+                             url: "/products/detele",
                              data: {id:data.id},
                              dataType: "json",
                              success: function(data){
@@ -154,6 +138,32 @@
                         });
                     });
                 }
+            });
+
+            // 监听删除操作
+            $(".data-delete-btn").on("click", function () {
+                var checkStatus = table.checkStatus('currentTableId'), data = checkStatus.data;
+                layer.confirm('真的删除行么', function (index) {
+                    $.ajax({
+                         type: "POST",
+                         url: "/products/detele_all",
+                         data: {data:data},
+                         dataType: "json",
+                         success: function(data){
+                            if(data.code == 400){
+                                layer.msg(data.message, {icon: 1,time: 2000}, function () {
+                                    layer.close(index);
+                                    window.location.reload();
+                                });  
+                            }else{
+                                layer.msg(data.message, {icon: 1,time: 2000}, function () {
+                                    layer.close(index);
+                                    window.location.reload();
+                                });
+                            }      
+                         }
+                    });
+                });
             });
         });
     </script>

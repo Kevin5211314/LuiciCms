@@ -41,7 +41,7 @@ class Articles extends Base_Controller
         unset($param['file']);
         unset($param['ci_csrf_token']);
         $result = $this->article->insert_entry($param);
-        return_json_data(0, '数据添加成功', $result);
+        sendSuccess('数据添加成功', $result, $this->_count);
     }
 
     public function edit()
@@ -57,21 +57,21 @@ class Articles extends Base_Controller
         unset($param['file']);
         unset($param['ci_csrf_token']);
         $result = $this->article->update_entry($id, $param);
-        return_json_data(0, '数据修改成功', $result);
+        sendSuccess('数据修改成功', $result, $this->_count);
     }
 
     public function getArticleInfo()
     {
         $id     = $this->input->post('id');
         $result = $this->article->getArticleInfo($id);
-        return_json_data(0, '数据获取成功', $result);
+        sendSuccess('数据获取成功', $result, $this->_count);
     }
 
     public function detele()
     {
         $id     = $this->input->post('id');
         $result = $this->article->delete_entry($id);
-        return_json_data(0, '数据删除成功', $result);
+        sendSuccess('数据删除成功', $result, $this->_count);
     }
 
     public function detele_all()
@@ -81,7 +81,7 @@ class Articles extends Base_Controller
         foreach ($ids as $key => $value) {
             $result[$key] = $this->article->delete_entry($value['id']);
         }
-        return_json_data(0, '数据删除成功', $result);
+        sendSuccess('数据删除成功', $result, $this->_count);
     }
 
 }

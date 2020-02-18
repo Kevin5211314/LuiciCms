@@ -25,7 +25,7 @@
                 console.log(data)
                 $.ajax({
                     type: "POST",
-                    url: "/authsrule/editruledata",
+                    url: "/rules/editruledata",
                     data: {data:data.field},
                     dataType: "json",
                     beforeSend: function (request) {
@@ -34,7 +34,7 @@
                     success: function (data) {
                         layer.close(sub);
                         layer.msg(data.message, {icon: 1, time: 2000}, function(){
-                             window.location.href = '/authsrule/index.html';
+                             window.location.href = '/rules/index.html';
                         });  
                     },
                     error: function (data) {

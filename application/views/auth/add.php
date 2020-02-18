@@ -16,7 +16,7 @@
         $(function(){
             $.ajax({
                  type: "POST",
-                 url: "/authsrule/getparentrule",
+                 url: "/rules/getparentrule",
                  data: {},
                  dataType: "json",
                  success: function(data){
@@ -54,7 +54,7 @@
                 console.log(data)
                 $.ajax({
                     type: "POST",
-                    url: "/authsrule/addruledata",
+                    url: "/rules/addruledata",
                     data: {data:data.field},
                     dataType: "json",
                     beforeSend: function (request) {
@@ -63,7 +63,7 @@
                     success: function (data) {
                         layer.close(index);
                         layer.msg(data.message, { icon: 1, time: 2000}, function(){
-                            window.location.href = '/authsrule/index.html';
+                            window.location.href = '/rules/index.html';
                         });  
                     },
                     error: function (data) {

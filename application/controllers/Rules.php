@@ -2,9 +2,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * AuthsRule 权限管理
+ * Rules 权限规则管理
  */
-class AuthsRule extends Base_Controller
+class Rules extends Base_Controller
 {   
 
     /**

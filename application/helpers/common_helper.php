@@ -182,3 +182,26 @@ if (!function_exists('sendError')) {
         exit(json_encode($responseData));
     }
 }
+
+/**
+ * 获取用户的访问ip
+ * @param array $ip
+ */
+if (!function_exists('getClientIp')) {
+    function getClientIp($message = '未知错误', $data = [], $count = 0, $code = 400)
+    {   
+        $ip = $_SERVER['REMOTE_ADDR'];
+        if (isset($_SERVER['HTTP_CLIENT_IP']) && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif(isset($_SERVER['HTTP_X_FORWARDED_FOR']) AND preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s', $_SERVER['HTTP_X_FORWARDED_FOR'], $matches)) {
+            foreach ($matches[0] AS $xip) {
+                if (!preg_match('#^(10|172\.16|192\.168)\.#', $xip)) {
+                    $ip = $xip;
+                    break;
+                }
+            }
+        }
+        return $ip;
+    }
+}
+

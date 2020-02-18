@@ -2,9 +2,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * Admin 管理员控制器
+ * Products 管理员控制器
  */
-class Admins extends Base_Controller
+class Products extends Base_Controller
 {
 
     protected $_count  = 0;  //数据列表总数
@@ -17,23 +17,24 @@ class Admins extends Base_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->_count  = $this->admin->get_admin_list_count();
+        $this->load->model('product');
+        $this->_count  = $this->product->get_product_list_count();
     }
 
     public function index()
-    {
-        $this->hulk_template->parse('/admin/index');
+    {   
+        $this->hulk_template->parse('/product/index');
     }
 
     public function list() 
     {
-        $result = $this->admin->get_admin_list($this->_page, $this->_limit, $this->_searchParams);
+        $result = $this->product->get_admin_list($this->_page, $this->_limit, $this->_searchParams);
         sendSuccess('获取列表', $result, $this->_count);
     }
 
     public function add()
     {
-        $this->hulk_template->parse('/admin/add');
+        $this->hulk_template->parse('/product/add');
     }
 
     public function adddata()
@@ -62,7 +63,7 @@ class Admins extends Base_Controller
 
     public function edit()
     {
-        $this->hulk_template->parse('/admin/edit');
+        $this->hulk_template->parse('/product/edit');
     }
 
     public function editdata()
@@ -74,7 +75,7 @@ class Admins extends Base_Controller
         unset($param['permission_group']);
 
         $this->db->trans_begin();
-        $this->admin->update_entry($id, $param);
+        $this->product->update_entry($id, $param);
 
         $data['group_id'] = $permission_group;
         $this->load->model('authgroupaccess', '', true);
@@ -94,7 +95,7 @@ class Admins extends Base_Controller
     public function detele()
     {
         $id     = $this->input->post('id');
-        $result = $this->admin->delete_entry($id);
+        $result = $this->product->delete_entry($id);
         sendSuccess('数据删除成功', $result, $this->_count);
     }
 
@@ -103,29 +104,9 @@ class Admins extends Base_Controller
         $ids    = $this->input->post('data');
         $result = [];
         foreach ($ids as $key => $value) {
-            $result[$key] = $this->admin->delete_entry($value['id']);
+            $result[$key] = $this->product->delete_entry($value['id']);
         }
         sendSuccess('数据删除成功', $result, $this->_count);
-    }
-
-    public function getArticleInfo()
-    {
-        $id     = $this->input->post('id');
-        $result = $this->admin->getArticleInfo($id);
-        sendSuccess('数据获取成功', $result, $this->_count);
-    }
-
-    public function getauthgroup()
-    {
-        $this->load->model('authgroup', '', true);
-        $result = $this->authgroup->get_group_list();
-        sendSuccess('数据获取成功', $result, $this->_count);
-    }
-
-    //管理员日志
-    public function adminlog()
-    {
-        
     }
 
 }

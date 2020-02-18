@@ -60,10 +60,10 @@
                                                 <div class="panel-body">
                                                     <div class="panel-title">
                                                         <span class="label pull-right layui-bg-orange">实时</span>
-                                                        <h5>浏览统计</h5>
+                                                        <h5>商品统计</h5>
                                                     </div>
                                                     <div class="panel-content">
-                                                        <h1 class="no-margins">1234</h1>
+                                                        <h1 class="no-margins"><?php echo $productCount; ?></h1>
                                                         <small>当前分类总记录数</small>
                                                     </div>
                                                 </div>

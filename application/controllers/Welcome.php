@@ -19,7 +19,9 @@ class Welcome extends Base_Controller
         parent::__construct();
         $this->load->model('user', '', true);
         $this->load->model('category', '', true);
+        $this->load->model('product', '', true);
         $this->_count = $this->user->get_count_users();
+        $this->_admin_count = $this->admin->get_admin_list_count();
     }
 
     public function index()
@@ -29,12 +31,21 @@ class Welcome extends Base_Controller
 
     public function home()
     {   
-        
         $categoryCount = $this->category->getCountCategory();
+        $productCount  = $this->product->get_product_list_count();
 
         $data['userscount'] = $this->_count;
         $data['categorycount'] = $categoryCount;
+        $data['productCount'] = $productCount;
         $this->load->view('/welcome/welcome', $data);
+    }
+
+    //登出
+    public function loginout()
+    {
+        $aid = $this->input->post('aid');
+        $result = $this->session->unset_userdata('admin_auth');
+        sendSuccess('登出成功', $result, $this->_admin_count);
     }
 
     //获取管理员
@@ -42,8 +53,9 @@ class Welcome extends Base_Controller
     {
         $username = $this->input->get('username');
         $result   = $this->admin->get_user_info(['username' => $username]);
-        sendSuccess('获取成功', $result, $this->_count);
+        sendSuccess('获取成功', $result, $this->_admin_count);
     }
+
 
     //基本信息
     public function setting()
@@ -83,5 +95,6 @@ class Welcome extends Base_Controller
             sendError('密码错误或新密码不一致');
         }
     }
+
 
 }

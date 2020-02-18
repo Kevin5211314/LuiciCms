@@ -15,7 +15,7 @@ class Base_Controller extends CI_Controller
 
     protected $noLogin = []; // 不用登录的方法
 
-    protected $noAuth = ['welcome/index', 'authsrule/getparentrule', 'authsrule/getrule']; // 不用权限认证的方法
+    protected $noAuth = ['welcome/index', 'welcome/loginout', 'authsrule/getparentrule', 'authsrule/getrule']; // 不用权限认证的方法
 
     /**
      * 架构方法 设置参数
@@ -60,6 +60,7 @@ class Base_Controller extends CI_Controller
         if (!$this->is_admin_login() && !in_array($this->router->fetch_method(), $this->noLogin)) {
             return false;
         }
+        $this->admin->update_entry($this->session->admin_auth, ['last_login_ip'=>getClientIp(),'last_login_time'=>time()]);
         return true;
     }
 
@@ -73,7 +74,7 @@ class Base_Controller extends CI_Controller
             return false;
         } else {
             $admin = $this->session->admin_auth;
-            return $this->session->admin_auth_sign == data_auth_sign($admin) ? $admin : 0;
+            return $this->session->admin_auth_sign == data_auth_sign($admin) ? $admin : false;
         }
     }
 

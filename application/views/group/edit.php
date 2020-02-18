@@ -17,7 +17,7 @@
         $(document).ready(function(){
             $.ajax({
                 type: "POST",
-                url: "/authsgroup/rulelist",
+                url: "/rules/rulelist",
                 data: {limit:100, page:0 },
                 dataType: "json", 
                 success: function (res) {
@@ -73,7 +73,7 @@
                 console.log(data)
                 $.ajax({
                     type: "POST",
-                    url: "/authsgroup/editgroupdata?id="+"<?php echo $id;?>",
+                    url: "/groups/editgroupdata?id="+"<?php echo $id;?>",
                     data: {data:data.field},
                     dataType: "json",
                     beforeSend: function (request) {

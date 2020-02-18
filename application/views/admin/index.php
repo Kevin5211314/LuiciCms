@@ -68,13 +68,13 @@
                 cols: [[
                     {type: "checkbox", width: 50, fixed: "left"},
                     {field: 'id', width: 80, title: 'ID', sort: true},
-                    {field: 'username', width: 130, title: '管理员用户名'},
-                    {field: 'name', width: 130, title: '所属权限组'},
-                    {field: 'mobile', width: 130, title: '手机号'},
-                    {field: 'email', width: 200, title: '邮箱'},
+                    {field: 'username', width: 120, title: '管理员用户名'},
+                    {field: 'name', width: 120, title: '所属权限组'},
+                    {field: 'mobile', width: 120, title: '手机号'},
+                    {field: 'email', width: 180, title: '邮箱'},
                     {field: 'login_count', width: 120, title: '登录次数'},
-                    {field: 'last_login_ip', width: 120, title: '上次登录IP'},
-                    {field: 'last_login_time', title: '上次登录时间', minWidth: 150,templet:function(d){
+                    {field: 'last_login_ip', width: 150, title: '上次登录IP'},
+                    {field: 'last_login_time', title: '上次登录时间', minWidth: 120,templet:function(d){
                         return util.toDateString(d.last_login_time*1000);
                     }},
                     {field: 'status', width: 80, title: '状态', sort: true,templet:function(d){

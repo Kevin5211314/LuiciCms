@@ -53,4 +53,4 @@ $route['default_controller'] = 'welcome';
 
 $route['404_override'] = 'errors/page_missing';
 
-$route['translate_uri_dashes'] = TRUE;
+$route['translate_uri_dashes'] = FALSE;

@@ -19,7 +19,7 @@
             "child": [
                 {
                     "title": "控制台",
-                    "href": "./home.html",
+                    "href": "./welcome/home.html",
                     "icon": "fa fa-home",
                     "target": "_self"
                 },
@@ -59,6 +59,12 @@
                     "href": "/articles/index.html",
                     "icon": "fa fa-file-text",
                     "target": "_self"
+                },
+                {
+                    "title": "商品信息",
+                    "href": "/products/index.html",
+                    "icon": "fa fa-file-text",
+                    "target": "_self"
                 }
             ]
         }, 
@@ -74,13 +80,13 @@
                 },
                 {
                     "title": "权限组",
-                    "href": "/authsgroup/index.html",
+                    "href": "/groups/index.html",
                     "icon": "fa fa-group",
                     "target": "_self"
                 },
                 {
                     "title": "规则管理",
-                    "href": "/authsrule/index.html",
+                    "href": "/rules/index.html",
                     "icon": "fa fa-sitemap",
                     "target": "_self"
                 },

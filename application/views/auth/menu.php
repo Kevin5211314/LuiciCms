@@ -42,7 +42,7 @@
 
         // 监听添加操作
         $(".data-add-btn").on("click", function () {
-            window.location.href = '/authsrule/add.html';
+            window.location.href = '/rules/add.html';
         });
 
         // 渲染表格
@@ -53,7 +53,7 @@
             treeIdName: 'authorityId',
             treePidName: 'parentId',
             elem: '#munu-table',
-            url: '/authsrule/list',
+            url: '/rules/list',
             page: false,
             cols: [[
                 {type: 'numbers'},
@@ -102,7 +102,7 @@
             if (layEvent === 'del') {
                 $.ajax({
                     type: "POST",
-                    url: "/authsrule/delete",
+                    url: "/rules/delete",
                     data: {id:data.id},
                     dataType: "json",
                     beforeSend: function (request) {
@@ -111,7 +111,7 @@
                     success: function (data) {
                         layer.close(index);
                         layer.msg(data.message, { icon: 1, time: 2000}, function(){
-                            window.location.href = '/authsrule/index.html';
+                            window.location.href = '/rules/index.html';
                         });  
                     },
                     error: function (data) {
@@ -121,7 +121,7 @@
                 });
 
             } else if (layEvent === 'edit') {
-                window.location.href = '/authsrule/edit.html?id='+data.id;
+                window.location.href = '/rules/edit.html?id='+data.id;
             }
         });
     });

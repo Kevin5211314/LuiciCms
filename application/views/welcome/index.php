@@ -105,10 +105,19 @@
             layuimini.init('/resource/api/init.json');
 
             $('.login-out').on("click", function () {
-                layer.msg('退出登录成功', { time: 1000 }, function () {
-                     window.location = '/login/index.html';
+                $.ajax({
+                     type: "POST",
+                     url: "/welcome/loginout",
+                     data: {aid: <?php echo $_SESSION['admin_auth']; ?>},
+                     dataType: "json",
+                     success: function(data){
+                        layer.msg('退出登录成功', { time: 1000 }, function () {
+                             window.location = '/login/index.html';
+                        });
+                     }
                 });
             });
+                
         });
     </script>
 </html>
