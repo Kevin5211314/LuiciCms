@@ -35,7 +35,7 @@ class Rules extends Base_Controller
     // 规则管理主页
     public function index()
     {
-        $this->load->view('/auth/menu');
+        $this->load->view('/rule/menu');
     }
 
     // 获取权限规则列表
@@ -48,7 +48,7 @@ class Rules extends Base_Controller
     // 添加权限规则
     public function add()
     {
-        $this->hulk_template->parse('/auth/add');
+        $this->hulk_template->parse('/rule/add');
     }
 
     public function addruledata()
@@ -63,7 +63,9 @@ class Rules extends Base_Controller
     {   
         $id = $this->input->get('id');
         $result = $this->auth_rule->get_auth_rule_info(['authorityId'=>$id]);
-        $this->hulk_template->parse('/auth/edit', $result);
+        $reply = $this->auth_rule->get_auth_rule_info(['authorityId' => $result['parentId']], 'authorityName,isMenu,parentId');
+        $result['parentInfo'] = $reply;
+        $this->hulk_template->parse('/rule/edit', $result);
     }
 
     public function editruledata()

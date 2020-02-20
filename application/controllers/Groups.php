@@ -88,7 +88,7 @@ class Groups extends Base_Controller
     public function detele_group()
     {
         $id     = $this->input->post('id');
-        $result = $this->authgroup->delete_entry($id);
+        $result = $this->auth_group->delete_entry($id);
         sendSuccess('删除成功', $result, $this->_count);
     }
 
