@@ -22,8 +22,12 @@ class Auth_rule extends CI_Model
 
     //获取父级权限规则列表
     public function get_parent_rule_list()
-    {
-        $query = $this->db->select("*")->from("auth_rule")->where('isMenu', 0)->get();
+    {   
+        $where = array(
+            'isMenu' => 1,
+            'parentId' => '-1'
+        );
+        $query = $this->db->select("*")->from("auth_rule")->or_where($where)->get();
         return $query->result_array();
     }
 

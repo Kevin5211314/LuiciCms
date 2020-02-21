@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50727
  Source Host           : localhost:3306
- Source Schema         : luicicms
+ Source Schema         : epa
 
  Target Server Type    : MySQL
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 20/02/2020 11:14:05
+ Date: 21/02/2020 15:44:23
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ CREATE TABLE `ad_admin` (
 -- Records of ad_admin
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_admin` VALUES (6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '799788777@qq.com', 1, 1582168354, '127.0.0.1', 0, 1579584689, 1582168354);
+INSERT INTO `ad_admin` VALUES (6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '799788777@qq.com', 1, 1582270991, '127.0.0.1', 0, 1579584689, 1582270991);
 INSERT INTO `ad_admin` VALUES (7, 'demo', 'e10adc3949ba59abbe56e057f20f883e', '13800139000', '7777777@qq.com', 1, 1579584732, '127.0.0.1', 0, 1579584732, 1579584732);
 INSERT INTO `ad_admin` VALUES (11, 'jingFei', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '794783766@qq.com', 1, 1582010824, '127.0.0.1', 0, 1580799426, 1582010824);
 INSERT INTO `ad_admin` VALUES (13, 'pross', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '777777777@qq.com', 1, 1582010852, '127.0.0.1', 0, 1580800237, 1582010852);
@@ -141,11 +141,11 @@ CREATE TABLE `ad_auth_group` (
 -- Records of ad_auth_group
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_auth_group` VALUES (6, '超级管理员', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38', 1, '2020-02-09 12:20:02', '2020-02-20 02:53:39');
+INSERT INTO `ad_auth_group` VALUES (6, '超级管理员', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40', 1, '2020-02-09 12:20:02', '2020-02-21 07:40:56');
 INSERT INTO `ad_auth_group` VALUES (7, '普通管理员', '普通管理员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
 INSERT INTO `ad_auth_group` VALUES (8, '日常运营员', '日常运营员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,41', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
 INSERT INTO `ad_auth_group` VALUES (9, '测试管理员', '测试管理员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
-INSERT INTO `ad_auth_group` VALUES (11, '敬飞管理员', '敬飞管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34', 1, '2020-02-18 19:33:07', '2020-02-18 19:33:07');
+INSERT INTO `ad_auth_group` VALUES (11, '敬飞管理员', '敬飞管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40', 1, '2020-02-18 19:33:07', '2020-02-21 07:35:54');
 COMMIT;
 
 -- ----------------------------
@@ -190,7 +190,7 @@ CREATE TABLE `ad_auth_rule` (
   `authority` varchar(255) DEFAULT NULL,
   `checked` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`authorityId`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='权限规则';
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='权限规则';
 
 -- ----------------------------
 -- Records of ad_auth_rule
@@ -230,8 +230,9 @@ INSERT INTO `ad_auth_rule` VALUES (32, '31', '分类管理', 'categorys/index', 
 INSERT INTO `ad_auth_rule` VALUES (33, '31', '商品管理', 'products/index', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '1', 'products/index', 0);
 INSERT INTO `ad_auth_rule` VALUES (34, '33', '商品列表', 'products/list', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '0', 'products/list', 0);
 INSERT INTO `ad_auth_rule` VALUES (35, '11', '获取父级列表', 'rules/getparentrule', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '0', 'rules/getparentrule', 0);
-INSERT INTO `ad_auth_rule` VALUES (37, '19', '删除权限组', 'groups/detele_group', '', 0, '2020-02-20 01:25:30', '2020-02-20 01:25:30', '1', 'groups/detele_group', 0);
+INSERT INTO `ad_auth_rule` VALUES (37, '19', '删除权限组', 'groups/detele_group', '', 0, '2020-02-20 01:25:30', '2020-02-20 01:25:30', '0', ' groups/detele_group', 0);
 INSERT INTO `ad_auth_rule` VALUES (38, '32', '获取分类', 'categorys/list', '0', 1, '2020-02-20 02:43:36', '2020-02-20 02:43:36', '0', 'categorys/list', 0);
+INSERT INTO `ad_auth_rule` VALUES (40, '19', '修改权限组状态', 'groups/editgroupstatus', '', 0, '2020-02-21 07:33:41', '2020-02-21 07:33:41', '0', ' groups/editgroupstatus', 0);
 COMMIT;
 
 -- ----------------------------

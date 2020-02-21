@@ -85,6 +85,14 @@ class Groups extends Base_Controller
         sendSuccess('修改成功', $result, $this->_count);
     }
 
+    public function editGroupStatus()
+    {
+        $id = $this->input->get('id');
+        $data['status'] =  $this->input->post('data');
+        $result = $this->auth_group->update_entry($id, $data);
+        sendSuccess('修改成功', $result, $this->_count);
+    }
+
     public function detele_group()
     {
         $id     = $this->input->post('id');

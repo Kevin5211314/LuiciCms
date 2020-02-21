@@ -157,10 +157,27 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="layui-col-md12">
                         <div class="layui-card">
-                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>
+                            <div class="layui-card-header"><i class="fa fa-google icon icon-tip"></i>广告</div>
+                            <div class="layui-card-body"> 
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- luicicms -->
+                                <ins class="adsbygoogle"
+                                     style="display:block; height: 200px;"
+                                     data-ad-client="ca-pub-5438293843112972"
+                                     data-ad-slot="2070284821"
+                                     data-ad-format="auto"
+                                     data-full-width-responsive="true"></ins>
+                                <script>
+                                     (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>数据统计</div>
                             <div class="layui-card-body">
                                 <div id="echarts-records" style="width: 100%;min-height:500px"></div>
                             </div>
@@ -267,8 +284,25 @@
                             layui开发文档地址：<a class="layui-btn layui-btn-xs layui-btn-normal" target="_blank" href="http://www.layui.com/doc">layui文档</a><br>
                             codeigniter开发文档地址：<a class="layui-btn layui-btn-xs layui-btn-normal" target="_blank" href="https://codeigniter.org.cn/user_guide/">codeigniter文档</a>
                         </p>
-                        <p>如果您喜欢此后台的话，麻烦您给我的GitHub和Gitee加个Star支持一下</p>
+                        <p>如果您喜欢此后台的话，麻烦您给我的GitHub和Gitee加个Star支持一下! 也可以点点广告支持一下！谢谢大家伙儿！😁</p>
                         <p class="layui-red">备注：LuiciCms 后台框架遵循MIT开源协议。</p>
+                    </div>
+                </div>
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-google icon icon-tip"></i>广告</div>
+                    <div class="layui-card-body layui-text layadmin-text" >
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- luicicms -->
+                        <ins class="adsbygoogle"
+                             style="display:block; height: 200px;"
+                             data-ad-client="ca-pub-5438293843112972"
+                             data-ad-slot="2070284821"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
                     </div>
                 </div>
 

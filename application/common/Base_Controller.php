@@ -15,7 +15,7 @@ class Base_Controller extends CI_Controller
 
     protected $noLogin = []; // 不用登录的方法
 
-    protected $noAuth = ['welcome/index', 'welcome/loginout']; // 不用权限认证的方法
+    protected $noAuth = ['welcome/index', 'welcome/loginout', 'welcome/setting', 'welcome/uppass']; // 不用权限认证的方法
 
     /**
      * 架构方法 设置参数
@@ -37,7 +37,7 @@ class Base_Controller extends CI_Controller
         $this->initMenu();
         $this->initPage();
         !$this->checkLogin() && header("Location: " . '/login/index');
-        !$this->checkAuth() && sendError('no permission, please contact the administrator.');
+        !$this->checkAuth() &&  sendError('no permission, please contact the administrator.');
     }
 
     //初始化菜单

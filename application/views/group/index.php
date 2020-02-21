@@ -31,11 +31,10 @@
 
             <div class="layui-btn-group">
                 <button class="layui-btn data-add-btn">添加权限组</button>
-                <button class="layui-btn layui-btn-danger data-delete-btn">删除</button>
             </div>
             <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
             <script type="text/html" id="currentTableBar">
-                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑权限</a>
+                <a class="layui-btn layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             </script>
         </div>
@@ -61,9 +60,13 @@
                     {field: 'description', minwidth: 300, title: '描述', fixed: "right", align: "center"},
                     {field: 'status', width: 150, title: '状态', align: "center", templet:function(d){
                             if(d.status == 0){
-                                return '<div class="layui-input-block" style="margin-left:0px;"><input type="checkbox" name="close" lay-skin="switch" lay-text="开启|关闭"></div>';
+                                return  '<div class="layui-input-block" style="margin-left:0px;">'+
+                                             '<input type="checkbox" name="close" lay-skin="switch" lay-filter="switchTest" lay-text="开启|关闭" data-id='+d.id+'>'+
+                                        '</div>';
                             }else{
-                                return ' <div class="layui-input-block" style="margin-left:0px;"><input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="开启|关闭"></div>';
+                                return  '<div class="layui-input-block" style="margin-left:0px;"> ' + 
+                                             '<input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="开启|关闭" data-id='+d.id+'>'+
+                                        '</div>';
                             }
                     }},
                     {title: '操作', minwidth: 80, templet: '#currentTableBar', fixed: "right", align: "center"}
@@ -101,29 +104,27 @@
                  window.location.href = '/groups/add.html';
             });
 
-            // 监听删除操作
-            $(".data-delete-btn").on("click", function () {
-                var checkStatus = table.checkStatus('currentTableId'), data = checkStatus.data;
-                layer.confirm('真的删除行么', function (index) {
-                    $.ajax({
-                         type: "POST",
-                         url: "/groups/detele_all_group",
-                         data: {data:data},
-                         dataType: "json",
-                         success: function(data){
-                            if(data.code == 400){
-                                layer.msg(data.message, {icon: 1,time: 2000}, function () {
-                                    layer.close(index);
-                                    window.location.reload();
-                                });  
-                            }else{
-                                layer.msg(data.message, {icon: 1,time: 2000}, function () {
-                                    layer.close(index);
-                                    window.location.reload();
-                                });
-                            }      
-                         }
-                    });
+            //监听指定开关
+            form.on('switch(switchTest)', function (data) {
+                var id = $(this).data('id');
+                $.ajax({
+                    type: "POST",
+                    url: "/groups/editgroupstatus?id="+id,
+                    data: {data:this.checked ? '1' : '0'},
+                    dataType: "json",
+                    beforeSend: function (request) {
+                        index = layer.load();
+                    },
+                    success: function (resource) {
+                        layer.close(index);
+                        layer.msg(resource.message, { icon: 1, time: 2000 }, function(){
+                             parent.location.reload()//刷新父亲对象（用于框架）
+                        });  
+                    },
+                    error: function (data) {
+                        layer.alert(JSON.stringify(data));
+                        console.log(data)
+                    }
                 });
             });
 

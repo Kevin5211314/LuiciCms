@@ -26,7 +26,7 @@
                         if(result[i].parentId == '-1')
                         {
                             result[i].authorityName = '|- &nbsp;'+result[i].authorityName;
-                        }else{
+                        }else if(result[i].isMenu == '1'){
                             result[i].authorityName = '|-- &nbsp;|-- &nbsp;'+result[i].authorityName;
                         }
                         str += '<option value="'+result[i].authorityId+'">'+result[i].authorityName+'</option>'; 
