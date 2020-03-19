@@ -1,3 +1,6 @@
+<?php /* HULK template engine v0.3
+a:1:{s:16:"/welcome/welcome";i:1584008331;}
+*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,8 +164,7 @@
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-google icon icon-tip"></i>广告</div>
                             <div class="layui-card-body"> 
-                                <# block adsense #>CodeIgniter<# /block #>
-                            </div>
+                                CodeIgniter                            </div>
                         </div>
                     </div>
                     <div class="layui-col-md12">
@@ -282,8 +284,7 @@
                 <div class="layui-card">
                     <div class="layui-card-header"><i class="fa fa-google icon icon-tip"></i>广告</div>
                     <div class="layui-card-body layui-text layadmin-text" >
-                        <# block adsense #>CodeIgniter<# /block #>
-                    </div>
+                        CodeIgniter                    </div>
                 </div>
 
                 <div class="layui-card">

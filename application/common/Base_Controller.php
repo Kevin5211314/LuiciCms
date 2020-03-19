@@ -15,7 +15,7 @@ class Base_Controller extends CI_Controller
 
     protected $noLogin = []; // 不用登录的方法
 
-    protected $noAuth = ['welcome/index', 'welcome/loginout', 'welcome/setting', 'welcome/uppass']; // 不用权限认证的方法
+    protected $noAuth  = ['welcome/index', 'welcome/loginout', 'welcome/setting', 'welcome/uppass','welcome/clearruntime', 'welcome/getmenu']; // 不用权限认证的方法
 
     /**
      * 架构方法 设置参数
@@ -34,16 +34,9 @@ class Base_Controller extends CI_Controller
         $this->load->model('auth_rule');
         $this->load->model('auth_group_access','',true);
 
-        $this->initMenu();
         $this->initPage();
         !$this->checkLogin() && header("Location: " . '/login/index');
         !$this->checkAuth() &&  sendError('no permission, please contact the administrator.');
-    }
-
-    //初始化菜单
-    public function initMenu()
-    {
-        // echo 'aaa';  
     }
 
     //初始化分页
@@ -78,40 +71,48 @@ class Base_Controller extends CI_Controller
         }
     }
 
-    // 权限认证
-    public function checkAuth()
+    //检查菜单权限
+    public function checkMenu()
+    {   
+        $adminAuthList = $this->getAdminAuthList();
+        $authArr = array();
+        foreach($adminAuthList as $key => $value)
+        {
+            $authArr[$key] = '/'.$value.'.html';
+        }
+        return $authArr;
+    }
+
+    //获取用户权限
+    public function getAdminAuthList()
     {
-        $class  = $this->router->fetch_class();
-        $method = $this->router->fetch_method();
-
-        //检查用户权限
         $uid_auth_rules = $this->auth_group_access->get_uid_auth_group_access_list($this->session->admin_auth);
-
         $rules_array = array();
         foreach (explode(',', $uid_auth_rules['rules']) as $key => $value) {
             $result            = $this->auth_rule->get_auth_rule_info(['authorityId' => $value], 'menuUrl');
             $rules_array[$key] = $result['menuUrl'];
         }
-        // var_dump($class.'/'.$method);
-        // var_dump($rules_array);
+        return $rules_array;
+    }
 
-        if (!$this->checknoAuth()) {
-            return in_array($class . '/' . $method, $rules_array) ? true : false;
+    // 权限认证
+    public function checkAuth()
+    {
+        $class  = $this->router->fetch_class();
+        $method = $this->router->fetch_method();
+        $rules_array = $this->getAdminAuthList();
+        if (!$this->checkNoAuth()) {
+            return in_array($class.'/'.$method, $rules_array) ? true : false;
         }
-
         return true;
     }
 
     // 权限免认证
-    public function checknoAuth()
+    public function checkNoAuth()
     {
         $class  = $this->router->fetch_class();
         $method = $this->router->fetch_method();
-
-        return in_array($class . '/' . $method, $this->noAuth) ? true : false;
+        return in_array($class.'/'.$method, $this->noAuth) ? true : false;
     }
-
-    // public function 
-
 
 }

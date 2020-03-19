@@ -30,9 +30,8 @@ class Article extends CI_Model
             return $query->result_array();
         }
     }
-    /**
-     * insert_entry 增加数据入口
-     */
+
+    // insert_entry 增加数据入口
     public function insert_entry($data)
     {   
         $data['create_time'] = time();
@@ -41,11 +40,10 @@ class Article extends CI_Model
         return $this->db->insert_id('article', $data);
     }
 
-    /**
-     * update_entry 修改数据入口
-     */
+    // update_entry 修改数据入口
     public function update_entry($id, $data)
     {   
+        $data['update_time'] = time();
         return $this->db->update('article', $data, array('id' => $id));
     }
 

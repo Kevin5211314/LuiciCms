@@ -18,7 +18,11 @@ class Auth_group_access extends CI_Model
     }
 
     /**
-     * insert_entry 增加数据入口
+     * [insert_entry insert_entry 增加数据入口]
+     * @author   Ding Jingfei  <794783766@qq.com>
+     * @datetime 2020-02-28T17:13:22+0800
+     * @param    [type]                   $data [description]
+     * @return   [type]                         [description]
      */
     public function insert_entry($data)
     {   
@@ -27,7 +31,12 @@ class Auth_group_access extends CI_Model
     }
 
     /**
-     * update_entry 修改数据入口
+     * [update_entry update_entry 修改数据入口]
+     * @author   Ding Jingfei  <794783766@qq.com>
+     * @datetime 2020-02-28T17:13:31+0800
+     * @param    [type]                   $id   [description]
+     * @param    [type]                   $data [description]
+     * @return   [type]                         [description]
      */
     public function update_entry($id, $data)
     {   

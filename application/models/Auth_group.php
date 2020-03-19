@@ -34,8 +34,8 @@ class Auth_group extends CI_Model
     // insert_entry 增加数据入口
     public function insert_entry($data)
     {   
-        $data['create_time'] = date('Y-m-d H:i:s',time());
-        $data['update_time'] = date('Y-m-d H:i:s',time());
+        $data['create_time'] = time();
+        $data['update_time'] = time();
         $this->db->insert('auth_group', $data);
         return $this->db->insert_id('auth_group', $data);
     }
@@ -43,10 +43,10 @@ class Auth_group extends CI_Model
     // update_entry 修改数据入口
     public function update_entry($id, $data)
     {   
-        $data['update_time'] = date('Y-m-d H:i:s',time());
+        $data['update_time'] = time();
         return $this->db->update('auth_group', $data, array('id' => $id));
     }
-
+    
     // delete_entry 删除数据入口
     public function delete_entry($id)
     {

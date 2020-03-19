@@ -23,20 +23,20 @@ class Carousel extends CI_Model
             return $query->result_array();
         }
     }
-    /**
-     * insert_entry 增加数据入口
-     */
+
+    // insert_entry 增加数据入口
     public function insert_entry($data)
     {   
+        $data['create_time'] = time();
+        $data['update_time'] = time();
         $this->db->insert('carousel', $data);
         return $this->db->insert_id('carousel', $data);
     }
 
-    /**
-     * update_entry 修改数据入口
-     */
+    // update_entry 修改数据入口
     public function update_entry($id, $data)
     {   
+        $data['update_time'] = time();
         return $this->db->update('carousel', $data, array('id' => $id));
     }
 

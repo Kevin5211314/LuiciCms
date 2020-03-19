@@ -1,3 +1,6 @@
+<?php /* HULK template engine v0.3
+a:1:{s:14:"/welcome/index";i:1583998751;}
+*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

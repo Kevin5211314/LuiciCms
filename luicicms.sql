@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50727
  Source Host           : localhost:3306
- Source Schema         : epa
+ Source Schema         : luicicms
 
  Target Server Type    : MySQL
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 21/02/2020 15:44:23
+ Date: 19/03/2020 17:51:14
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ CREATE TABLE `ad_admin` (
 -- Records of ad_admin
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_admin` VALUES (6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '799788777@qq.com', 1, 1582270991, '127.0.0.1', 0, 1579584689, 1582270991);
+INSERT INTO `ad_admin` VALUES (6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '799788777@qq.com', 1, 1584025319, '127.0.0.1', 0, 1579584689, 1584025319);
 INSERT INTO `ad_admin` VALUES (7, 'demo', 'e10adc3949ba59abbe56e057f20f883e', '13800139000', '7777777@qq.com', 1, 1579584732, '127.0.0.1', 0, 1579584732, 1579584732);
 INSERT INTO `ad_admin` VALUES (11, 'jingFei', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '794783766@qq.com', 1, 1582010824, '127.0.0.1', 0, 1580799426, 1582010824);
 INSERT INTO `ad_admin` VALUES (13, 'pross', 'e10adc3949ba59abbe56e057f20f883e', '13800138000', '777777777@qq.com', 1, 1582010852, '127.0.0.1', 0, 1580800237, 1582010852);
@@ -62,19 +62,9 @@ CREATE TABLE `ad_admin_log` (
   `param` text NOT NULL COMMENT '请求参数',
   `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '日志备注',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 COMMENT='管理员日志';
-
--- ----------------------------
--- Records of ad_admin_log
--- ----------------------------
-BEGIN;
-INSERT INTO `ad_admin_log` VALUES (1, 1, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0) Gecko/20100101 Firefox/68.0', '111.194.45.32', 'http://blog.kevinfei.com/admin/index/clear.html', 'POST', 'json', '[]', '清除了系统缓存', 1565703734);
-INSERT INTO `ad_admin_log` VALUES (2, 1, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0) Gecko/20100101 Firefox/68.0', '111.194.45.32', 'http://blog.kevinfei.com/admin.html', 'POST', 'json', '{\"username\":\"admin\",\"password\":\"123456\",\"captcha\":\"cqqc\"}', '登录了后台系统', 1565714614);
-INSERT INTO `ad_admin_log` VALUES (3, 1, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36', '111.194.45.32', 'http://blog.kevinfei.com/admin.html', 'POST', 'json', '{\"username\":\"admin\",\"password\":\"123456\",\"captcha\":\"bhq8\"}', '登录了后台系统', 1565720507);
-INSERT INTO `ad_admin_log` VALUES (4, 1, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36', '111.194.44.53', 'https://blog.kevinfei.com/admin.html', 'POST', 'json', '{\"username\":\"admin\",\"password\":\"123456\",\"captcha\":\"pb3p\"}', '登录了后台系统', 1577724772);
-INSERT INTO `ad_admin_log` VALUES (5, 1, 'admin', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36', '111.194.44.53', 'https://blog.kevinfei.com/admin/index/clear.html', 'POST', 'json', '[]', '清除了系统缓存', 1577724787);
-COMMIT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员日志';
 
 -- ----------------------------
 -- Table structure for ad_article
@@ -100,7 +90,7 @@ CREATE TABLE `ad_article` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8 COMMENT='文章';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='文章';
 
 -- ----------------------------
 -- Records of ad_article
@@ -132,20 +122,19 @@ CREATE TABLE `ad_auth_group` (
   `description` varchar(255) NOT NULL DEFAULT '',
   `rules` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
-  `create_time` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='权限组';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='权限组';
 
 -- ----------------------------
 -- Records of ad_auth_group
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_auth_group` VALUES (6, '超级管理员', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40', 1, '2020-02-09 12:20:02', '2020-02-21 07:40:56');
-INSERT INTO `ad_auth_group` VALUES (7, '普通管理员', '普通管理员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
-INSERT INTO `ad_auth_group` VALUES (8, '日常运营员', '日常运营员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,41', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
-INSERT INTO `ad_auth_group` VALUES (9, '测试管理员', '测试管理员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45', 1, '2020-02-09 12:20:02', '2020-02-09 12:20:02');
-INSERT INTO `ad_auth_group` VALUES (11, '敬飞管理员', '敬飞管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40', 1, '2020-02-18 19:33:07', '2020-02-21 07:35:54');
+INSERT INTO `ad_auth_group` VALUES (6, '超级管理员', '超级管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40,41,42,45,46,47,48,49,50,52', 1, 1557393786, 1584010711);
+INSERT INTO `ad_auth_group` VALUES (7, '普通管理员', '普通管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40', 1, 1583873993, 1583888396);
+INSERT INTO `ad_auth_group` VALUES (8, '日常运营员', '日常运营员', '1,2,3,4,5,6,8,12,13,14,15,17,18,19,20,22,23,24,25,26,41', 1, 1583873993, 1583873993);
+INSERT INTO `ad_auth_group` VALUES (9, '测试管理员', '测试管理员', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,37,38,40', 1, 1583873993, 1583888387);
 COMMIT;
 
 -- ----------------------------
@@ -154,7 +143,8 @@ COMMIT;
 DROP TABLE IF EXISTS `ad_auth_group_access`;
 CREATE TABLE `ad_auth_group_access` (
   `uid` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '用户id',
-  `group_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '权限组id'
+  `group_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '权限组id',
+  PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限授权';
 
 -- ----------------------------
@@ -184,55 +174,64 @@ CREATE TABLE `ad_auth_rule` (
   `menuUrl` varchar(255) NOT NULL DEFAULT '',
   `menuIcon` varchar(64) NOT NULL DEFAULT '',
   `orderNumber` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
-  `createTime` datetime DEFAULT NULL,
-  `updateTime` datetime DEFAULT NULL,
   `isMenu` varchar(255) DEFAULT '1',
   `authority` varchar(255) DEFAULT NULL,
   `checked` int(3) NOT NULL DEFAULT '0',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`authorityId`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='权限规则';
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COMMENT='权限规则';
 
 -- ----------------------------
 -- Records of ad_auth_rule
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_auth_rule` VALUES (1, '-1', '常规管理', 'welcome/index', 'layui-icon layui-icon-app', 0, '2018-06-29 11:05:41', '2018-07-13 09:13:42', '0', 'welcome/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (2, '1', '控制台', 'welcome/home', '', 0, '2020-01-21 08:12:32', '2020-01-21 08:12:32', '1', 'welcome/home', 0);
-INSERT INTO `ad_auth_rule` VALUES (3, '1', '用户管理', 'users/index', '', 0, '2020-01-18 06:41:14', '2020-01-18 06:41:17', '1', 'users/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (4, '3', '用户列表', 'users/list', '', 0, '2020-02-07 20:32:25', '2020-02-07 20:32:25', '0', 'users/list', 0);
-INSERT INTO `ad_auth_rule` VALUES (5, '3', '添加用户', 'users/add', '', 0, '2020-01-18 06:53:36', '2020-01-18 06:53:33', '0', 'users/add', 0);
-INSERT INTO `ad_auth_rule` VALUES (6, '3', '添加用户数据', 'users/adddata', '', 0, '2020-02-07 20:40:01', '2020-02-07 20:40:01', '0', 'users/adddata', 0);
-INSERT INTO `ad_auth_rule` VALUES (7, '3', '编辑用户', 'users/edit', '', 0, '2020-01-18 07:02:07', '2020-01-18 07:02:10', '0', 'users/edit', 0);
-INSERT INTO `ad_auth_rule` VALUES (8, '3', '编辑用户信息', 'users/editdata', '', 0, '2020-01-18 07:05:12', '2020-01-18 07:05:12', '0', 'users/editdata', 0);
-INSERT INTO `ad_auth_rule` VALUES (9, '3', '删除用户', 'users/detele', '', 0, '2020-01-18 07:05:09', '2020-01-18 07:05:12', '0', 'users/detele', 0);
-INSERT INTO `ad_auth_rule` VALUES (10, '3', '全选删除用户', 'users/detele_all', '', 0, '2020-01-18 07:05:12', '2020-01-18 07:05:12', '0', 'users/detele_all', 0);
-INSERT INTO `ad_auth_rule` VALUES (11, '-1', '权限管理', 'rules/index', '', 0, '2020-01-18 07:05:12', '2020-01-18 07:05:12', '0', 'rules/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (12, '11', '规则管理', 'rules/index', '', 0, '2020-01-18 07:05:12', '2020-01-18 07:05:12', '1', 'rules/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (13, '12', '规则列表', 'rules/list', '', 0, '2020-01-18 07:05:12', '2020-01-18 07:05:12', '0', 'rules/list', 0);
-INSERT INTO `ad_auth_rule` VALUES (14, '12', '添加规则', 'rules/add', '', 0, '2020-02-08 03:11:36', '2020-02-08 03:11:36', '0', 'rules/add', 0);
-INSERT INTO `ad_auth_rule` VALUES (15, '12', '添加规则数据', 'rules/addruledata', '', 0, '2020-02-08 03:11:36', '2020-02-08 03:11:36', '0', 'rules/addruledata', 0);
-INSERT INTO `ad_auth_rule` VALUES (16, '12', '编辑规则', 'rules/edit', '', 0, '2020-02-08 03:11:36', '2020-02-08 03:11:36', '0', 'rules/edit', 0);
-INSERT INTO `ad_auth_rule` VALUES (17, '12', '修改规则数据', 'rules/editruledata', '', 0, '2020-02-08 03:11:36', '2020-02-08 03:11:36', '0', 'rules/editruledata', 0);
-INSERT INTO `ad_auth_rule` VALUES (18, '12', '删除规则', 'rules/delete', '', 0, '2020-02-08 04:24:52', '2020-02-08 04:24:52', '0', 'rules/delete', 0);
-INSERT INTO `ad_auth_rule` VALUES (19, '11', '权限组', 'groups/index', '', 0, '2020-02-09 02:12:32', '2020-02-09 02:12:32', '1', 'groups/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (20, '19', '权限组列表', 'groups/list', '', 0, '2020-02-09 03:08:31', '2020-02-09 03:08:31', '0', 'groups/list', 0);
-INSERT INTO `ad_auth_rule` VALUES (21, '19', '获取全部权限', 'groups/rulelist', '', 0, '2020-02-09 03:08:31', '2020-02-09 03:08:31', '0', 'groups/rulelist', 0);
-INSERT INTO `ad_auth_rule` VALUES (22, '19', '编辑权限组', 'groups/edit', '', 0, '2020-02-09 03:29:05', '2020-02-09 03:29:05', '0', 'groups/edit', 0);
-INSERT INTO `ad_auth_rule` VALUES (23, '19', '编辑权限组数据', 'groups/editgroupdata', '', 0, '2020-02-09 03:38:05', '2020-02-09 03:38:05', '0', 'groups/editgroupdata', 0);
-INSERT INTO `ad_auth_rule` VALUES (24, '19', '添加权限组', 'groups/add', '', 0, '2020-02-09 04:44:34', '2020-02-09 04:44:34', '0', 'groups/add', 0);
-INSERT INTO `ad_auth_rule` VALUES (25, '19', '添加权限组数据', 'groups/addgroupdata', '', 0, '2020-02-09 04:45:13', '2020-02-09 04:45:13', '0', 'groups/addgroupdata', 0);
-INSERT INTO `ad_auth_rule` VALUES (26, '11', '管理员', 'admins/index', '', 0, '2020-02-10 01:36:17', '2020-02-10 01:36:17', '1', 'admins/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (27, '1', '系统设置', 'systems/index', '', 0, '2020-02-10 01:44:00', '2020-02-10 01:44:00', '1', 'systems/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (28, '27', '添加系统数据', 'systems/upsetdata', '', 0, '2020-02-10 01:46:40', '2020-02-10 01:46:40', '0', 'systems/upsetdata', 0);
-INSERT INTO `ad_auth_rule` VALUES (30, '26', '管理员列表', 'admins/list', '', 0, '2020-02-10 01:50:07', '2020-02-10 01:50:07', '0', 'admins/list', 0);
-INSERT INTO `ad_auth_rule` VALUES (31, '-1', '文章管理', 'articles/index', '', 0, '2020-02-10 01:50:07', '2020-02-10 01:50:07', '0', 'articles/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (32, '31', '分类管理', 'categorys/index', '', 0, '2020-02-10 01:56:42', '2020-02-10 01:56:42', '1', 'categorys/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (33, '31', '商品管理', 'products/index', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '1', 'products/index', 0);
-INSERT INTO `ad_auth_rule` VALUES (34, '33', '商品列表', 'products/list', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '0', 'products/list', 0);
-INSERT INTO `ad_auth_rule` VALUES (35, '11', '获取父级列表', 'rules/getparentrule', '', 0, '2020-02-18 03:50:07', '2020-02-18 03:50:07', '0', 'rules/getparentrule', 0);
-INSERT INTO `ad_auth_rule` VALUES (37, '19', '删除权限组', 'groups/detele_group', '', 0, '2020-02-20 01:25:30', '2020-02-20 01:25:30', '0', ' groups/detele_group', 0);
-INSERT INTO `ad_auth_rule` VALUES (38, '32', '获取分类', 'categorys/list', '0', 1, '2020-02-20 02:43:36', '2020-02-20 02:43:36', '0', 'categorys/list', 0);
-INSERT INTO `ad_auth_rule` VALUES (40, '19', '修改权限组状态', 'groups/editgroupstatus', '', 0, '2020-02-21 07:33:41', '2020-02-21 07:33:41', '0', ' groups/editgroupstatus', 0);
+INSERT INTO `ad_auth_rule` VALUES (1, '-1', '常规管理', 'welcome/index', 'layui-icon layui-icon-app', 0, '0', 'welcome/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (2, '1', '控制台', 'welcome/home', '', 0, '1', 'welcome/home', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (3, '1', '用户管理', 'users/index', '', 0, '1', 'users/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (4, '3', '用户列表', 'users/list', '', 0, '0', 'users/list', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (5, '3', '添加用户', 'users/add', '', 0, '0', 'users/add', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (6, '3', '添加用户数据', 'users/adddata', '', 0, '0', 'users/adddata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (7, '3', '编辑用户', 'users/edit', '', 0, '0', 'users/edit', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (8, '3', '编辑用户信息', 'users/editdata', '', 0, '0', 'users/editdata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (9, '3', '删除用户', 'users/detele', '', 0, '0', 'users/detele', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (10, '3', '全选删除用户', 'users/detele_all', '', 0, '0', 'users/detele_all', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (11, '-1', '权限管理', 'rules/index', '', 0, '0', 'rules/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (12, '11', '规则管理', 'rules/index', '', 0, '1', 'rules/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (13, '12', '规则列表', 'rules/list', '', 0, '0', 'rules/list', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (14, '12', '添加规则', 'rules/add', '', 0, '0', 'rules/add', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (15, '12', '添加规则数据', 'rules/addruledata', '', 0, '0', 'rules/addruledata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (16, '12', '编辑规则', 'rules/edit', '', 0, '0', 'rules/edit', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (17, '12', '修改规则数据', 'rules/editruledata', '', 0, '0', 'rules/editruledata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (18, '12', '删除规则', 'rules/delete', '', 0, '0', 'rules/delete', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (19, '11', '权限组', 'groups/index', '', 0, '1', 'groups/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (20, '19', '权限组列表', 'groups/list', '', 0, '0', 'groups/list', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (21, '19', '获取全部权限', 'groups/rulelist', '', 0, '0', 'groups/rulelist', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (22, '19', '编辑权限组', 'groups/edit', '', 0, '0', 'groups/edit', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (23, '19', '编辑权限组数据', 'groups/editgroupdata', '', 0, '0', 'groups/editgroupdata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (24, '19', '添加权限组', 'groups/add', '', 0, '0', 'groups/add', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (25, '19', '添加权限组数据', 'groups/addgroupdata', '', 0, '0', 'groups/addgroupdata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (26, '11', '管理员', 'admins/index', '', 0, '1', 'admins/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (27, '1', '系统设置', 'systems/index', '', 0, '1', 'systems/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (28, '27', '添加系统数据', 'systems/upsetdata', '', 0, '0', 'systems/upsetdata', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (30, '26', '管理员列表', 'admins/list', '', 0, '0', 'admins/list', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (31, '-1', '文章管理', 'articles/index', '', 0, '0', 'articles/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (32, '31', '分类管理', 'categorys/index', '', 0, '1', 'categorys/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (33, '31', '商品管理', 'products/index', '', 0, '1', 'products/index', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (34, '33', '商品列表', 'products/list', '', 0, '0', 'products/list', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (35, '11', '获取父级列表', 'rules/getparentrule', '', 0, '0', 'rules/getparentrule', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (37, '19', '删除权限组', 'groups/detele_group', '', 0, '0', ' groups/detele_group', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (38, '32', '获取分类', 'categorys/list', '0', 1, '0', 'categorys/list', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (40, '19', '修改权限组状态', 'groups/editgroupstatus', '', 0, '0', ' groups/editgroupstatus', 0, 1583873993, 1583873993);
+INSERT INTO `ad_auth_rule` VALUES (41, '11', '菜单管理', 'menus/index', '', 0, '1', ' menus/index', 0, 1583999206, 1583999206);
+INSERT INTO `ad_auth_rule` VALUES (42, '41', '菜单列表', 'menus/list', '', 0, '0', '  menus/list', 0, 1583999240, 1583999267);
+INSERT INTO `ad_auth_rule` VALUES (45, '41', '添加菜单', 'menus/add', '', 0, '0', ' menus/add', 0, 1584000185, 1584000185);
+INSERT INTO `ad_auth_rule` VALUES (46, '41', '编辑菜单', 'menus/edit', '', 0, '0', ' menus/edit', 0, 1584000768, 1584000768);
+INSERT INTO `ad_auth_rule` VALUES (47, '-1', '组件管理', 'component/index', '', 0, '0', 'component/index', 0, 1584003094, 1584003094);
+INSERT INTO `ad_auth_rule` VALUES (48, '47', '图标列表', 'component/icon', '', 0, '1', ' component/icon', 0, 1584003094, 1584003094);
+INSERT INTO `ad_auth_rule` VALUES (49, '31', '图片管理', 'carouse/index', '', 0, '1', ' carouse/index ', 0, 1584006271, 1584006351);
+INSERT INTO `ad_auth_rule` VALUES (50, '47', '图标选择', 'component/iconpicker', '', 0, '1', ' component/iconpicker', 0, 1584006414, 1584006414);
+INSERT INTO `ad_auth_rule` VALUES (52, '47', '颜色选择', 'component/colorselect', '', 0, '1', '  component/colorselect', 0, 1584010443, 1584010904);
 COMMIT;
 
 -- ----------------------------
@@ -249,6 +248,8 @@ CREATE TABLE `ad_carousel` (
   `image` varchar(255) DEFAULT '' COMMENT '图片',
   `sort_order` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='轮播广告';
 
@@ -256,9 +257,9 @@ CREATE TABLE `ad_carousel` (
 -- Records of ad_carousel
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_carousel` VALUES (1, 'index', 'TEST', 'TEST轮播', 'http://blog.kevinfei.com/public/upload/image/20190805/fb65bd45ec6d0b6fbc7aac1ea8c3e7a4.jpg', '_blank', '/public/upload/image/20190805/fb65bd45ec6d0b6fbc7aac1ea8c3e7a4.jpg', 0, 1);
-INSERT INTO `ad_carousel` VALUES (2, 'dateils', 'Dateils', 'DATEILS描述', 'http://bucketpublic.kevinfei.com/d8595202001080848097680.jpg', '_blank', 'http://bucketpublic.kevinfei.com/d8595202001080848097680.jpg', 1, 1);
-INSERT INTO `ad_carousel` VALUES (3, 'category', 'categoryName', '描述', 'http://bucketpublic.kevinfei.com/33e9f20200108084901588.jpg', '_blank', 'http://bucketpublic.kevinfei.com/33e9f20200108084901588.jpg', 2, 1);
+INSERT INTO `ad_carousel` VALUES (1, 'index', 'TEST', 'TEST轮播', 'http://blog.kevinfei.com/public/upload/image/20190805/fb65bd45ec6d0b6fbc7aac1ea8c3e7a4.jpg', '_blank', '/public/upload/image/20190805/fb65bd45ec6d0b6fbc7aac1ea8c3e7a4.jpg', 0, 1, 1583873993, 1583873993);
+INSERT INTO `ad_carousel` VALUES (2, 'dateils', 'Dateils', 'DATEILS描述', 'http://bucketpublic.kevinfei.com/d8595202001080848097680.jpg', '_blank', 'http://bucketpublic.kevinfei.com/d8595202001080848097680.jpg', 1, 1, 1583873993, 1583873993);
+INSERT INTO `ad_carousel` VALUES (3, 'category', 'categoryName', '描述', 'http://bucketpublic.kevinfei.com/33e9f20200108084901588.jpg', '_blank', 'http://bucketpublic.kevinfei.com/33e9f20200108084901588.jpg', 2, 1, 1583873993, 1583873993);
 COMMIT;
 
 -- ----------------------------
@@ -273,6 +274,8 @@ CREATE TABLE `ad_category` (
   `keywords` varchar(255) DEFAULT '' COMMENT '关键字',
   `description` varchar(255) DEFAULT '' COMMENT '描述',
   `curl` varchar(255) DEFAULT NULL,
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=utf8 COMMENT='分类';
 
@@ -280,388 +283,388 @@ CREATE TABLE `ad_category` (
 -- Records of ad_category
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_category` VALUES (1, 0, '通用机械设备', 100, '通用机械设备', '通用机械设备', 'http://china.makepolo.com/list/d9/');
-INSERT INTO `ad_category` VALUES (2, 1, '泵与阀门', 100, '泵与阀门', '泵与阀门', 'http://china.makepolo.com/list/spc5768/');
-INSERT INTO `ad_category` VALUES (3, 1, '金属切削机床', 100, '金属切削机床', '金属切削机床', 'http://china.makepolo.com/list/spc4657/');
-INSERT INTO `ad_category` VALUES (4, 1, '锻压机床', 100, '锻压机床', '锻压机床', 'http://china.makepolo.com/list/spc5063/');
-INSERT INTO `ad_category` VALUES (5, 1, '特种加工机床', 100, '特种加工机床', '特种加工机床', 'http://china.makepolo.com/list/spc4551/');
-INSERT INTO `ad_category` VALUES (6, 1, '机床附件', 100, '机床附件', '机床附件', 'http://china.makepolo.com/list/spc5325/');
-INSERT INTO `ad_category` VALUES (7, 1, '切削刀具', 100, '切削刀具', '切削刀具', 'http://china.makepolo.com/list/spc3646/');
-INSERT INTO `ad_category` VALUES (8, 1, '真空获取与应用设备', 100, '真空获取与应用设备', '真空获取与应用设备', 'http://china.makepolo.com/list/spc5772/');
-INSERT INTO `ad_category` VALUES (9, 1, '风机设备', 100, '风机设备', '风机设备', 'http://china.makepolo.com/list/spc27500/');
-INSERT INTO `ad_category` VALUES (10, 1, '粉碎设备、粉碎机', 100, '粉碎设备、粉碎机', '粉碎设备、粉碎机', 'http://china.makepolo.com/list/spc27884/');
-INSERT INTO `ad_category` VALUES (11, 1, '气体发生与分离设备', 100, '气体发生与分离设备', '气体发生与分离设备', 'http://china.makepolo.com/list/spc26488/');
-INSERT INTO `ad_category` VALUES (12, 1, '制冷设备', 100, '制冷设备', '制冷设备', 'http://china.makepolo.com/list/spc27928/');
-INSERT INTO `ad_category` VALUES (13, 1, '过滤筛分设备', 100, '过滤筛分设备', '过滤筛分设备', 'http://china.makepolo.com/list/spc25862/');
-INSERT INTO `ad_category` VALUES (14, 1, '热处理设备', 100, '热处理设备', '热处理设备', 'http://china.makepolo.com/list/spc26005/');
-INSERT INTO `ad_category` VALUES (15, 1, '焊接铆接与切割设备', 100, '焊接铆接与切割设备', '焊接铆接与切割设备', 'http://china.makepolo.com/list/spc5381/');
-INSERT INTO `ad_category` VALUES (16, 1, '工业炉窑', 100, '工业炉窑', '工业炉窑', 'http://china.makepolo.com/list/spc26705/');
-INSERT INTO `ad_category` VALUES (17, 1, '传热设备', 100, '传热设备', '传热设备', 'http://china.makepolo.com/list/spc27958/');
-INSERT INTO `ad_category` VALUES (18, 1, '锅炉与原动机', 100, '锅炉与原动机', '锅炉与原动机', 'http://china.makepolo.com/list/spc5530/');
-INSERT INTO `ad_category` VALUES (19, 1, '传质设备/塔设备', 100, '传质设备/塔设备', '传质设备/塔设备', 'http://china.makepolo.com/list/spc145687/');
-INSERT INTO `ad_category` VALUES (20, 1, '分离设备', 100, '分离设备', '分离设备', 'http://china.makepolo.com/list/spc150236/');
-INSERT INTO `ad_category` VALUES (21, 1, '混合设备', 100, '混合设备', '混合设备', 'http://china.makepolo.com/list/spc26746/');
-INSERT INTO `ad_category` VALUES (22, 1, '反应设备', 100, '反应设备', '反应设备', 'http://china.makepolo.com/list/spc26803/');
-INSERT INTO `ad_category` VALUES (23, 1, '干燥设备', 100, '干燥设备', '干燥设备', 'http://china.makepolo.com/list/spc26814/');
-INSERT INTO `ad_category` VALUES (24, 1, '物料搬运及仓储设备', 100, '物料搬运及仓储设备', '物料搬运及仓储设备', 'http://china.makepolo.com/list/spc26955/');
-INSERT INTO `ad_category` VALUES (25, 1, '储运设备', 100, '储运设备', '储运设备', 'http://china.makepolo.com/list/spc27929/');
-INSERT INTO `ad_category` VALUES (26, 1, '包装机械', 100, '包装机械', '包装机械', 'http://china.makepolo.com/list/spc3626/');
-INSERT INTO `ad_category` VALUES (27, 1, '消毒灭菌设备', 100, '消毒灭菌设备', '消毒灭菌设备', 'http://china.makepolo.com/list/spc3833/');
-INSERT INTO `ad_category` VALUES (28, 1, '清洗与加香设备', 100, '清洗与加香设备', '清洗与加香设备', 'http://china.makepolo.com/list/spc26917/');
-INSERT INTO `ad_category` VALUES (29, 1, '模具', 100, '模具', '模具', 'http://china.makepolo.com/list/spc25609/');
-INSERT INTO `ad_category` VALUES (30, 1, '表面处理与涂装设备', 100, '表面处理与涂装设备', '表面处理与涂装设备', 'http://china.makepolo.com/list/spc28171/');
-INSERT INTO `ad_category` VALUES (31, 1, '工控系统及装备', 100, '工控系统及装备', '工控系统及装备', 'http://china.makepolo.com/list/spc145703/');
-INSERT INTO `ad_category` VALUES (32, 1, '铸造设备', 100, '铸造设备', '铸造设备', 'http://china.makepolo.com/list/spc1649/');
-INSERT INTO `ad_category` VALUES (33, 1, '空气净化设备', 100, '空气净化设备', '空气净化设备', 'http://china.makepolo.com/list/spc137/');
-INSERT INTO `ad_category` VALUES (34, 1, '气动元件', 100, '气动元件', '气动元件', 'http://china.makepolo.com/list/spc2755/');
-INSERT INTO `ad_category` VALUES (35, 1, '液压元件', 100, '液压元件', '液压元件', 'http://china.makepolo.com/list/spc2754/');
-INSERT INTO `ad_category` VALUES (36, 1, '电动机', 100, '电动机', '电动机', 'http://china.makepolo.com/list/spc2074/');
-INSERT INTO `ad_category` VALUES (37, 0, '行业专用设备', 100, '行业专用设备', '行业专用设备', 'http://china.makepolo.com/list/d10/');
-INSERT INTO `ad_category` VALUES (38, 37, '工程机械', 100, '工程机械', '工程机械', 'http://china.makepolo.com/list/spc1652/');
-INSERT INTO `ad_category` VALUES (39, 37, '建材机械', 100, '建材机械', '建材机械', 'http://china.makepolo.com/list/spc1647/');
-INSERT INTO `ad_category` VALUES (40, 37, '冶金机械', 100, '冶金机械', '冶金机械', 'http://china.makepolo.com/list/spc1648/');
-INSERT INTO `ad_category` VALUES (41, 37, '矿山机械', 100, '矿山机械', '矿山机械', 'http://china.makepolo.com/list/spc40/');
-INSERT INTO `ad_category` VALUES (42, 37, '石油钻采机械', 100, '石油钻采机械', '石油钻采机械', 'http://china.makepolo.com/list/spc41/');
-INSERT INTO `ad_category` VALUES (43, 37, '地质勘查专用设备', 100, '地质勘查专用设备', '地质勘查专用设备', 'http://china.makepolo.com/list/spc147515/');
-INSERT INTO `ad_category` VALUES (44, 37, '塑料机械', 100, '塑料机械', '塑料机械', 'http://china.makepolo.com/list/spc1645/');
-INSERT INTO `ad_category` VALUES (45, 37, '橡胶机械', 100, '橡胶机械', '橡胶机械', 'http://china.makepolo.com/list/spc1646/');
-INSERT INTO `ad_category` VALUES (46, 37, '电工产品制造设备', 100, '电工产品制造设备', '电工产品制造设备', 'http://china.makepolo.com/list/spc1650/');
-INSERT INTO `ad_category` VALUES (47, 37, '电子产品制造设备', 100, '电子产品制造设备', '电子产品制造设备', 'http://china.makepolo.com/list/spc1651/');
-INSERT INTO `ad_category` VALUES (48, 37, '化工设备', 100, '化工设备', '化工设备', 'http://china.makepolo.com/list/spc1643/');
-INSERT INTO `ad_category` VALUES (49, 37, '日用化工机械', 100, '日用化工机械', '日用化工机械', 'http://china.makepolo.com/list/spc28241/');
-INSERT INTO `ad_category` VALUES (50, 37, '服装机械', 100, '服装机械', '服装机械', 'http://china.makepolo.com/list/spc45/');
-INSERT INTO `ad_category` VALUES (51, 37, '纺织机械', 100, '纺织机械', '纺织机械', 'http://china.makepolo.com/list/spc43/');
-INSERT INTO `ad_category` VALUES (52, 37, '毛皮、制革机械', 100, '毛皮、制革机械', '毛皮、制革机械', 'http://china.makepolo.com/list/spc25484/');
-INSERT INTO `ad_category` VALUES (53, 37, '制鞋机械', 100, '制鞋机械', '制鞋机械', 'http://china.makepolo.com/list/spc46/');
-INSERT INTO `ad_category` VALUES (54, 37, '食品生产机械', 100, '食品生产机械', '食品生产机械', 'http://china.makepolo.com/list/spc42/');
-INSERT INTO `ad_category` VALUES (55, 37, '饮食、炊事机械', 100, '饮食、炊事机械', '饮食、炊事机械', 'http://china.makepolo.com/list/spc3326/');
-INSERT INTO `ad_category` VALUES (56, 37, '农业机械', 100, '农业机械', '农业机械', 'http://china.makepolo.com/list/spc39/');
-INSERT INTO `ad_category` VALUES (57, 37, '农产品初加工机械', 100, '农产品初加工机械', '农产品初加工机械', 'http://china.makepolo.com/list/spc2024/');
-INSERT INTO `ad_category` VALUES (58, 37, '饲料加工机械', 100, '饲料加工机械', '饲料加工机械', 'http://china.makepolo.com/list/spc3619/');
-INSERT INTO `ad_category` VALUES (59, 37, '畜牧养殖机械', 100, '畜牧养殖机械', '畜牧养殖机械', 'http://china.makepolo.com/list/spc56/');
-INSERT INTO `ad_category` VALUES (60, 37, '林业机械', 100, '林业机械', '林业机械', 'http://china.makepolo.com/list/spc47/');
-INSERT INTO `ad_category` VALUES (61, 37, '木材加工机械', 100, '木材加工机械', '木材加工机械', 'http://china.makepolo.com/list/spc25708/');
-INSERT INTO `ad_category` VALUES (62, 37, '木工机床', 100, '木工机床', '木工机床', 'http://china.makepolo.com/list/spc5116/');
-INSERT INTO `ad_category` VALUES (63, 37, '制浆造纸机械', 100, '制浆造纸机械', '制浆造纸机械', 'http://china.makepolo.com/list/spc1641/');
-INSERT INTO `ad_category` VALUES (64, 37, '印刷机械', 100, '印刷机械', '印刷机械', 'http://china.makepolo.com/list/spc1642/');
-INSERT INTO `ad_category` VALUES (65, 37, '节能环保设备', 100, '节能环保设备', '节能环保设备', 'http://china.makepolo.com/list/spc4859/');
-INSERT INTO `ad_category` VALUES (66, 37, '汽保、维修专用设备', 100, '汽保、维修专用设备', '汽保、维修专用设备', 'http://china.makepolo.com/list/spc27030/');
-INSERT INTO `ad_category` VALUES (67, 37, '小五金制造装备', 100, '小五金制造装备', '小五金制造装备', 'http://china.makepolo.com/list/spc146348/');
-INSERT INTO `ad_category` VALUES (68, 37, '金融、商业专用设备', 100, '金融、商业专用设备', '金融、商业专用设备', 'http://china.makepolo.com/list/spc145594/');
-INSERT INTO `ad_category` VALUES (69, 37, '渔业机械', 100, '渔业机械', '渔业机械', 'http://china.makepolo.com/list/spc147158/');
-INSERT INTO `ad_category` VALUES (70, 37, '陶瓷制品生产设备', 100, '陶瓷制品生产设备', '陶瓷制品生产设备', 'http://china.makepolo.com/list/spc147375/');
-INSERT INTO `ad_category` VALUES (71, 37, '陶瓷加工机械', 100, '陶瓷加工机械', '陶瓷加工机械', 'http://china.makepolo.com/list/spc146968/');
-INSERT INTO `ad_category` VALUES (72, 37, '制药机械', 100, '制药机械', '制药机械', 'http://china.makepolo.com/list/spc1644/');
-INSERT INTO `ad_category` VALUES (73, 37, '医疗器械仪器及耗材', 100, '医疗器械仪器及耗材', '医疗器械仪器及耗材', 'http://china.makepolo.com/list/spc1653/');
-INSERT INTO `ad_category` VALUES (74, 37, '兽医器械', 100, '兽医器械', '兽医器械', 'http://china.makepolo.com/list/spc1654/');
-INSERT INTO `ad_category` VALUES (75, 37, '其他制造业专用设备', 100, '其他制造业专用设备', '其他制造业专用设备', 'http://china.makepolo.com/list/spc150525/');
-INSERT INTO `ad_category` VALUES (76, 37, '教学及图书馆设备', 100, '教学及图书馆设备', '教学及图书馆设备', 'http://china.makepolo.com/list/spc147800/');
-INSERT INTO `ad_category` VALUES (77, 37, '公共安全设备与器材', 100, '公共安全设备与器材', '公共安全设备与器材', 'http://china.makepolo.com/list/spc28253/');
-INSERT INTO `ad_category` VALUES (78, 37, '广告、传媒设备', 100, '广告、传媒设备', '广告、传媒设备', 'http://china.makepolo.com/list/spc147726/');
-INSERT INTO `ad_category` VALUES (79, 37, '游乐/游艺设施', 100, '游乐/游艺设施', '游乐/游艺设施', 'http://china.makepolo.com/list/spc3704/');
-INSERT INTO `ad_category` VALUES (80, 37, '市政环卫园林机械', 100, '市政环卫园林机械', '市政环卫园林机械', 'http://china.makepolo.com/list/spc148487/');
-INSERT INTO `ad_category` VALUES (81, 37, '水利水资源专用机械', 100, '水利水资源专用机械', '水利水资源专用机械', 'http://china.makepolo.com/list/spc147517/');
-INSERT INTO `ad_category` VALUES (82, 37, '铁路线路机械', 100, '铁路线路机械', '铁路线路机械', 'http://china.makepolo.com/list/spc3701/');
-INSERT INTO `ad_category` VALUES (83, 37, '邮政机械及器材', 100, '邮政机械及器材', '邮政机械及器材', 'http://china.makepolo.com/list/spc147516/');
-INSERT INTO `ad_category` VALUES (84, 0, '建筑设备', 100, '建筑设备', '建筑设备', 'http://china.makepolo.com/list/d8/');
-INSERT INTO `ad_category` VALUES (85, 84, '采暖设备', 100, '采暖设备', '采暖设备', 'http://china.makepolo.com/list/spc134/');
-INSERT INTO `ad_category` VALUES (86, 84, '通风设备', 100, '通风设备', '通风设备', 'http://china.makepolo.com/list/spc135/');
-INSERT INTO `ad_category` VALUES (87, 84, '管道系统', 100, '管道系统', '管道系统', 'http://china.makepolo.com/list/spc150401/');
-INSERT INTO `ad_category` VALUES (88, 84, '给排水设备', 100, '给排水设备', '给排水设备', 'http://china.makepolo.com/list/spc138/');
-INSERT INTO `ad_category` VALUES (89, 84, '空气调节设备', 100, '空气调节设备', '空气调节设备', 'http://china.makepolo.com/list/spc136/');
-INSERT INTO `ad_category` VALUES (90, 84, '空气净化设备', 100, '空气净化设备', '空气净化设备', 'http://china.makepolo.com/list/spc137/');
-INSERT INTO `ad_category` VALUES (91, 84, '综合布线与光纤设备', 100, '综合布线与光纤设备', '综合布线与光纤设备', 'http://china.makepolo.com/list/spc148090/');
-INSERT INTO `ad_category` VALUES (92, 84, '消防设备', 100, '消防设备', '消防设备', 'http://china.makepolo.com/list/spc139/');
-INSERT INTO `ad_category` VALUES (93, 84, '停车场管理设备', 100, '停车场管理设备', '停车场管理设备', 'http://china.makepolo.com/list/spc181/');
-INSERT INTO `ad_category` VALUES (94, 84, '安防监控设备', 100, '安防监控设备', '安防监控设备', 'http://china.makepolo.com/list/spc140/');
-INSERT INTO `ad_category` VALUES (95, 84, '电梯和自动扶梯', 100, '电梯和自动扶梯', '电梯和自动扶梯', 'http://china.makepolo.com/list/spc3847/');
-INSERT INTO `ad_category` VALUES (96, 84, '智能家居产品', 100, '智能家居产品', '智能家居产品', 'http://china.makepolo.com/list/spc150996/');
-INSERT INTO `ad_category` VALUES (97, 0, '电气与能源设备', 100, '电气与能源设备', '电气与能源设备', 'http://china.makepolo.com/list/d11/');
-INSERT INTO `ad_category` VALUES (98, 97, '发电机及发电机组', 100, '发电机及发电机组', '发电机及发电机组', 'http://china.makepolo.com/list/spc2073/');
-INSERT INTO `ad_category` VALUES (99, 97, '电动机', 100, '电动机', '电动机', 'http://china.makepolo.com/list/spc2074/');
-INSERT INTO `ad_category` VALUES (100, 97, '输配电设备', 100, '输配电设备', '输配电设备', 'http://china.makepolo.com/list/spc2075/');
-INSERT INTO `ad_category` VALUES (101, 97, '电源装置', 100, '电源装置', '电源装置', 'http://china.makepolo.com/list/spc2076/');
-INSERT INTO `ad_category` VALUES (102, 97, '电气成套设备', 100, '电气成套设备', '电气成套设备', 'http://china.makepolo.com/list/spc2081/');
-INSERT INTO `ad_category` VALUES (103, 97, '电工仪器仪表', 100, '电工仪器仪表', '电工仪器仪表', 'http://china.makepolo.com/list/spc3560/');
-INSERT INTO `ad_category` VALUES (104, 97, '高压电器', 100, '高压电器', '高压电器', 'http://china.makepolo.com/list/spc2079/');
-INSERT INTO `ad_category` VALUES (105, 97, '低压电器', 100, '低压电器', '低压电器', 'http://china.makepolo.com/list/spc2080/');
-INSERT INTO `ad_category` VALUES (106, 97, '燃气设备', 100, '燃气设备', '燃气设备', 'http://china.makepolo.com/list/spc150330/');
-INSERT INTO `ad_category` VALUES (107, 97, '防雷设备', 100, '防雷设备', '防雷设备', 'http://china.makepolo.com/list/spc2078/');
-INSERT INTO `ad_category` VALUES (108, 97, '新能源设备', 100, '新能源设备', '新能源设备', 'http://china.makepolo.com/list/spc150309/');
-INSERT INTO `ad_category` VALUES (109, 97, '电力电子器件', 100, '电力电子器件', '电力电子器件', 'http://china.makepolo.com/list/spc2077/');
-INSERT INTO `ad_category` VALUES (110, 97, '节能设备', 100, '节能设备', '节能设备', 'http://china.makepolo.com/list/spc148007/');
-INSERT INTO `ad_category` VALUES (111, 97, '沼气设备', 100, '沼气设备', '沼气设备', 'http://china.makepolo.com/list/spc150350/');
-INSERT INTO `ad_category` VALUES (112, 0, '仪器仪表', 100, '仪器仪表', '仪器仪表', 'http://china.makepolo.com/list/d13/');
-INSERT INTO `ad_category` VALUES (113, 112, '计量标准器具', 100, '计量标准器具', '计量标准器具', 'http://china.makepolo.com/list/spc2598/');
-INSERT INTO `ad_category` VALUES (114, 112, '计量仪表', 100, '计量仪表', '计量仪表', 'http://china.makepolo.com/list/spc3379/');
-INSERT INTO `ad_category` VALUES (115, 112, '机械量测量仪器', 100, '机械量测量仪器', '机械量测量仪器', 'http://china.makepolo.com/list/spc3401/');
-INSERT INTO `ad_category` VALUES (116, 112, '行业专用仪器仪表', 100, '行业专用仪器仪表', '行业专用仪器仪表', 'http://china.makepolo.com/list/spc3529/');
-INSERT INTO `ad_category` VALUES (117, 112, '光学仪器', 100, '光学仪器', '光学仪器', 'http://china.makepolo.com/list/spc3558/');
-INSERT INTO `ad_category` VALUES (118, 112, '分析仪器', 100, '分析仪器', '分析仪器', 'http://china.makepolo.com/list/spc3559/');
-INSERT INTO `ad_category` VALUES (119, 112, '电工仪器仪表', 100, '电工仪器仪表', '电工仪器仪表', 'http://china.makepolo.com/list/spc3560/');
-INSERT INTO `ad_category` VALUES (120, 112, '电子测量仪器', 100, '电子测量仪器', '电子测量仪器', 'http://china.makepolo.com/list/spc3561/');
-INSERT INTO `ad_category` VALUES (121, 112, '试验机', 100, '试验机', '试验机', 'http://china.makepolo.com/list/spc3562/');
-INSERT INTO `ad_category` VALUES (122, 112, '试验箱及环境试验设备', 100, '试验箱及环境试验设备', '试验箱及环境试验设备', 'http://china.makepolo.com/list/spc3563/');
-INSERT INTO `ad_category` VALUES (123, 112, '量具量仪', 100, '量具量仪', '量具量仪', 'http://china.makepolo.com/list/spc3564/');
-INSERT INTO `ad_category` VALUES (124, 112, '汽车检测设备', 100, '汽车检测设备', '汽车检测设备', 'http://china.makepolo.com/list/spc145302/');
-INSERT INTO `ad_category` VALUES (125, 112, '衡器', 100, '衡器', '衡器', 'http://china.makepolo.com/list/spc3565/');
-INSERT INTO `ad_category` VALUES (126, 112, '车用仪表', 100, '车用仪表', '车用仪表', 'http://china.makepolo.com/list/spc3566/');
-INSERT INTO `ad_category` VALUES (127, 112, '生物仪器', 100, '生物仪器', '生物仪器', 'http://china.makepolo.com/list/spc3568/');
-INSERT INTO `ad_category` VALUES (128, 112, '无损检测仪器', 100, '无损检测仪器', '无损检测仪器', 'http://china.makepolo.com/list/spc3570/');
-INSERT INTO `ad_category` VALUES (129, 112, '其他仪器仪表及零配件', 100, '其他仪器仪表及零配件', '其他仪器仪表及零配件', 'http://china.makepolo.com/list/spc3571/');
-INSERT INTO `ad_category` VALUES (130, 112, '气象仪器', 100, '气象仪器', '气象仪器', 'http://china.makepolo.com/list/spc27000/');
-INSERT INTO `ad_category` VALUES (131, 112, '环境检测仪器', 100, '环境检测仪器', '环境检测仪器', 'http://china.makepolo.com/list/spc27284/');
-INSERT INTO `ad_category` VALUES (132, 112, '室内环保检测仪器', 100, '室内环保检测仪器', '室内环保检测仪器', 'http://china.makepolo.com/list/spc27286/');
-INSERT INTO `ad_category` VALUES (133, 112, '玻璃仪器', 100, '玻璃仪器', '玻璃仪器', 'http://china.makepolo.com/list/spc146763/');
-INSERT INTO `ad_category` VALUES (134, 112, '传感器', 100, '传感器', '传感器', 'http://china.makepolo.com/list/spc4383/');
-INSERT INTO `ad_category` VALUES (135, 112, '变送器', 100, '变送器', '变送器', 'http://china.makepolo.com/list/spc145943/');
-INSERT INTO `ad_category` VALUES (136, 112, '工业自动化仪表及系统', 100, '工业自动化仪表及系统', '工业自动化仪表及系统', 'http://china.makepolo.com/list/spc148937/');
-INSERT INTO `ad_category` VALUES (137, 0, '网络安防/通信广电设备', 100, '网络安防/通信广电设备', '网络安防/通信广电设备', 'http://china.makepolo.com/list/d149804/');
-INSERT INTO `ad_category` VALUES (138, 137, '网络设备', 100, '网络设备', '网络设备', 'http://china.makepolo.com/list/spc4292/');
-INSERT INTO `ad_category` VALUES (139, 137, '通信设备', 100, '通信设备', '通信设备', 'http://china.makepolo.com/list/spc3164/');
-INSERT INTO `ad_category` VALUES (140, 137, '无线网络设备', 100, '无线网络设备', '无线网络设备', 'http://china.makepolo.com/list/spc4293/');
-INSERT INTO `ad_category` VALUES (141, 137, '网络管理、安全设备', 100, '网络管理、安全设备', '网络管理、安全设备', 'http://china.makepolo.com/list/spc4313/');
-INSERT INTO `ad_category` VALUES (142, 137, '综合布线', 100, '综合布线', '综合布线', 'http://china.makepolo.com/list/spc148090/');
-INSERT INTO `ad_category` VALUES (143, 137, '广播电视设备', 100, '广播电视设备', '广播电视设备', 'http://china.makepolo.com/list/spc3268/');
-INSERT INTO `ad_category` VALUES (144, 137, '安防监控系统', 100, '安防监控系统', '安防监控系统', 'http://china.makepolo.com/list/spc140/');
-INSERT INTO `ad_category` VALUES (145, 0, '电脑/办公设备', 100, '电脑/办公设备', '电脑/办公设备', 'http://china.makepolo.com/list/d14/');
-INSERT INTO `ad_category` VALUES (146, 145, '办公耗材', 100, '办公耗材', '办公耗材', 'http://china.makepolo.com/list/spc4144/');
-INSERT INTO `ad_category` VALUES (147, 145, '办公家具', 100, '办公家具', '办公家具', 'http://china.makepolo.com/list/spc4212/');
-INSERT INTO `ad_category` VALUES (148, 145, '复印、打印、扫描设备', 100, '复印、打印、扫描设备', '复印、打印、扫描设备', 'http://china.makepolo.com/list/spc3410/');
-INSERT INTO `ad_category` VALUES (149, 145, '整理、装订设备', 100, '整理、装订设备', '整理、装订设备', 'http://china.makepolo.com/list/spc3411/');
-INSERT INTO `ad_category` VALUES (150, 145, '投影、显示设备', 100, '投影、显示设备', '投影、显示设备', 'http://china.makepolo.com/list/spc3412/');
-INSERT INTO `ad_category` VALUES (151, 145, '办公通讯设备', 100, '办公通讯设备', '办公通讯设备', 'http://china.makepolo.com/list/spc3413/');
-INSERT INTO `ad_category` VALUES (152, 145, '行政、财务设备', 100, '行政、财务设备', '行政、财务设备', 'http://china.makepolo.com/list/spc3414/');
-INSERT INTO `ad_category` VALUES (153, 145, '电脑配件与外设', 100, '电脑配件与外设', '电脑配件与外设', 'http://china.makepolo.com/list/spc3416/');
-INSERT INTO `ad_category` VALUES (154, 145, '软件产品', 100, '软件产品', '软件产品', 'http://china.makepolo.com/list/spc3417/');
-INSERT INTO `ad_category` VALUES (155, 145, '整机', 100, '整机', '整机', 'http://china.makepolo.com/list/spc4291/');
-INSERT INTO `ad_category` VALUES (156, 145, '会议系统', 100, '会议系统', '会议系统', 'http://china.makepolo.com/list/spc148351/');
-INSERT INTO `ad_category` VALUES (157, 145, '清洁设备', 100, '清洁设备', '清洁设备', 'http://china.makepolo.com/list/spc149696/');
-INSERT INTO `ad_category` VALUES (158, 0, '交通运输', 100, '交通运输', '交通运输', 'http://china.makepolo.com/list/d12/');
-INSERT INTO `ad_category` VALUES (159, 158, '机动车', 100, '机动车', '机动车', 'http://china.makepolo.com/list/spc3698/');
-INSERT INTO `ad_category` VALUES (160, 158, '电动车', 100, '电动车', '电动车', 'http://china.makepolo.com/list/spc148424/');
-INSERT INTO `ad_category` VALUES (161, 158, '非机动车', 100, '非机动车', '非机动车', 'http://china.makepolo.com/list/spc3699/');
-INSERT INTO `ad_category` VALUES (162, 158, '非机动车配件', 100, '非机动车配件', '非机动车配件', 'http://china.makepolo.com/list/spc148532/');
-INSERT INTO `ad_category` VALUES (163, 158, '加油站设备', 100, '加油站设备', '加油站设备', 'http://china.makepolo.com/list/spc147906/');
-INSERT INTO `ad_category` VALUES (164, 158, '停车场设备', 100, '停车场设备', '停车场设备', 'http://china.makepolo.com/list/spc181/');
-INSERT INTO `ad_category` VALUES (165, 158, '道路交通管理设施', 100, '道路交通管理设施', '道路交通管理设施', 'http://china.makepolo.com/list/spc3700/');
-INSERT INTO `ad_category` VALUES (166, 158, '轨道铁路线路机械', 100, '轨道铁路线路机械', '轨道铁路线路机械', 'http://china.makepolo.com/list/spc3701/');
-INSERT INTO `ad_category` VALUES (167, 158, '港口装卸机械', 100, '港口装卸机械', '港口装卸机械', 'http://china.makepolo.com/list/spc3854/');
-INSERT INTO `ad_category` VALUES (168, 158, '船舶及航道设备', 100, '船舶及航道设备', '船舶及航道设备', 'http://china.makepolo.com/list/spc3702/');
-INSERT INTO `ad_category` VALUES (169, 158, '机场专用设备', 100, '机场专用设备', '机场专用设备', 'http://china.makepolo.com/list/spc3856/');
-INSERT INTO `ad_category` VALUES (170, 158, '潜水及水下救捞装备', 100, '潜水及水下救捞装备', '潜水及水下救捞装备', 'http://china.makepolo.com/list/spc3851/');
-INSERT INTO `ad_category` VALUES (171, 0, '原料辅料/初加工材料', 100, '原料辅料/初加工材料', '原料辅料/初加工材料', 'http://china.makepolo.com/list/d2/');
-INSERT INTO `ad_category` VALUES (172, 171, '矿业', 100, '矿业', '矿业', 'http://china.makepolo.com/list/spc2402/');
-INSERT INTO `ad_category` VALUES (173, 171, '钢铁冶金', 100, '钢铁冶金', '钢铁冶金', 'http://china.makepolo.com/list/spc5084/');
-INSERT INTO `ad_category` VALUES (174, 171, '有色金属及加工材料', 100, '有色金属及加工材料', '有色金属及加工材料', 'http://china.makepolo.com/list/spc5086/');
-INSERT INTO `ad_category` VALUES (175, 171, '非金属材料及制品', 100, '非金属材料及制品', '非金属材料及制品', 'http://china.makepolo.com/list/spc145328/');
-INSERT INTO `ad_category` VALUES (176, 171, '橡胶、塑料', 100, '橡胶、塑料', '橡胶、塑料', 'http://china.makepolo.com/list/spc27348/');
-INSERT INTO `ad_category` VALUES (177, 171, '催化剂、助剂、填充剂', 100, '催化剂、助剂、填充剂', '催化剂、助剂、填充剂', 'http://china.makepolo.com/list/spc26118/');
-INSERT INTO `ad_category` VALUES (178, 171, '纸浆', 100, '纸浆', '纸浆', 'http://china.makepolo.com/list/spc145374/');
-INSERT INTO `ad_category` VALUES (179, 171, '纸张', 100, '纸张', '纸张', 'http://china.makepolo.com/list/spc149492/');
-INSERT INTO `ad_category` VALUES (180, 171, '印刷辅料', 100, '印刷辅料', '印刷辅料', 'http://china.makepolo.com/list/spc147889/');
-INSERT INTO `ad_category` VALUES (181, 171, '包装材料及容器', 100, '包装材料及容器', '包装材料及容器', 'http://china.makepolo.com/list/spc25892/');
-INSERT INTO `ad_category` VALUES (182, 171, '有机、无机化学原料', 100, '有机、无机化学原料', '有机、无机化学原料', 'http://china.makepolo.com/list/spc27038/');
-INSERT INTO `ad_category` VALUES (183, 171, '精细化学品', 100, '精细化学品', '精细化学品', 'http://china.makepolo.com/list/spc145395/');
-INSERT INTO `ad_category` VALUES (184, 171, '燃料', 100, '燃料', '燃料', 'http://china.makepolo.com/list/spc27406/');
-INSERT INTO `ad_category` VALUES (185, 171, '石油制品', 100, '石油制品', '石油制品', 'http://china.makepolo.com/list/spc148495/');
-INSERT INTO `ad_category` VALUES (186, 171, '煤化工产品', 100, '煤化工产品', '煤化工产品', 'http://china.makepolo.com/list/spc149111/');
-INSERT INTO `ad_category` VALUES (187, 171, '吸附剂、干燥剂', 100, '吸附剂、干燥剂', '吸附剂、干燥剂', 'http://china.makepolo.com/list/spc26403/');
-INSERT INTO `ad_category` VALUES (188, 171, '纺织皮革原料辅料', 100, '纺织皮革原料辅料', '纺织皮革原料辅料', 'http://china.makepolo.com/list/spc27907/');
-INSERT INTO `ad_category` VALUES (189, 171, '纤维', 100, '纤维', '纤维', 'http://china.makepolo.com/list/spc27468/');
-INSERT INTO `ad_category` VALUES (190, 171, '电子与功能材料', 100, '电子与功能材料', '电子与功能材料', 'http://china.makepolo.com/list/spc25872/');
-INSERT INTO `ad_category` VALUES (191, 171, '复制、信息化学品', 100, '复制、信息化学品', '复制、信息化学品', 'http://china.makepolo.com/list/spc145573/');
-INSERT INTO `ad_category` VALUES (192, 171, '过滤件', 100, '过滤件', '过滤件', 'http://china.makepolo.com/list/spc4294/');
-INSERT INTO `ad_category` VALUES (193, 171, '废料', 100, '废料', '废料', 'http://china.makepolo.com/list/spc146529/');
-INSERT INTO `ad_category` VALUES (194, 171, '喷涂溅射材料', 100, '喷涂溅射材料', '喷涂溅射材料', 'http://china.makepolo.com/list/spc148040/');
-INSERT INTO `ad_category` VALUES (195, 171, '电光源材料', 100, '电光源材料', '电光源材料', 'http://china.makepolo.com/list/spc148032/');
-INSERT INTO `ad_category` VALUES (196, 171, '商标/标签/标识', 100, '商标/标签/标识', '商标/标签/标识', 'http://china.makepolo.com/list/spc149797/');
-INSERT INTO `ad_category` VALUES (197, 171, '防伪产品', 100, '防伪产品', '防伪产品', 'http://china.makepolo.com/list/spc147878/');
-INSERT INTO `ad_category` VALUES (198, 171, '农产品', 100, '农产品', '农产品', 'http://china.makepolo.com/list/spc2042/');
-INSERT INTO `ad_category` VALUES (199, 171, '农用物资', 100, '农用物资', '农用物资', 'http://china.makepolo.com/list/spc25866/');
-INSERT INTO `ad_category` VALUES (200, 171, '动物与林产化学品', 100, '动物与林产化学品', '动物与林产化学品', 'http://china.makepolo.com/list/spc145334/');
-INSERT INTO `ad_category` VALUES (201, 171, '医药及生化制品', 100, '医药及生化制品', '医药及生化制品', 'http://china.makepolo.com/list/spc27834/');
-INSERT INTO `ad_category` VALUES (202, 171, '首饰辅料', 100, '首饰辅料', '首饰辅料', 'http://china.makepolo.com/list/spc28167/');
-INSERT INTO `ad_category` VALUES (203, 0, '建材与装饰材料', 100, '建材与装饰材料', '建材与装饰材料', 'http://china.makepolo.com/list/d1/');
-INSERT INTO `ad_category` VALUES (204, 203, '建筑钢材、有色建材', 100, '建筑钢材、有色建材', '建筑钢材、有色建材', 'http://china.makepolo.com/list/spc2645/');
-INSERT INTO `ad_category` VALUES (205, 203, '管材、管件', 100, '管材、管件', '管材、管件', 'http://china.makepolo.com/list/spc5822/');
-INSERT INTO `ad_category` VALUES (206, 203, '玻璃', 100, '玻璃', '玻璃', 'http://china.makepolo.com/list/spc4573/');
-INSERT INTO `ad_category` VALUES (207, 203, '陶瓷瓷砖', 100, '陶瓷瓷砖', '陶瓷瓷砖', 'http://china.makepolo.com/list/spc4861/');
-INSERT INTO `ad_category` VALUES (208, 203, '金属结构体', 100, '金属结构体', '金属结构体', 'http://china.makepolo.com/list/spc26561/');
-INSERT INTO `ad_category` VALUES (209, 203, '结构板材、隔断', 100, '结构板材、隔断', '结构板材、隔断', 'http://china.makepolo.com/list/spc5971/');
-INSERT INTO `ad_category` VALUES (210, 203, '施工材料', 100, '施工材料', '施工材料', 'http://china.makepolo.com/list/spc27242/');
-INSERT INTO `ad_category` VALUES (211, 203, '土工合成材料', 100, '土工合成材料', '土工合成材料', 'http://china.makepolo.com/list/spc26426/');
-INSERT INTO `ad_category` VALUES (212, 203, '保温吸声材料', 100, '保温吸声材料', '保温吸声材料', 'http://china.makepolo.com/list/spc5073/');
-INSERT INTO `ad_category` VALUES (213, 203, '防水材料', 100, '防水材料', '防水材料', 'http://china.makepolo.com/list/spc5135/');
-INSERT INTO `ad_category` VALUES (214, 203, '防火耐火材料', 100, '防火耐火材料', '防火耐火材料', 'http://china.makepolo.com/list/spc5326/');
-INSERT INTO `ad_category` VALUES (215, 203, '耐腐蚀、防辐射材料', 100, '耐腐蚀、防辐射材料', '耐腐蚀、防辐射材料', 'http://china.makepolo.com/list/spc5357/');
-INSERT INTO `ad_category` VALUES (216, 203, '水泥与混凝土', 100, '水泥与混凝土', '水泥与混凝土', 'http://china.makepolo.com/list/spc1616/');
-INSERT INTO `ad_category` VALUES (217, 203, '石材', 100, '石材', '石材', 'http://china.makepolo.com/list/spc26090/');
-INSERT INTO `ad_category` VALUES (218, 203, '砂子、灰、石膏', 100, '砂子、灰、石膏', '砂子、灰、石膏', 'http://china.makepolo.com/list/spc3253/');
-INSERT INTO `ad_category` VALUES (219, 203, '砖、瓦、砌块', 100, '砖、瓦、砌块', '砖、瓦、砌块', 'http://china.makepolo.com/list/spc2791/');
-INSERT INTO `ad_category` VALUES (220, 203, '木材和竹材', 100, '木材和竹材', '木材和竹材', 'http://china.makepolo.com/list/spc2040/');
-INSERT INTO `ad_category` VALUES (221, 203, '橡塑及纤维复合建材', 100, '橡塑及纤维复合建材', '橡塑及纤维复合建材', 'http://china.makepolo.com/list/spc27022/');
-INSERT INTO `ad_category` VALUES (222, 203, '装饰装修材料', 100, '装饰装修材料', '装饰装修材料', 'http://china.makepolo.com/list/spc5970/');
-INSERT INTO `ad_category` VALUES (223, 203, '建筑涂料', 100, '建筑涂料', '建筑涂料', 'http://china.makepolo.com/list/spc4998/');
-INSERT INTO `ad_category` VALUES (224, 203, '建筑胶粘剂', 100, '建筑胶粘剂', '建筑胶粘剂', 'http://china.makepolo.com/list/spc5504/');
-INSERT INTO `ad_category` VALUES (225, 203, '防护、市政设施', 100, '防护、市政设施', '防护、市政设施', 'http://china.makepolo.com/list/spc26518/');
-INSERT INTO `ad_category` VALUES (226, 203, '水暖、卫浴、洁具', 100, '水暖、卫浴、洁具', '水暖、卫浴、洁具', 'http://china.makepolo.com/list/spc26094/');
-INSERT INTO `ad_category` VALUES (227, 203, '灯具灯饰', 100, '灯具灯饰', '灯具灯饰', 'http://china.makepolo.com/list/spc3122/');
-INSERT INTO `ad_category` VALUES (228, 203, '厨房、橱柜', 100, '厨房、橱柜', '厨房、橱柜', 'http://china.makepolo.com/list/spc145725/');
-INSERT INTO `ad_category` VALUES (229, 203, '门窗、楼梯', 100, '门窗、楼梯', '门窗、楼梯', 'http://china.makepolo.com/list/spc27347/');
-INSERT INTO `ad_category` VALUES (230, 203, '场地、户外材料', 100, '场地、户外材料', '场地、户外材料', 'http://china.makepolo.com/list/spc26233/');
-INSERT INTO `ad_category` VALUES (231, 203, '预制建筑物', 100, '预制建筑物', '预制建筑物', 'http://china.makepolo.com/list/spc26564/');
-INSERT INTO `ad_category` VALUES (232, 203, '园艺花卉', 100, '园艺花卉', '园艺花卉', 'http://china.makepolo.com/list/spc2188/');
-INSERT INTO `ad_category` VALUES (233, 203, '绿化苗木', 100, '绿化苗木', '绿化苗木', 'http://china.makepolo.com/list/spc2187/');
-INSERT INTO `ad_category` VALUES (234, 203, '园林设施', 100, '园林设施', '园林设施', 'http://china.makepolo.com/list/spc26513/');
-INSERT INTO `ad_category` VALUES (235, 203, '景观水体', 100, '景观水体', '景观水体', 'http://china.makepolo.com/list/spc3781/');
-INSERT INTO `ad_category` VALUES (236, 203, '古建筑材料', 100, '古建筑材料', '古建筑材料', 'http://china.makepolo.com/list/spc5371/');
-INSERT INTO `ad_category` VALUES (237, 0, '五金零部件/备品备件', 100, '五金零部件/备品备件', '五金零部件/备品备件', 'http://china.makepolo.com/list/d3/');
-INSERT INTO `ad_category` VALUES (238, 237, '通用五金配件', 100, '通用五金配件', '通用五金配件', 'http://china.makepolo.com/list/spc2603/');
-INSERT INTO `ad_category` VALUES (239, 237, '紧固件和连接件', 100, '紧固件和连接件', '紧固件和连接件', 'http://china.makepolo.com/list/spc97/');
-INSERT INTO `ad_category` VALUES (240, 237, '管件', 100, '管件', '管件', 'http://china.makepolo.com/list/spc2572/');
-INSERT INTO `ad_category` VALUES (241, 237, '模具五金配件', 100, '模具五金配件', '模具五金配件', 'http://china.makepolo.com/list/spc2749/');
-INSERT INTO `ad_category` VALUES (242, 237, '机床附件', 100, '机床附件', '机床附件', 'http://china.makepolo.com/list/spc5325/');
-INSERT INTO `ad_category` VALUES (243, 237, '传动件', 100, '传动件', '传动件', 'http://china.makepolo.com/list/spc98/');
-INSERT INTO `ad_category` VALUES (244, 237, '轴承', 100, '轴承', '轴承', 'http://china.makepolo.com/list/spc2468/');
-INSERT INTO `ad_category` VALUES (245, 237, '工业皮带', 100, '工业皮带', '工业皮带', 'http://china.makepolo.com/list/spc150458/');
-INSERT INTO `ad_category` VALUES (246, 237, '冲压五金配件', 100, '冲压五金配件', '冲压五金配件', 'http://china.makepolo.com/list/spc2751/');
-INSERT INTO `ad_category` VALUES (247, 237, '焊接件', 100, '焊接件', '焊接件', 'http://china.makepolo.com/list/spc5401/');
-INSERT INTO `ad_category` VALUES (248, 237, '弹簧', 100, '弹簧', '弹簧', 'http://china.makepolo.com/list/spc3372/');
-INSERT INTO `ad_category` VALUES (249, 237, '金属丝网', 100, '金属丝网', '金属丝网', 'http://china.makepolo.com/list/spc145412/');
-INSERT INTO `ad_category` VALUES (250, 237, '液压元件', 100, '液压元件', '液压元件', 'http://china.makepolo.com/list/spc2754/');
-INSERT INTO `ad_category` VALUES (251, 237, '气动元件', 100, '气动元件', '气动元件', 'http://china.makepolo.com/list/spc2755/');
-INSERT INTO `ad_category` VALUES (252, 237, '电热元件、装置', 100, '电热元件、装置', '电热元件、装置', 'http://china.makepolo.com/list/spc147837/');
-INSERT INTO `ad_category` VALUES (253, 237, '电动机', 100, '电动机', '电动机', 'http://china.makepolo.com/list/spc2074/');
-INSERT INTO `ad_category` VALUES (254, 237, '过滤件', 100, '过滤件', '过滤件', 'http://china.makepolo.com/list/spc4294/');
-INSERT INTO `ad_category` VALUES (255, 237, '密封件', 100, '密封件', '密封件', 'http://china.makepolo.com/list/spc2488/');
-INSERT INTO `ad_category` VALUES (256, 237, '减震件', 100, '减震件', '减震件', 'http://china.makepolo.com/list/spc2568/');
-INSERT INTO `ad_category` VALUES (257, 237, '锁具', 100, '锁具', '锁具', 'http://china.makepolo.com/list/spc2753/');
-INSERT INTO `ad_category` VALUES (258, 237, '塑料制品', 100, '塑料制品', '塑料制品', 'http://china.makepolo.com/list/spc145532/');
-INSERT INTO `ad_category` VALUES (259, 237, '橡胶制品', 100, '橡胶制品', '橡胶制品', 'http://china.makepolo.com/list/spc145533/');
-INSERT INTO `ad_category` VALUES (260, 237, '家具橱柜五金', 100, '家具橱柜五金', '家具橱柜五金', 'http://china.makepolo.com/list/spc2665/');
-INSERT INTO `ad_category` VALUES (261, 237, '门窗五金', 100, '门窗五金', '门窗五金', 'http://china.makepolo.com/list/spc2747/');
-INSERT INTO `ad_category` VALUES (262, 237, '水暖卫浴五金', 100, '水暖卫浴五金', '水暖卫浴五金', 'http://china.makepolo.com/list/spc2622/');
-INSERT INTO `ad_category` VALUES (263, 237, '服装箱包五金', 100, '服装箱包五金', '服装箱包五金', 'http://china.makepolo.com/list/spc2748/');
-INSERT INTO `ad_category` VALUES (264, 237, '船用五金配件', 100, '船用五金配件', '船用五金配件', 'http://china.makepolo.com/list/spc2750/');
-INSERT INTO `ad_category` VALUES (265, 237, '幕墙五金配件', 100, '幕墙五金配件', '幕墙五金配件', 'http://china.makepolo.com/list/spc2752/');
-INSERT INTO `ad_category` VALUES (266, 0, '电子元器件', 100, '电子元器件', '电子元器件', 'http://china.makepolo.com/list/d4/');
-INSERT INTO `ad_category` VALUES (267, 266, '集成电路', 100, '集成电路', '集成电路', 'http://china.makepolo.com/list/spc147794/');
-INSERT INTO `ad_category` VALUES (268, 266, '电容器', 100, '电容器', '电容器', 'http://china.makepolo.com/list/spc4380/');
-INSERT INTO `ad_category` VALUES (269, 266, '传感器', 100, '传感器', '传感器', 'http://china.makepolo.com/list/spc4383/');
-INSERT INTO `ad_category` VALUES (270, 266, '二极管', 100, '二极管', '二极管', 'http://china.makepolo.com/list/spc4384/');
-INSERT INTO `ad_category` VALUES (271, 266, '三极管', 100, '三极管', '三极管', 'http://china.makepolo.com/list/spc4385/');
-INSERT INTO `ad_category` VALUES (272, 266, '场效应管', 100, '场效应管', '场效应管', 'http://china.makepolo.com/list/spc147002/');
-INSERT INTO `ad_category` VALUES (273, 266, '连接器', 100, '连接器', '连接器', 'http://china.makepolo.com/list/spc4456/');
-INSERT INTO `ad_category` VALUES (274, 266, '保护器件', 100, '保护器件', '保护器件', 'http://china.makepolo.com/list/spc4393/');
-INSERT INTO `ad_category` VALUES (275, 266, '电声器材', 100, '电声器材', '电声器材', 'http://china.makepolo.com/list/spc4391/');
-INSERT INTO `ad_category` VALUES (276, 266, '电感元器件', 100, '电感元器件', '电感元器件', 'http://china.makepolo.com/list/spc4382/');
-INSERT INTO `ad_category` VALUES (277, 266, '电阻器与电位器', 100, '电阻器与电位器', '电阻器与电位器', 'http://china.makepolo.com/list/spc146679/');
-INSERT INTO `ad_category` VALUES (278, 266, '变送器', 100, '变送器', '变送器', 'http://china.makepolo.com/list/spc145943/');
-INSERT INTO `ad_category` VALUES (279, 266, '显示器件', 100, '显示器件', '显示器件', 'http://china.makepolo.com/list/spc4398/');
-INSERT INTO `ad_category` VALUES (280, 266, '片状元器件', 100, '片状元器件', '片状元器件', 'http://china.makepolo.com/list/spc4394/');
-INSERT INTO `ad_category` VALUES (281, 266, '电子电路散热元件', 100, '电子电路散热元件', '电子电路散热元件', 'http://china.makepolo.com/list/spc6062/');
-INSERT INTO `ad_category` VALUES (282, 266, '温敏元件', 100, '温敏元件', '温敏元件', 'http://china.makepolo.com/list/spc147013/');
-INSERT INTO `ad_category` VALUES (283, 266, '湿敏元件', 100, '湿敏元件', '湿敏元件', 'http://china.makepolo.com/list/spc147044/');
-INSERT INTO `ad_category` VALUES (284, 266, '光敏元件', 100, '光敏元件', '光敏元件', 'http://china.makepolo.com/list/spc147027/');
-INSERT INTO `ad_category` VALUES (285, 266, '磁敏元件', 100, '磁敏元件', '磁敏元件', 'http://china.makepolo.com/list/spc147083/');
-INSERT INTO `ad_category` VALUES (286, 266, '压敏元件', 100, '压敏元件', '压敏元件', 'http://china.makepolo.com/list/spc147050/');
-INSERT INTO `ad_category` VALUES (287, 266, '力敏元件', 100, '力敏元件', '力敏元件', 'http://china.makepolo.com/list/spc147077/');
-INSERT INTO `ad_category` VALUES (288, 266, '气敏元件', 100, '气敏元件', '气敏元件', 'http://china.makepolo.com/list/spc147112/');
-INSERT INTO `ad_category` VALUES (289, 266, '逆变电源/逆变器', 100, '逆变电源/逆变器', '逆变电源/逆变器', 'http://china.makepolo.com/list/spc2935/');
-INSERT INTO `ad_category` VALUES (290, 266, '光电器件', 100, '光电器件', '光电器件', 'http://china.makepolo.com/list/spc148261/');
-INSERT INTO `ad_category` VALUES (291, 266, '电子与功能器材', 100, '电子与功能器材', '电子与功能器材', 'http://china.makepolo.com/list/spc25872/');
-INSERT INTO `ad_category` VALUES (292, 266, '电力半导体器材', 100, '电力半导体器材', '电力半导体器材', 'http://china.makepolo.com/list/spc2942/');
-INSERT INTO `ad_category` VALUES (293, 266, '电力集成器材', 100, '电力集成器材', '电力集成器材', 'http://china.makepolo.com/list/spc2944/');
-INSERT INTO `ad_category` VALUES (294, 266, '电子五金件', 100, '电子五金件', '电子五金件', 'http://china.makepolo.com/list/spc4399/');
-INSERT INTO `ad_category` VALUES (295, 266, '其他电子元器件', 100, '其他电子元器件', '其他电子元器件', 'http://china.makepolo.com/list/spc4401/');
-INSERT INTO `ad_category` VALUES (296, 0, '电工电料/线缆照明', 100, '电工电料/线缆照明', '电工电料/线缆照明', 'http://china.makepolo.com/list/d5/');
-INSERT INTO `ad_category` VALUES (297, 296, '电工电料', 100, '电工电料', '电工电料', 'http://china.makepolo.com/list/spc3124/');
-INSERT INTO `ad_category` VALUES (298, 296, '电线电缆', 100, '电线电缆', '电线电缆', 'http://china.makepolo.com/list/spc3125/');
-INSERT INTO `ad_category` VALUES (299, 296, '综合布线与光纤设备', 100, '综合布线与光纤设备', '综合布线与光纤设备', 'http://china.makepolo.com/list/spc148090/');
-INSERT INTO `ad_category` VALUES (300, 296, '绝缘材料', 100, '绝缘材料', '绝缘材料', 'http://china.makepolo.com/list/spc3128/');
-INSERT INTO `ad_category` VALUES (301, 296, '电光源', 100, '电光源', '电光源', 'http://china.makepolo.com/list/spc3121/');
-INSERT INTO `ad_category` VALUES (302, 296, '电光源材料', 100, '电光源材料', '电光源材料', 'http://china.makepolo.com/list/spc148032/');
-INSERT INTO `ad_category` VALUES (303, 296, '灯具灯饰', 100, '灯具灯饰', '灯具灯饰', 'http://china.makepolo.com/list/spc3122/');
-INSERT INTO `ad_category` VALUES (304, 296, '灯具配件', 100, '灯具配件', '灯具配件', 'http://china.makepolo.com/list/spc3123/');
-INSERT INTO `ad_category` VALUES (305, 296, '电池', 100, '电池', '电池', 'http://china.makepolo.com/list/spc3126/');
-INSERT INTO `ad_category` VALUES (306, 0, '工具', 100, '工具', '工具', 'http://china.makepolo.com/list/d6/');
-INSERT INTO `ad_category` VALUES (307, 306, '通用手工工具', 100, '通用手工工具', '通用手工工具', 'http://china.makepolo.com/list/spc2043/');
-INSERT INTO `ad_category` VALUES (308, 306, '钳工管工工具', 100, '钳工管工工具', '钳工管工工具', 'http://china.makepolo.com/list/spc2656/');
-INSERT INTO `ad_category` VALUES (309, 306, '切削刀具', 100, '切削刀具', '切削刀具', 'http://china.makepolo.com/list/spc3646/');
-INSERT INTO `ad_category` VALUES (310, 306, '磨具磨料', 100, '磨具磨料', '磨具磨料', 'http://china.makepolo.com/list/spc3311/');
-INSERT INTO `ad_category` VALUES (311, 306, '农林渔业园艺工具', 100, '农林渔业园艺工具', '农林渔业园艺工具', 'http://china.makepolo.com/list/spc3663/');
-INSERT INTO `ad_category` VALUES (312, 306, '土木及金刚石工具', 100, '土木及金刚石工具', '土木及金刚石工具', 'http://china.makepolo.com/list/spc147986/');
-INSERT INTO `ad_category` VALUES (313, 306, '电工工具', 100, '电工工具', '电工工具', 'http://china.makepolo.com/list/spc147976/');
-INSERT INTO `ad_category` VALUES (314, 306, '布线工具', 100, '布线工具', '布线工具', 'http://china.makepolo.com/list/spc148086/');
-INSERT INTO `ad_category` VALUES (315, 306, '线缆铺设工具', 100, '线缆铺设工具', '线缆铺设工具', 'http://china.makepolo.com/list/spc148124/');
-INSERT INTO `ad_category` VALUES (316, 306, '气动和液压工具', 100, '气动和液压工具', '气动和液压工具', 'http://china.makepolo.com/list/spc2823/');
-INSERT INTO `ad_category` VALUES (317, 306, '起重工具', 100, '起重工具', '起重工具', 'http://china.makepolo.com/list/spc3676/');
-INSERT INTO `ad_category` VALUES (318, 306, '电动工具', 100, '电动工具', '电动工具', 'http://china.makepolo.com/list/spc2687/');
-INSERT INTO `ad_category` VALUES (319, 306, '焊接辅助设备与工具', 100, '焊接辅助设备与工具', '焊接辅助设备与工具', 'http://china.makepolo.com/list/spc5400/');
-INSERT INTO `ad_category` VALUES (320, 306, '喷涂工具', 100, '喷涂工具', '喷涂工具', 'http://china.makepolo.com/list/spc148653/');
-INSERT INTO `ad_category` VALUES (321, 306, '夹具治具', 100, '夹具治具', '夹具治具', 'http://china.makepolo.com/list/spc3840/');
-INSERT INTO `ad_category` VALUES (322, 306, '工位器具', 100, '工位器具', '工位器具', 'http://china.makepolo.com/list/spc3841/');
-INSERT INTO `ad_category` VALUES (323, 306, '汽保工具', 100, '汽保工具', '汽保工具', 'http://china.makepolo.com/list/spc3775/');
-INSERT INTO `ad_category` VALUES (324, 306, '润滑工具', 100, '润滑工具', '润滑工具', 'http://china.makepolo.com/list/spc147935/');
-INSERT INTO `ad_category` VALUES (325, 306, '防静电、无尘产品', 100, '防静电、无尘产品', '防静电、无尘产品', 'http://china.makepolo.com/list/spc147585/');
-INSERT INTO `ad_category` VALUES (326, 306, '工具耗材', 100, '工具耗材', '工具耗材', 'http://china.makepolo.com/list/spc151135/');
-INSERT INTO `ad_category` VALUES (327, 306, '物料容器、仓储设备', 100, '物料容器、仓储设备', '物料容器、仓储设备', 'http://china.makepolo.com/list/spc145769/');
-INSERT INTO `ad_category` VALUES (328, 306, '搬运车/搬运设备', 100, '搬运车/搬运设备', '搬运车/搬运设备', 'http://china.makepolo.com/list/spc146504/');
-INSERT INTO `ad_category` VALUES (329, 306, '量具量仪', 100, '量具量仪', '量具量仪', 'http://china.makepolo.com/list/spc3564/');
-INSERT INTO `ad_category` VALUES (330, 306, '美发造型工具', 100, '美发造型工具', '美发造型工具', 'http://china.makepolo.com/list/spc1350/');
-INSERT INTO `ad_category` VALUES (331, 306, '救援工具', 100, '救援工具', '救援工具', 'http://china.makepolo.com/list/spc147486/');
-INSERT INTO `ad_category` VALUES (332, 306, '光学与配镜工具', 100, '光学与配镜工具', '光学与配镜工具', 'http://china.makepolo.com/list/spc3794/');
-INSERT INTO `ad_category` VALUES (333, 306, '消防防爆专用工具', 100, '消防防爆专用工具', '消防防爆专用工具', 'http://china.makepolo.com/list/spc147478/');
-INSERT INTO `ad_category` VALUES (334, 306, '钟表工具', 100, '钟表工具', '钟表工具', 'http://china.makepolo.com/list/spc3644/');
-INSERT INTO `ad_category` VALUES (335, 0, '文教办公用品', 100, '文教办公用品', '文教办公用品', 'http://china.makepolo.com/list/d149674/');
-INSERT INTO `ad_category` VALUES (336, 335, '办公耗材', 100, '办公耗材', '办公耗材', 'http://china.makepolo.com/list/spc4144/');
-INSERT INTO `ad_category` VALUES (337, 335, '办公家具', 100, '办公家具', '办公家具', 'http://china.makepolo.com/list/spc4212/');
-INSERT INTO `ad_category` VALUES (338, 335, '文具', 100, '文具', '文具', 'http://china.makepolo.com/list/spc980/');
-INSERT INTO `ad_category` VALUES (339, 335, '书写笔', 100, '书写笔', '书写笔', 'http://china.makepolo.com/list/spc981/');
-INSERT INTO `ad_category` VALUES (340, 335, '美术笔及用品', 100, '美术笔及用品', '美术笔及用品', 'http://china.makepolo.com/list/spc983/');
-INSERT INTO `ad_category` VALUES (341, 335, '书写配套用品', 100, '书写配套用品', '书写配套用品', 'http://china.makepolo.com/list/spc982/');
-INSERT INTO `ad_category` VALUES (342, 335, '办公用纸', 100, '办公用纸', '办公用纸', 'http://china.makepolo.com/list/spc4279/');
-INSERT INTO `ad_category` VALUES (343, 335, '簿、本、册', 100, '簿、本、册', '簿、本、册', 'http://china.makepolo.com/list/spc27968/');
-INSERT INTO `ad_category` VALUES (344, 335, '财会用品', 100, '财会用品', '财会用品', 'http://china.makepolo.com/list/spc27972/');
-INSERT INTO `ad_category` VALUES (345, 335, '案头用品', 100, '案头用品', '案头用品', 'http://china.makepolo.com/list/spc27973/');
-INSERT INTO `ad_category` VALUES (346, 335, '标示用品', 100, '标示用品', '标示用品', 'http://china.makepolo.com/list/spc27974/');
-INSERT INTO `ad_category` VALUES (347, 335, '奖励用品', 100, '奖励用品', '奖励用品', 'http://china.makepolo.com/list/spc27976/');
-INSERT INTO `ad_category` VALUES (348, 335, '文件管理用品', 100, '文件管理用品', '文件管理用品', 'http://china.makepolo.com/list/spc27969/');
-INSERT INTO `ad_category` VALUES (349, 335, '名片管理用品', 100, '名片管理用品', '名片管理用品', 'http://china.makepolo.com/list/spc27970/');
-INSERT INTO `ad_category` VALUES (350, 335, '软件产品', 100, '软件产品', '软件产品', 'http://china.makepolo.com/list/spc3417/');
-INSERT INTO `ad_category` VALUES (351, 335, '玻璃仪器', 100, '玻璃仪器', '玻璃仪器', 'http://china.makepolo.com/list/spc146763/');
-INSERT INTO `ad_category` VALUES (352, 335, '其他类办公用品', 100, '其他类办公用品', '其他类办公用品', 'http://china.makepolo.com/list/spc27977/');
-INSERT INTO `ad_category` VALUES (353, 0, '汽摩用品/配件', 100, '汽摩用品/配件', '汽摩用品/配件', 'http://china.makepolo.com/list/d23/');
-INSERT INTO `ad_category` VALUES (354, 353, '汽摩用品', 100, '汽摩用品', '汽摩用品', 'http://china.makepolo.com/list/spc5370/');
-INSERT INTO `ad_category` VALUES (355, 353, '摩托车配件', 100, '摩托车配件', '摩托车配件', 'http://china.makepolo.com/list/spc5423/');
-INSERT INTO `ad_category` VALUES (356, 353, '车身及附件', 100, '车身及附件', '车身及附件', 'http://china.makepolo.com/list/spc5422/');
-INSERT INTO `ad_category` VALUES (357, 353, '汽保工具', 100, '汽保工具', '汽保工具', 'http://china.makepolo.com/list/spc3775/');
-INSERT INTO `ad_category` VALUES (358, 353, '电器仪表件', 100, '电器仪表件', '电器仪表件', 'http://china.makepolo.com/list/spc5374/');
-INSERT INTO `ad_category` VALUES (359, 353, '汽摩轮胎', 100, '汽摩轮胎', '汽摩轮胎', 'http://china.makepolo.com/list/spc148338/');
-INSERT INTO `ad_category` VALUES (360, 353, '发动系统', 100, '发动系统', '发动系统', 'http://china.makepolo.com/list/spc5424/');
-INSERT INTO `ad_category` VALUES (361, 353, '传动系统', 100, '传动系统', '传动系统', 'http://china.makepolo.com/list/spc5373/');
-INSERT INTO `ad_category` VALUES (362, 353, '供给系统', 100, '供给系统', '供给系统', 'http://china.makepolo.com/list/spc5425/');
-INSERT INTO `ad_category` VALUES (363, 353, '冷却系统', 100, '冷却系统', '冷却系统', 'http://china.makepolo.com/list/spc5426/');
-INSERT INTO `ad_category` VALUES (364, 353, '排气系统', 100, '排气系统', '排气系统', 'http://china.makepolo.com/list/spc5427/');
-INSERT INTO `ad_category` VALUES (365, 353, '转向系统', 100, '转向系统', '转向系统', 'http://china.makepolo.com/list/spc5492/');
-INSERT INTO `ad_category` VALUES (366, 353, '制动系统', 100, '制动系统', '制动系统', 'http://china.makepolo.com/list/spc5493/');
-INSERT INTO `ad_category` VALUES (367, 353, '行走系统', 100, '行走系统', '行走系统', 'http://china.makepolo.com/list/spc150016/');
-INSERT INTO `ad_category` VALUES (368, 0, '定制加工', 100, '定制加工', '定制加工', 'http://china.makepolo.com/list/d1450/');
-INSERT INTO `ad_category` VALUES (369, 368, '金属加工', 100, '金属加工', '金属加工', 'http://china.makepolo.com/list/spc1467/');
-INSERT INTO `ad_category` VALUES (370, 368, '机械加工', 100, '机械加工', '机械加工', 'http://china.makepolo.com/list/spc1467/');
-INSERT INTO `ad_category` VALUES (371, 368, '行业专业包装', 100, '行业专业包装', '行业专业包装', 'http://china.makepolo.com/list/spc145595/');
-INSERT INTO `ad_category` VALUES (372, 368, '电子加工', 100, '电子加工', '电子加工', 'http://china.makepolo.com/list/spc146019/');
-INSERT INTO `ad_category` VALUES (373, 368, '塑料加工', 100, '塑料加工', '塑料加工', 'http://china.makepolo.com/list/spc146029/');
-INSERT INTO `ad_category` VALUES (374, 368, '橡胶加工', 100, '橡胶加工', '橡胶加工', 'http://china.makepolo.com/list/spc146030/');
-INSERT INTO `ad_category` VALUES (375, 368, '家电数码加工', 100, '家电数码加工', '家电数码加工', 'http://china.makepolo.com/list/spc146078/');
-INSERT INTO `ad_category` VALUES (376, 368, '电脑产品加工', 100, '电脑产品加工', '电脑产品加工', 'http://china.makepolo.com/list/spc146076/');
-INSERT INTO `ad_category` VALUES (377, 368, '服装服饰加工', 100, '服装服饰加工', '服装服饰加工', 'http://china.makepolo.com/list/spc1472/');
-INSERT INTO `ad_category` VALUES (378, 368, '纺织加工', 100, '纺织加工', '纺织加工', 'http://china.makepolo.com/list/spc146043/');
-INSERT INTO `ad_category` VALUES (379, 368, '食品饮料加工', 100, '食品饮料加工', '食品饮料加工', 'http://china.makepolo.com/list/spc146092/');
-INSERT INTO `ad_category` VALUES (380, 368, '医药保健加工', 100, '医药保健加工', '医药保健加工', 'http://china.makepolo.com/list/spc146068/');
-INSERT INTO `ad_category` VALUES (381, 368, '印刷加工', 100, '印刷加工', '印刷加工', 'http://china.makepolo.com/list/spc149037/');
-INSERT INTO `ad_category` VALUES (382, 368, '文教用品加工', 100, '文教用品加工', '文教用品加工', 'http://china.makepolo.com/list/spc146085/');
+INSERT INTO `ad_category` VALUES (1, 0, '通用机械设备', 100, '通用机械设备', '通用机械设备', 'http://china.makepolo.com/list/d9/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (2, 1, '泵与阀门', 100, '泵与阀门', '泵与阀门', 'http://china.makepolo.com/list/spc5768/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (3, 1, '金属切削机床', 100, '金属切削机床', '金属切削机床', 'http://china.makepolo.com/list/spc4657/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (4, 1, '锻压机床', 100, '锻压机床', '锻压机床', 'http://china.makepolo.com/list/spc5063/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (5, 1, '特种加工机床', 100, '特种加工机床', '特种加工机床', 'http://china.makepolo.com/list/spc4551/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (6, 1, '机床附件', 100, '机床附件', '机床附件', 'http://china.makepolo.com/list/spc5325/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (7, 1, '切削刀具', 100, '切削刀具', '切削刀具', 'http://china.makepolo.com/list/spc3646/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (8, 1, '真空获取与应用设备', 100, '真空获取与应用设备', '真空获取与应用设备', 'http://china.makepolo.com/list/spc5772/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (9, 1, '风机设备', 100, '风机设备', '风机设备', 'http://china.makepolo.com/list/spc27500/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (10, 1, '粉碎设备、粉碎机', 100, '粉碎设备、粉碎机', '粉碎设备、粉碎机', 'http://china.makepolo.com/list/spc27884/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (11, 1, '气体发生与分离设备', 100, '气体发生与分离设备', '气体发生与分离设备', 'http://china.makepolo.com/list/spc26488/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (12, 1, '制冷设备', 100, '制冷设备', '制冷设备', 'http://china.makepolo.com/list/spc27928/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (13, 1, '过滤筛分设备', 100, '过滤筛分设备', '过滤筛分设备', 'http://china.makepolo.com/list/spc25862/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (14, 1, '热处理设备', 100, '热处理设备', '热处理设备', 'http://china.makepolo.com/list/spc26005/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (15, 1, '焊接铆接与切割设备', 100, '焊接铆接与切割设备', '焊接铆接与切割设备', 'http://china.makepolo.com/list/spc5381/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (16, 1, '工业炉窑', 100, '工业炉窑', '工业炉窑', 'http://china.makepolo.com/list/spc26705/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (17, 1, '传热设备', 100, '传热设备', '传热设备', 'http://china.makepolo.com/list/spc27958/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (18, 1, '锅炉与原动机', 100, '锅炉与原动机', '锅炉与原动机', 'http://china.makepolo.com/list/spc5530/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (19, 1, '传质设备/塔设备', 100, '传质设备/塔设备', '传质设备/塔设备', 'http://china.makepolo.com/list/spc145687/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (20, 1, '分离设备', 100, '分离设备', '分离设备', 'http://china.makepolo.com/list/spc150236/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (21, 1, '混合设备', 100, '混合设备', '混合设备', 'http://china.makepolo.com/list/spc26746/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (22, 1, '反应设备', 100, '反应设备', '反应设备', 'http://china.makepolo.com/list/spc26803/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (23, 1, '干燥设备', 100, '干燥设备', '干燥设备', 'http://china.makepolo.com/list/spc26814/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (24, 1, '物料搬运及仓储设备', 100, '物料搬运及仓储设备', '物料搬运及仓储设备', 'http://china.makepolo.com/list/spc26955/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (25, 1, '储运设备', 100, '储运设备', '储运设备', 'http://china.makepolo.com/list/spc27929/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (26, 1, '包装机械', 100, '包装机械', '包装机械', 'http://china.makepolo.com/list/spc3626/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (27, 1, '消毒灭菌设备', 100, '消毒灭菌设备', '消毒灭菌设备', 'http://china.makepolo.com/list/spc3833/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (28, 1, '清洗与加香设备', 100, '清洗与加香设备', '清洗与加香设备', 'http://china.makepolo.com/list/spc26917/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (29, 1, '模具', 100, '模具', '模具', 'http://china.makepolo.com/list/spc25609/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (30, 1, '表面处理与涂装设备', 100, '表面处理与涂装设备', '表面处理与涂装设备', 'http://china.makepolo.com/list/spc28171/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (31, 1, '工控系统及装备', 100, '工控系统及装备', '工控系统及装备', 'http://china.makepolo.com/list/spc145703/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (32, 1, '铸造设备', 100, '铸造设备', '铸造设备', 'http://china.makepolo.com/list/spc1649/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (33, 1, '空气净化设备', 100, '空气净化设备', '空气净化设备', 'http://china.makepolo.com/list/spc137/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (34, 1, '气动元件', 100, '气动元件', '气动元件', 'http://china.makepolo.com/list/spc2755/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (35, 1, '液压元件', 100, '液压元件', '液压元件', 'http://china.makepolo.com/list/spc2754/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (36, 1, '电动机', 100, '电动机', '电动机', 'http://china.makepolo.com/list/spc2074/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (37, 0, '行业专用设备', 100, '行业专用设备', '行业专用设备', 'http://china.makepolo.com/list/d10/', 1583877574, 1583877574);
+INSERT INTO `ad_category` VALUES (38, 37, '工程机械', 100, '工程机械', '工程机械', 'http://china.makepolo.com/list/spc1652/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (39, 37, '建材机械', 100, '建材机械', '建材机械', 'http://china.makepolo.com/list/spc1647/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (40, 37, '冶金机械', 100, '冶金机械', '冶金机械', 'http://china.makepolo.com/list/spc1648/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (41, 37, '矿山机械', 100, '矿山机械', '矿山机械', 'http://china.makepolo.com/list/spc40/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (42, 37, '石油钻采机械', 100, '石油钻采机械', '石油钻采机械', 'http://china.makepolo.com/list/spc41/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (43, 37, '地质勘查专用设备', 100, '地质勘查专用设备', '地质勘查专用设备', 'http://china.makepolo.com/list/spc147515/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (44, 37, '塑料机械', 100, '塑料机械', '塑料机械', 'http://china.makepolo.com/list/spc1645/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (45, 37, '橡胶机械', 100, '橡胶机械', '橡胶机械', 'http://china.makepolo.com/list/spc1646/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (46, 37, '电工产品制造设备', 100, '电工产品制造设备', '电工产品制造设备', 'http://china.makepolo.com/list/spc1650/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (47, 37, '电子产品制造设备', 100, '电子产品制造设备', '电子产品制造设备', 'http://china.makepolo.com/list/spc1651/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (48, 37, '化工设备', 100, '化工设备', '化工设备', 'http://china.makepolo.com/list/spc1643/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (49, 37, '日用化工机械', 100, '日用化工机械', '日用化工机械', 'http://china.makepolo.com/list/spc28241/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (50, 37, '服装机械', 100, '服装机械', '服装机械', 'http://china.makepolo.com/list/spc45/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (51, 37, '纺织机械', 100, '纺织机械', '纺织机械', 'http://china.makepolo.com/list/spc43/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (52, 37, '毛皮、制革机械', 100, '毛皮、制革机械', '毛皮、制革机械', 'http://china.makepolo.com/list/spc25484/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (53, 37, '制鞋机械', 100, '制鞋机械', '制鞋机械', 'http://china.makepolo.com/list/spc46/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (54, 37, '食品生产机械', 100, '食品生产机械', '食品生产机械', 'http://china.makepolo.com/list/spc42/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (55, 37, '饮食、炊事机械', 100, '饮食、炊事机械', '饮食、炊事机械', 'http://china.makepolo.com/list/spc3326/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (56, 37, '农业机械', 100, '农业机械', '农业机械', 'http://china.makepolo.com/list/spc39/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (57, 37, '农产品初加工机械', 100, '农产品初加工机械', '农产品初加工机械', 'http://china.makepolo.com/list/spc2024/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (58, 37, '饲料加工机械', 100, '饲料加工机械', '饲料加工机械', 'http://china.makepolo.com/list/spc3619/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (59, 37, '畜牧养殖机械', 100, '畜牧养殖机械', '畜牧养殖机械', 'http://china.makepolo.com/list/spc56/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (60, 37, '林业机械', 100, '林业机械', '林业机械', 'http://china.makepolo.com/list/spc47/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (61, 37, '木材加工机械', 100, '木材加工机械', '木材加工机械', 'http://china.makepolo.com/list/spc25708/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (62, 37, '木工机床', 100, '木工机床', '木工机床', 'http://china.makepolo.com/list/spc5116/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (63, 37, '制浆造纸机械', 100, '制浆造纸机械', '制浆造纸机械', 'http://china.makepolo.com/list/spc1641/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (64, 37, '印刷机械', 100, '印刷机械', '印刷机械', 'http://china.makepolo.com/list/spc1642/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (65, 37, '节能环保设备', 100, '节能环保设备', '节能环保设备', 'http://china.makepolo.com/list/spc4859/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (66, 37, '汽保、维修专用设备', 100, '汽保、维修专用设备', '汽保、维修专用设备', 'http://china.makepolo.com/list/spc27030/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (67, 37, '小五金制造装备', 100, '小五金制造装备', '小五金制造装备', 'http://china.makepolo.com/list/spc146348/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (68, 37, '金融、商业专用设备', 100, '金融、商业专用设备', '金融、商业专用设备', 'http://china.makepolo.com/list/spc145594/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (69, 37, '渔业机械', 100, '渔业机械', '渔业机械', 'http://china.makepolo.com/list/spc147158/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (70, 37, '陶瓷制品生产设备', 100, '陶瓷制品生产设备', '陶瓷制品生产设备', 'http://china.makepolo.com/list/spc147375/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (71, 37, '陶瓷加工机械', 100, '陶瓷加工机械', '陶瓷加工机械', 'http://china.makepolo.com/list/spc146968/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (72, 37, '制药机械', 100, '制药机械', '制药机械', 'http://china.makepolo.com/list/spc1644/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (73, 37, '医疗器械仪器及耗材', 100, '医疗器械仪器及耗材', '医疗器械仪器及耗材', 'http://china.makepolo.com/list/spc1653/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (74, 37, '兽医器械', 100, '兽医器械', '兽医器械', 'http://china.makepolo.com/list/spc1654/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (75, 37, '其他制造业专用设备', 100, '其他制造业专用设备', '其他制造业专用设备', 'http://china.makepolo.com/list/spc150525/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (76, 37, '教学及图书馆设备', 100, '教学及图书馆设备', '教学及图书馆设备', 'http://china.makepolo.com/list/spc147800/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (77, 37, '公共安全设备与器材', 100, '公共安全设备与器材', '公共安全设备与器材', 'http://china.makepolo.com/list/spc28253/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (78, 37, '广告、传媒设备', 100, '广告、传媒设备', '广告、传媒设备', 'http://china.makepolo.com/list/spc147726/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (79, 37, '游乐/游艺设施', 100, '游乐/游艺设施', '游乐/游艺设施', 'http://china.makepolo.com/list/spc3704/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (80, 37, '市政环卫园林机械', 100, '市政环卫园林机械', '市政环卫园林机械', 'http://china.makepolo.com/list/spc148487/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (81, 37, '水利水资源专用机械', 100, '水利水资源专用机械', '水利水资源专用机械', 'http://china.makepolo.com/list/spc147517/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (82, 37, '铁路线路机械', 100, '铁路线路机械', '铁路线路机械', 'http://china.makepolo.com/list/spc3701/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (83, 37, '邮政机械及器材', 100, '邮政机械及器材', '邮政机械及器材', 'http://china.makepolo.com/list/spc147516/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (84, 0, '建筑设备', 100, '建筑设备', '建筑设备', 'http://china.makepolo.com/list/d8/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (85, 84, '采暖设备', 100, '采暖设备', '采暖设备', 'http://china.makepolo.com/list/spc134/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (86, 84, '通风设备', 100, '通风设备', '通风设备', 'http://china.makepolo.com/list/spc135/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (87, 84, '管道系统', 100, '管道系统', '管道系统', 'http://china.makepolo.com/list/spc150401/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (88, 84, '给排水设备', 100, '给排水设备', '给排水设备', 'http://china.makepolo.com/list/spc138/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (89, 84, '空气调节设备', 100, '空气调节设备', '空气调节设备', 'http://china.makepolo.com/list/spc136/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (90, 84, '空气净化设备', 100, '空气净化设备', '空气净化设备', 'http://china.makepolo.com/list/spc137/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (91, 84, '综合布线与光纤设备', 100, '综合布线与光纤设备', '综合布线与光纤设备', 'http://china.makepolo.com/list/spc148090/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (92, 84, '消防设备', 100, '消防设备', '消防设备', 'http://china.makepolo.com/list/spc139/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (93, 84, '停车场管理设备', 100, '停车场管理设备', '停车场管理设备', 'http://china.makepolo.com/list/spc181/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (94, 84, '安防监控设备', 100, '安防监控设备', '安防监控设备', 'http://china.makepolo.com/list/spc140/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (95, 84, '电梯和自动扶梯', 100, '电梯和自动扶梯', '电梯和自动扶梯', 'http://china.makepolo.com/list/spc3847/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (96, 84, '智能家居产品', 100, '智能家居产品', '智能家居产品', 'http://china.makepolo.com/list/spc150996/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (97, 0, '电气与能源设备', 100, '电气与能源设备', '电气与能源设备', 'http://china.makepolo.com/list/d11/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (98, 97, '发电机及发电机组', 100, '发电机及发电机组', '发电机及发电机组', 'http://china.makepolo.com/list/spc2073/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (99, 97, '电动机', 100, '电动机', '电动机', 'http://china.makepolo.com/list/spc2074/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (100, 97, '输配电设备', 100, '输配电设备', '输配电设备', 'http://china.makepolo.com/list/spc2075/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (101, 97, '电源装置', 100, '电源装置', '电源装置', 'http://china.makepolo.com/list/spc2076/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (102, 97, '电气成套设备', 100, '电气成套设备', '电气成套设备', 'http://china.makepolo.com/list/spc2081/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (103, 97, '电工仪器仪表', 100, '电工仪器仪表', '电工仪器仪表', 'http://china.makepolo.com/list/spc3560/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (104, 97, '高压电器', 100, '高压电器', '高压电器', 'http://china.makepolo.com/list/spc2079/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (105, 97, '低压电器', 100, '低压电器', '低压电器', 'http://china.makepolo.com/list/spc2080/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (106, 97, '燃气设备', 100, '燃气设备', '燃气设备', 'http://china.makepolo.com/list/spc150330/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (107, 97, '防雷设备', 100, '防雷设备', '防雷设备', 'http://china.makepolo.com/list/spc2078/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (108, 97, '新能源设备', 100, '新能源设备', '新能源设备', 'http://china.makepolo.com/list/spc150309/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (109, 97, '电力电子器件', 100, '电力电子器件', '电力电子器件', 'http://china.makepolo.com/list/spc2077/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (110, 97, '节能设备', 100, '节能设备', '节能设备', 'http://china.makepolo.com/list/spc148007/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (111, 97, '沼气设备', 100, '沼气设备', '沼气设备', 'http://china.makepolo.com/list/spc150350/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (112, 0, '仪器仪表', 100, '仪器仪表', '仪器仪表', 'http://china.makepolo.com/list/d13/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (113, 112, '计量标准器具', 100, '计量标准器具', '计量标准器具', 'http://china.makepolo.com/list/spc2598/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (114, 112, '计量仪表', 100, '计量仪表', '计量仪表', 'http://china.makepolo.com/list/spc3379/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (115, 112, '机械量测量仪器', 100, '机械量测量仪器', '机械量测量仪器', 'http://china.makepolo.com/list/spc3401/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (116, 112, '行业专用仪器仪表', 100, '行业专用仪器仪表', '行业专用仪器仪表', 'http://china.makepolo.com/list/spc3529/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (117, 112, '光学仪器', 100, '光学仪器', '光学仪器', 'http://china.makepolo.com/list/spc3558/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (118, 112, '分析仪器', 100, '分析仪器', '分析仪器', 'http://china.makepolo.com/list/spc3559/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (119, 112, '电工仪器仪表', 100, '电工仪器仪表', '电工仪器仪表', 'http://china.makepolo.com/list/spc3560/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (120, 112, '电子测量仪器', 100, '电子测量仪器', '电子测量仪器', 'http://china.makepolo.com/list/spc3561/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (121, 112, '试验机', 100, '试验机', '试验机', 'http://china.makepolo.com/list/spc3562/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (122, 112, '试验箱及环境试验设备', 100, '试验箱及环境试验设备', '试验箱及环境试验设备', 'http://china.makepolo.com/list/spc3563/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (123, 112, '量具量仪', 100, '量具量仪', '量具量仪', 'http://china.makepolo.com/list/spc3564/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (124, 112, '汽车检测设备', 100, '汽车检测设备', '汽车检测设备', 'http://china.makepolo.com/list/spc145302/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (125, 112, '衡器', 100, '衡器', '衡器', 'http://china.makepolo.com/list/spc3565/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (126, 112, '车用仪表', 100, '车用仪表', '车用仪表', 'http://china.makepolo.com/list/spc3566/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (127, 112, '生物仪器', 100, '生物仪器', '生物仪器', 'http://china.makepolo.com/list/spc3568/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (128, 112, '无损检测仪器', 100, '无损检测仪器', '无损检测仪器', 'http://china.makepolo.com/list/spc3570/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (129, 112, '其他仪器仪表及零配件', 100, '其他仪器仪表及零配件', '其他仪器仪表及零配件', 'http://china.makepolo.com/list/spc3571/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (130, 112, '气象仪器', 100, '气象仪器', '气象仪器', 'http://china.makepolo.com/list/spc27000/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (131, 112, '环境检测仪器', 100, '环境检测仪器', '环境检测仪器', 'http://china.makepolo.com/list/spc27284/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (132, 112, '室内环保检测仪器', 100, '室内环保检测仪器', '室内环保检测仪器', 'http://china.makepolo.com/list/spc27286/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (133, 112, '玻璃仪器', 100, '玻璃仪器', '玻璃仪器', 'http://china.makepolo.com/list/spc146763/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (134, 112, '传感器', 100, '传感器', '传感器', 'http://china.makepolo.com/list/spc4383/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (135, 112, '变送器', 100, '变送器', '变送器', 'http://china.makepolo.com/list/spc145943/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (136, 112, '工业自动化仪表及系统', 100, '工业自动化仪表及系统', '工业自动化仪表及系统', 'http://china.makepolo.com/list/spc148937/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (137, 0, '网络安防/通信广电设备', 100, '网络安防/通信广电设备', '网络安防/通信广电设备', 'http://china.makepolo.com/list/d149804/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (138, 137, '网络设备', 100, '网络设备', '网络设备', 'http://china.makepolo.com/list/spc4292/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (139, 137, '通信设备', 100, '通信设备', '通信设备', 'http://china.makepolo.com/list/spc3164/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (140, 137, '无线网络设备', 100, '无线网络设备', '无线网络设备', 'http://china.makepolo.com/list/spc4293/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (141, 137, '网络管理、安全设备', 100, '网络管理、安全设备', '网络管理、安全设备', 'http://china.makepolo.com/list/spc4313/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (142, 137, '综合布线', 100, '综合布线', '综合布线', 'http://china.makepolo.com/list/spc148090/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (143, 137, '广播电视设备', 100, '广播电视设备', '广播电视设备', 'http://china.makepolo.com/list/spc3268/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (144, 137, '安防监控系统', 100, '安防监控系统', '安防监控系统', 'http://china.makepolo.com/list/spc140/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (145, 0, '电脑/办公设备', 100, '电脑/办公设备', '电脑/办公设备', 'http://china.makepolo.com/list/d14/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (146, 145, '办公耗材', 100, '办公耗材', '办公耗材', 'http://china.makepolo.com/list/spc4144/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (147, 145, '办公家具', 100, '办公家具', '办公家具', 'http://china.makepolo.com/list/spc4212/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (148, 145, '复印、打印、扫描设备', 100, '复印、打印、扫描设备', '复印、打印、扫描设备', 'http://china.makepolo.com/list/spc3410/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (149, 145, '整理、装订设备', 100, '整理、装订设备', '整理、装订设备', 'http://china.makepolo.com/list/spc3411/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (150, 145, '投影、显示设备', 100, '投影、显示设备', '投影、显示设备', 'http://china.makepolo.com/list/spc3412/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (151, 145, '办公通讯设备', 100, '办公通讯设备', '办公通讯设备', 'http://china.makepolo.com/list/spc3413/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (152, 145, '行政、财务设备', 100, '行政、财务设备', '行政、财务设备', 'http://china.makepolo.com/list/spc3414/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (153, 145, '电脑配件与外设', 100, '电脑配件与外设', '电脑配件与外设', 'http://china.makepolo.com/list/spc3416/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (154, 145, '软件产品', 100, '软件产品', '软件产品', 'http://china.makepolo.com/list/spc3417/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (155, 145, '整机', 100, '整机', '整机', 'http://china.makepolo.com/list/spc4291/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (156, 145, '会议系统', 100, '会议系统', '会议系统', 'http://china.makepolo.com/list/spc148351/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (157, 145, '清洁设备', 100, '清洁设备', '清洁设备', 'http://china.makepolo.com/list/spc149696/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (158, 0, '交通运输', 100, '交通运输', '交通运输', 'http://china.makepolo.com/list/d12/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (159, 158, '机动车', 100, '机动车', '机动车', 'http://china.makepolo.com/list/spc3698/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (160, 158, '电动车', 100, '电动车', '电动车', 'http://china.makepolo.com/list/spc148424/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (161, 158, '非机动车', 100, '非机动车', '非机动车', 'http://china.makepolo.com/list/spc3699/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (162, 158, '非机动车配件', 100, '非机动车配件', '非机动车配件', 'http://china.makepolo.com/list/spc148532/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (163, 158, '加油站设备', 100, '加油站设备', '加油站设备', 'http://china.makepolo.com/list/spc147906/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (164, 158, '停车场设备', 100, '停车场设备', '停车场设备', 'http://china.makepolo.com/list/spc181/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (165, 158, '道路交通管理设施', 100, '道路交通管理设施', '道路交通管理设施', 'http://china.makepolo.com/list/spc3700/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (166, 158, '轨道铁路线路机械', 100, '轨道铁路线路机械', '轨道铁路线路机械', 'http://china.makepolo.com/list/spc3701/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (167, 158, '港口装卸机械', 100, '港口装卸机械', '港口装卸机械', 'http://china.makepolo.com/list/spc3854/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (168, 158, '船舶及航道设备', 100, '船舶及航道设备', '船舶及航道设备', 'http://china.makepolo.com/list/spc3702/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (169, 158, '机场专用设备', 100, '机场专用设备', '机场专用设备', 'http://china.makepolo.com/list/spc3856/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (170, 158, '潜水及水下救捞装备', 100, '潜水及水下救捞装备', '潜水及水下救捞装备', 'http://china.makepolo.com/list/spc3851/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (171, 0, '原料辅料/初加工材料', 100, '原料辅料/初加工材料', '原料辅料/初加工材料', 'http://china.makepolo.com/list/d2/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (172, 171, '矿业', 100, '矿业', '矿业', 'http://china.makepolo.com/list/spc2402/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (173, 171, '钢铁冶金', 100, '钢铁冶金', '钢铁冶金', 'http://china.makepolo.com/list/spc5084/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (174, 171, '有色金属及加工材料', 100, '有色金属及加工材料', '有色金属及加工材料', 'http://china.makepolo.com/list/spc5086/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (175, 171, '非金属材料及制品', 100, '非金属材料及制品', '非金属材料及制品', 'http://china.makepolo.com/list/spc145328/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (176, 171, '橡胶、塑料', 100, '橡胶、塑料', '橡胶、塑料', 'http://china.makepolo.com/list/spc27348/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (177, 171, '催化剂、助剂、填充剂', 100, '催化剂、助剂、填充剂', '催化剂、助剂、填充剂', 'http://china.makepolo.com/list/spc26118/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (178, 171, '纸浆', 100, '纸浆', '纸浆', 'http://china.makepolo.com/list/spc145374/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (179, 171, '纸张', 100, '纸张', '纸张', 'http://china.makepolo.com/list/spc149492/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (180, 171, '印刷辅料', 100, '印刷辅料', '印刷辅料', 'http://china.makepolo.com/list/spc147889/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (181, 171, '包装材料及容器', 100, '包装材料及容器', '包装材料及容器', 'http://china.makepolo.com/list/spc25892/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (182, 171, '有机、无机化学原料', 100, '有机、无机化学原料', '有机、无机化学原料', 'http://china.makepolo.com/list/spc27038/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (183, 171, '精细化学品', 100, '精细化学品', '精细化学品', 'http://china.makepolo.com/list/spc145395/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (184, 171, '燃料', 100, '燃料', '燃料', 'http://china.makepolo.com/list/spc27406/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (185, 171, '石油制品', 100, '石油制品', '石油制品', 'http://china.makepolo.com/list/spc148495/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (186, 171, '煤化工产品', 100, '煤化工产品', '煤化工产品', 'http://china.makepolo.com/list/spc149111/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (187, 171, '吸附剂、干燥剂', 100, '吸附剂、干燥剂', '吸附剂、干燥剂', 'http://china.makepolo.com/list/spc26403/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (188, 171, '纺织皮革原料辅料', 100, '纺织皮革原料辅料', '纺织皮革原料辅料', 'http://china.makepolo.com/list/spc27907/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (189, 171, '纤维', 100, '纤维', '纤维', 'http://china.makepolo.com/list/spc27468/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (190, 171, '电子与功能材料', 100, '电子与功能材料', '电子与功能材料', 'http://china.makepolo.com/list/spc25872/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (191, 171, '复制、信息化学品', 100, '复制、信息化学品', '复制、信息化学品', 'http://china.makepolo.com/list/spc145573/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (192, 171, '过滤件', 100, '过滤件', '过滤件', 'http://china.makepolo.com/list/spc4294/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (193, 171, '废料', 100, '废料', '废料', 'http://china.makepolo.com/list/spc146529/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (194, 171, '喷涂溅射材料', 100, '喷涂溅射材料', '喷涂溅射材料', 'http://china.makepolo.com/list/spc148040/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (195, 171, '电光源材料', 100, '电光源材料', '电光源材料', 'http://china.makepolo.com/list/spc148032/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (196, 171, '商标/标签/标识', 100, '商标/标签/标识', '商标/标签/标识', 'http://china.makepolo.com/list/spc149797/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (197, 171, '防伪产品', 100, '防伪产品', '防伪产品', 'http://china.makepolo.com/list/spc147878/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (198, 171, '农产品', 100, '农产品', '农产品', 'http://china.makepolo.com/list/spc2042/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (199, 171, '农用物资', 100, '农用物资', '农用物资', 'http://china.makepolo.com/list/spc25866/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (200, 171, '动物与林产化学品', 100, '动物与林产化学品', '动物与林产化学品', 'http://china.makepolo.com/list/spc145334/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (201, 171, '医药及生化制品', 100, '医药及生化制品', '医药及生化制品', 'http://china.makepolo.com/list/spc27834/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (202, 171, '首饰辅料', 100, '首饰辅料', '首饰辅料', 'http://china.makepolo.com/list/spc28167/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (203, 0, '建材与装饰材料', 100, '建材与装饰材料', '建材与装饰材料', 'http://china.makepolo.com/list/d1/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (204, 203, '建筑钢材、有色建材', 100, '建筑钢材、有色建材', '建筑钢材、有色建材', 'http://china.makepolo.com/list/spc2645/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (205, 203, '管材、管件', 100, '管材、管件', '管材、管件', 'http://china.makepolo.com/list/spc5822/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (206, 203, '玻璃', 100, '玻璃', '玻璃', 'http://china.makepolo.com/list/spc4573/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (207, 203, '陶瓷瓷砖', 100, '陶瓷瓷砖', '陶瓷瓷砖', 'http://china.makepolo.com/list/spc4861/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (208, 203, '金属结构体', 100, '金属结构体', '金属结构体', 'http://china.makepolo.com/list/spc26561/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (209, 203, '结构板材、隔断', 100, '结构板材、隔断', '结构板材、隔断', 'http://china.makepolo.com/list/spc5971/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (210, 203, '施工材料', 100, '施工材料', '施工材料', 'http://china.makepolo.com/list/spc27242/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (211, 203, '土工合成材料', 100, '土工合成材料', '土工合成材料', 'http://china.makepolo.com/list/spc26426/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (212, 203, '保温吸声材料', 100, '保温吸声材料', '保温吸声材料', 'http://china.makepolo.com/list/spc5073/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (213, 203, '防水材料', 100, '防水材料', '防水材料', 'http://china.makepolo.com/list/spc5135/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (214, 203, '防火耐火材料', 100, '防火耐火材料', '防火耐火材料', 'http://china.makepolo.com/list/spc5326/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (215, 203, '耐腐蚀、防辐射材料', 100, '耐腐蚀、防辐射材料', '耐腐蚀、防辐射材料', 'http://china.makepolo.com/list/spc5357/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (216, 203, '水泥与混凝土', 100, '水泥与混凝土', '水泥与混凝土', 'http://china.makepolo.com/list/spc1616/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (217, 203, '石材', 100, '石材', '石材', 'http://china.makepolo.com/list/spc26090/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (218, 203, '砂子、灰、石膏', 100, '砂子、灰、石膏', '砂子、灰、石膏', 'http://china.makepolo.com/list/spc3253/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (219, 203, '砖、瓦、砌块', 100, '砖、瓦、砌块', '砖、瓦、砌块', 'http://china.makepolo.com/list/spc2791/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (220, 203, '木材和竹材', 100, '木材和竹材', '木材和竹材', 'http://china.makepolo.com/list/spc2040/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (221, 203, '橡塑及纤维复合建材', 100, '橡塑及纤维复合建材', '橡塑及纤维复合建材', 'http://china.makepolo.com/list/spc27022/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (222, 203, '装饰装修材料', 100, '装饰装修材料', '装饰装修材料', 'http://china.makepolo.com/list/spc5970/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (223, 203, '建筑涂料', 100, '建筑涂料', '建筑涂料', 'http://china.makepolo.com/list/spc4998/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (224, 203, '建筑胶粘剂', 100, '建筑胶粘剂', '建筑胶粘剂', 'http://china.makepolo.com/list/spc5504/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (225, 203, '防护、市政设施', 100, '防护、市政设施', '防护、市政设施', 'http://china.makepolo.com/list/spc26518/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (226, 203, '水暖、卫浴、洁具', 100, '水暖、卫浴、洁具', '水暖、卫浴、洁具', 'http://china.makepolo.com/list/spc26094/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (227, 203, '灯具灯饰', 100, '灯具灯饰', '灯具灯饰', 'http://china.makepolo.com/list/spc3122/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (228, 203, '厨房、橱柜', 100, '厨房、橱柜', '厨房、橱柜', 'http://china.makepolo.com/list/spc145725/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (229, 203, '门窗、楼梯', 100, '门窗、楼梯', '门窗、楼梯', 'http://china.makepolo.com/list/spc27347/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (230, 203, '场地、户外材料', 100, '场地、户外材料', '场地、户外材料', 'http://china.makepolo.com/list/spc26233/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (231, 203, '预制建筑物', 100, '预制建筑物', '预制建筑物', 'http://china.makepolo.com/list/spc26564/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (232, 203, '园艺花卉', 100, '园艺花卉', '园艺花卉', 'http://china.makepolo.com/list/spc2188/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (233, 203, '绿化苗木', 100, '绿化苗木', '绿化苗木', 'http://china.makepolo.com/list/spc2187/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (234, 203, '园林设施', 100, '园林设施', '园林设施', 'http://china.makepolo.com/list/spc26513/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (235, 203, '景观水体', 100, '景观水体', '景观水体', 'http://china.makepolo.com/list/spc3781/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (236, 203, '古建筑材料', 100, '古建筑材料', '古建筑材料', 'http://china.makepolo.com/list/spc5371/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (237, 0, '五金零部件/备品备件', 100, '五金零部件/备品备件', '五金零部件/备品备件', 'http://china.makepolo.com/list/d3/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (238, 237, '通用五金配件', 100, '通用五金配件', '通用五金配件', 'http://china.makepolo.com/list/spc2603/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (239, 237, '紧固件和连接件', 100, '紧固件和连接件', '紧固件和连接件', 'http://china.makepolo.com/list/spc97/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (240, 237, '管件', 100, '管件', '管件', 'http://china.makepolo.com/list/spc2572/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (241, 237, '模具五金配件', 100, '模具五金配件', '模具五金配件', 'http://china.makepolo.com/list/spc2749/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (242, 237, '机床附件', 100, '机床附件', '机床附件', 'http://china.makepolo.com/list/spc5325/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (243, 237, '传动件', 100, '传动件', '传动件', 'http://china.makepolo.com/list/spc98/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (244, 237, '轴承', 100, '轴承', '轴承', 'http://china.makepolo.com/list/spc2468/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (245, 237, '工业皮带', 100, '工业皮带', '工业皮带', 'http://china.makepolo.com/list/spc150458/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (246, 237, '冲压五金配件', 100, '冲压五金配件', '冲压五金配件', 'http://china.makepolo.com/list/spc2751/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (247, 237, '焊接件', 100, '焊接件', '焊接件', 'http://china.makepolo.com/list/spc5401/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (248, 237, '弹簧', 100, '弹簧', '弹簧', 'http://china.makepolo.com/list/spc3372/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (249, 237, '金属丝网', 100, '金属丝网', '金属丝网', 'http://china.makepolo.com/list/spc145412/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (250, 237, '液压元件', 100, '液压元件', '液压元件', 'http://china.makepolo.com/list/spc2754/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (251, 237, '气动元件', 100, '气动元件', '气动元件', 'http://china.makepolo.com/list/spc2755/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (252, 237, '电热元件、装置', 100, '电热元件、装置', '电热元件、装置', 'http://china.makepolo.com/list/spc147837/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (253, 237, '电动机', 100, '电动机', '电动机', 'http://china.makepolo.com/list/spc2074/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (254, 237, '过滤件', 100, '过滤件', '过滤件', 'http://china.makepolo.com/list/spc4294/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (255, 237, '密封件', 100, '密封件', '密封件', 'http://china.makepolo.com/list/spc2488/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (256, 237, '减震件', 100, '减震件', '减震件', 'http://china.makepolo.com/list/spc2568/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (257, 237, '锁具', 100, '锁具', '锁具', 'http://china.makepolo.com/list/spc2753/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (258, 237, '塑料制品', 100, '塑料制品', '塑料制品', 'http://china.makepolo.com/list/spc145532/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (259, 237, '橡胶制品', 100, '橡胶制品', '橡胶制品', 'http://china.makepolo.com/list/spc145533/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (260, 237, '家具橱柜五金', 100, '家具橱柜五金', '家具橱柜五金', 'http://china.makepolo.com/list/spc2665/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (261, 237, '门窗五金', 100, '门窗五金', '门窗五金', 'http://china.makepolo.com/list/spc2747/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (262, 237, '水暖卫浴五金', 100, '水暖卫浴五金', '水暖卫浴五金', 'http://china.makepolo.com/list/spc2622/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (263, 237, '服装箱包五金', 100, '服装箱包五金', '服装箱包五金', 'http://china.makepolo.com/list/spc2748/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (264, 237, '船用五金配件', 100, '船用五金配件', '船用五金配件', 'http://china.makepolo.com/list/spc2750/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (265, 237, '幕墙五金配件', 100, '幕墙五金配件', '幕墙五金配件', 'http://china.makepolo.com/list/spc2752/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (266, 0, '电子元器件', 100, '电子元器件', '电子元器件', 'http://china.makepolo.com/list/d4/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (267, 266, '集成电路', 100, '集成电路', '集成电路', 'http://china.makepolo.com/list/spc147794/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (268, 266, '电容器', 100, '电容器', '电容器', 'http://china.makepolo.com/list/spc4380/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (269, 266, '传感器', 100, '传感器', '传感器', 'http://china.makepolo.com/list/spc4383/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (270, 266, '二极管', 100, '二极管', '二极管', 'http://china.makepolo.com/list/spc4384/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (271, 266, '三极管', 100, '三极管', '三极管', 'http://china.makepolo.com/list/spc4385/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (272, 266, '场效应管', 100, '场效应管', '场效应管', 'http://china.makepolo.com/list/spc147002/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (273, 266, '连接器', 100, '连接器', '连接器', 'http://china.makepolo.com/list/spc4456/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (274, 266, '保护器件', 100, '保护器件', '保护器件', 'http://china.makepolo.com/list/spc4393/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (275, 266, '电声器材', 100, '电声器材', '电声器材', 'http://china.makepolo.com/list/spc4391/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (276, 266, '电感元器件', 100, '电感元器件', '电感元器件', 'http://china.makepolo.com/list/spc4382/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (277, 266, '电阻器与电位器', 100, '电阻器与电位器', '电阻器与电位器', 'http://china.makepolo.com/list/spc146679/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (278, 266, '变送器', 100, '变送器', '变送器', 'http://china.makepolo.com/list/spc145943/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (279, 266, '显示器件', 100, '显示器件', '显示器件', 'http://china.makepolo.com/list/spc4398/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (280, 266, '片状元器件', 100, '片状元器件', '片状元器件', 'http://china.makepolo.com/list/spc4394/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (281, 266, '电子电路散热元件', 100, '电子电路散热元件', '电子电路散热元件', 'http://china.makepolo.com/list/spc6062/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (282, 266, '温敏元件', 100, '温敏元件', '温敏元件', 'http://china.makepolo.com/list/spc147013/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (283, 266, '湿敏元件', 100, '湿敏元件', '湿敏元件', 'http://china.makepolo.com/list/spc147044/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (284, 266, '光敏元件', 100, '光敏元件', '光敏元件', 'http://china.makepolo.com/list/spc147027/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (285, 266, '磁敏元件', 100, '磁敏元件', '磁敏元件', 'http://china.makepolo.com/list/spc147083/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (286, 266, '压敏元件', 100, '压敏元件', '压敏元件', 'http://china.makepolo.com/list/spc147050/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (287, 266, '力敏元件', 100, '力敏元件', '力敏元件', 'http://china.makepolo.com/list/spc147077/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (288, 266, '气敏元件', 100, '气敏元件', '气敏元件', 'http://china.makepolo.com/list/spc147112/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (289, 266, '逆变电源/逆变器', 100, '逆变电源/逆变器', '逆变电源/逆变器', 'http://china.makepolo.com/list/spc2935/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (290, 266, '光电器件', 100, '光电器件', '光电器件', 'http://china.makepolo.com/list/spc148261/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (291, 266, '电子与功能器材', 100, '电子与功能器材', '电子与功能器材', 'http://china.makepolo.com/list/spc25872/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (292, 266, '电力半导体器材', 100, '电力半导体器材', '电力半导体器材', 'http://china.makepolo.com/list/spc2942/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (293, 266, '电力集成器材', 100, '电力集成器材', '电力集成器材', 'http://china.makepolo.com/list/spc2944/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (294, 266, '电子五金件', 100, '电子五金件', '电子五金件', 'http://china.makepolo.com/list/spc4399/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (295, 266, '其他电子元器件', 100, '其他电子元器件', '其他电子元器件', 'http://china.makepolo.com/list/spc4401/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (296, 0, '电工电料/线缆照明', 100, '电工电料/线缆照明', '电工电料/线缆照明', 'http://china.makepolo.com/list/d5/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (297, 296, '电工电料', 100, '电工电料', '电工电料', 'http://china.makepolo.com/list/spc3124/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (298, 296, '电线电缆', 100, '电线电缆', '电线电缆', 'http://china.makepolo.com/list/spc3125/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (299, 296, '综合布线与光纤设备', 100, '综合布线与光纤设备', '综合布线与光纤设备', 'http://china.makepolo.com/list/spc148090/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (300, 296, '绝缘材料', 100, '绝缘材料', '绝缘材料', 'http://china.makepolo.com/list/spc3128/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (301, 296, '电光源', 100, '电光源', '电光源', 'http://china.makepolo.com/list/spc3121/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (302, 296, '电光源材料', 100, '电光源材料', '电光源材料', 'http://china.makepolo.com/list/spc148032/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (303, 296, '灯具灯饰', 100, '灯具灯饰', '灯具灯饰', 'http://china.makepolo.com/list/spc3122/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (304, 296, '灯具配件', 100, '灯具配件', '灯具配件', 'http://china.makepolo.com/list/spc3123/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (305, 296, '电池', 100, '电池', '电池', 'http://china.makepolo.com/list/spc3126/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (306, 0, '工具', 100, '工具', '工具', 'http://china.makepolo.com/list/d6/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (307, 306, '通用手工工具', 100, '通用手工工具', '通用手工工具', 'http://china.makepolo.com/list/spc2043/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (308, 306, '钳工管工工具', 100, '钳工管工工具', '钳工管工工具', 'http://china.makepolo.com/list/spc2656/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (309, 306, '切削刀具', 100, '切削刀具', '切削刀具', 'http://china.makepolo.com/list/spc3646/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (310, 306, '磨具磨料', 100, '磨具磨料', '磨具磨料', 'http://china.makepolo.com/list/spc3311/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (311, 306, '农林渔业园艺工具', 100, '农林渔业园艺工具', '农林渔业园艺工具', 'http://china.makepolo.com/list/spc3663/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (312, 306, '土木及金刚石工具', 100, '土木及金刚石工具', '土木及金刚石工具', 'http://china.makepolo.com/list/spc147986/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (313, 306, '电工工具', 100, '电工工具', '电工工具', 'http://china.makepolo.com/list/spc147976/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (314, 306, '布线工具', 100, '布线工具', '布线工具', 'http://china.makepolo.com/list/spc148086/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (315, 306, '线缆铺设工具', 100, '线缆铺设工具', '线缆铺设工具', 'http://china.makepolo.com/list/spc148124/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (316, 306, '气动和液压工具', 100, '气动和液压工具', '气动和液压工具', 'http://china.makepolo.com/list/spc2823/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (317, 306, '起重工具', 100, '起重工具', '起重工具', 'http://china.makepolo.com/list/spc3676/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (318, 306, '电动工具', 100, '电动工具', '电动工具', 'http://china.makepolo.com/list/spc2687/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (319, 306, '焊接辅助设备与工具', 100, '焊接辅助设备与工具', '焊接辅助设备与工具', 'http://china.makepolo.com/list/spc5400/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (320, 306, '喷涂工具', 100, '喷涂工具', '喷涂工具', 'http://china.makepolo.com/list/spc148653/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (321, 306, '夹具治具', 100, '夹具治具', '夹具治具', 'http://china.makepolo.com/list/spc3840/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (322, 306, '工位器具', 100, '工位器具', '工位器具', 'http://china.makepolo.com/list/spc3841/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (323, 306, '汽保工具', 100, '汽保工具', '汽保工具', 'http://china.makepolo.com/list/spc3775/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (324, 306, '润滑工具', 100, '润滑工具', '润滑工具', 'http://china.makepolo.com/list/spc147935/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (325, 306, '防静电、无尘产品', 100, '防静电、无尘产品', '防静电、无尘产品', 'http://china.makepolo.com/list/spc147585/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (326, 306, '工具耗材', 100, '工具耗材', '工具耗材', 'http://china.makepolo.com/list/spc151135/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (327, 306, '物料容器、仓储设备', 100, '物料容器、仓储设备', '物料容器、仓储设备', 'http://china.makepolo.com/list/spc145769/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (328, 306, '搬运车/搬运设备', 100, '搬运车/搬运设备', '搬运车/搬运设备', 'http://china.makepolo.com/list/spc146504/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (329, 306, '量具量仪', 100, '量具量仪', '量具量仪', 'http://china.makepolo.com/list/spc3564/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (330, 306, '美发造型工具', 100, '美发造型工具', '美发造型工具', 'http://china.makepolo.com/list/spc1350/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (331, 306, '救援工具', 100, '救援工具', '救援工具', 'http://china.makepolo.com/list/spc147486/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (332, 306, '光学与配镜工具', 100, '光学与配镜工具', '光学与配镜工具', 'http://china.makepolo.com/list/spc3794/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (333, 306, '消防防爆专用工具', 100, '消防防爆专用工具', '消防防爆专用工具', 'http://china.makepolo.com/list/spc147478/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (334, 306, '钟表工具', 100, '钟表工具', '钟表工具', 'http://china.makepolo.com/list/spc3644/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (335, 0, '文教办公用品', 100, '文教办公用品', '文教办公用品', 'http://china.makepolo.com/list/d149674/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (336, 335, '办公耗材', 100, '办公耗材', '办公耗材', 'http://china.makepolo.com/list/spc4144/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (337, 335, '办公家具', 100, '办公家具', '办公家具', 'http://china.makepolo.com/list/spc4212/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (338, 335, '文具', 100, '文具', '文具', 'http://china.makepolo.com/list/spc980/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (339, 335, '书写笔', 100, '书写笔', '书写笔', 'http://china.makepolo.com/list/spc981/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (340, 335, '美术笔及用品', 100, '美术笔及用品', '美术笔及用品', 'http://china.makepolo.com/list/spc983/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (341, 335, '书写配套用品', 100, '书写配套用品', '书写配套用品', 'http://china.makepolo.com/list/spc982/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (342, 335, '办公用纸', 100, '办公用纸', '办公用纸', 'http://china.makepolo.com/list/spc4279/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (343, 335, '簿、本、册', 100, '簿、本、册', '簿、本、册', 'http://china.makepolo.com/list/spc27968/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (344, 335, '财会用品', 100, '财会用品', '财会用品', 'http://china.makepolo.com/list/spc27972/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (345, 335, '案头用品', 100, '案头用品', '案头用品', 'http://china.makepolo.com/list/spc27973/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (346, 335, '标示用品', 100, '标示用品', '标示用品', 'http://china.makepolo.com/list/spc27974/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (347, 335, '奖励用品', 100, '奖励用品', '奖励用品', 'http://china.makepolo.com/list/spc27976/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (348, 335, '文件管理用品', 100, '文件管理用品', '文件管理用品', 'http://china.makepolo.com/list/spc27969/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (349, 335, '名片管理用品', 100, '名片管理用品', '名片管理用品', 'http://china.makepolo.com/list/spc27970/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (350, 335, '软件产品', 100, '软件产品', '软件产品', 'http://china.makepolo.com/list/spc3417/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (351, 335, '玻璃仪器', 100, '玻璃仪器', '玻璃仪器', 'http://china.makepolo.com/list/spc146763/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (352, 335, '其他类办公用品', 100, '其他类办公用品', '其他类办公用品', 'http://china.makepolo.com/list/spc27977/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (353, 0, '汽摩用品/配件', 100, '汽摩用品/配件', '汽摩用品/配件', 'http://china.makepolo.com/list/d23/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (354, 353, '汽摩用品', 100, '汽摩用品', '汽摩用品', 'http://china.makepolo.com/list/spc5370/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (355, 353, '摩托车配件', 100, '摩托车配件', '摩托车配件', 'http://china.makepolo.com/list/spc5423/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (356, 353, '车身及附件', 100, '车身及附件', '车身及附件', 'http://china.makepolo.com/list/spc5422/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (357, 353, '汽保工具', 100, '汽保工具', '汽保工具', 'http://china.makepolo.com/list/spc3775/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (358, 353, '电器仪表件', 100, '电器仪表件', '电器仪表件', 'http://china.makepolo.com/list/spc5374/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (359, 353, '汽摩轮胎', 100, '汽摩轮胎', '汽摩轮胎', 'http://china.makepolo.com/list/spc148338/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (360, 353, '发动系统', 100, '发动系统', '发动系统', 'http://china.makepolo.com/list/spc5424/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (361, 353, '传动系统', 100, '传动系统', '传动系统', 'http://china.makepolo.com/list/spc5373/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (362, 353, '供给系统', 100, '供给系统', '供给系统', 'http://china.makepolo.com/list/spc5425/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (363, 353, '冷却系统', 100, '冷却系统', '冷却系统', 'http://china.makepolo.com/list/spc5426/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (364, 353, '排气系统', 100, '排气系统', '排气系统', 'http://china.makepolo.com/list/spc5427/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (365, 353, '转向系统', 100, '转向系统', '转向系统', 'http://china.makepolo.com/list/spc5492/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (366, 353, '制动系统', 100, '制动系统', '制动系统', 'http://china.makepolo.com/list/spc5493/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (367, 353, '行走系统', 100, '行走系统', '行走系统', 'http://china.makepolo.com/list/spc150016/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (368, 0, '定制加工', 100, '定制加工', '定制加工', 'http://china.makepolo.com/list/d1450/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (369, 368, '金属加工', 100, '金属加工', '金属加工', 'http://china.makepolo.com/list/spc1467/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (370, 368, '机械加工', 100, '机械加工', '机械加工', 'http://china.makepolo.com/list/spc1467/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (371, 368, '行业专业包装', 100, '行业专业包装', '行业专业包装', 'http://china.makepolo.com/list/spc145595/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (372, 368, '电子加工', 100, '电子加工', '电子加工', 'http://china.makepolo.com/list/spc146019/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (373, 368, '塑料加工', 100, '塑料加工', '塑料加工', 'http://china.makepolo.com/list/spc146029/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (374, 368, '橡胶加工', 100, '橡胶加工', '橡胶加工', 'http://china.makepolo.com/list/spc146030/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (375, 368, '家电数码加工', 100, '家电数码加工', '家电数码加工', 'http://china.makepolo.com/list/spc146078/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (376, 368, '电脑产品加工', 100, '电脑产品加工', '电脑产品加工', 'http://china.makepolo.com/list/spc146076/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (377, 368, '服装服饰加工', 100, '服装服饰加工', '服装服饰加工', 'http://china.makepolo.com/list/spc1472/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (378, 368, '纺织加工', 100, '纺织加工', '纺织加工', 'http://china.makepolo.com/list/spc146043/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (379, 368, '食品饮料加工', 100, '食品饮料加工', '食品饮料加工', 'http://china.makepolo.com/list/spc146092/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (380, 368, '医药保健加工', 100, '医药保健加工', '医药保健加工', 'http://china.makepolo.com/list/spc146068/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (381, 368, '印刷加工', 100, '印刷加工', '印刷加工', 'http://china.makepolo.com/list/spc149037/', 1583877575, 1583877575);
+INSERT INTO `ad_category` VALUES (382, 368, '文教用品加工', 100, '文教用品加工', '文教用品加工', 'http://china.makepolo.com/list/spc146085/', 1583877575, 1583877575);
 COMMIT;
 
 -- ----------------------------
@@ -678,6 +681,8 @@ CREATE TABLE `ad_config` (
   `options` text COMMENT '选项值',
   `sort_order` int(11) NOT NULL DEFAULT '100' COMMENT '排序',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='配置';
 
@@ -685,19 +690,64 @@ CREATE TABLE `ad_config` (
 -- Records of ad_config
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_config` VALUES (1, 'website', '网站logo', 'logo', 'image', '', '', 100, 1);
-INSERT INTO `ad_config` VALUES (2, 'website', '网站名称', 'site_name', 'input', 'KevinFei-Blog', '', 100, 1);
-INSERT INTO `ad_config` VALUES (3, 'website', '网站标题', 'site_title', 'input', 'KevinFei博客', '', 100, 1);
-INSERT INTO `ad_config` VALUES (4, 'website', '网站关键字', 'site_keywords', 'input', 'KevinFei，博客，blog，成长的小白菜，', '', 100, 1);
-INSERT INTO `ad_config` VALUES (5, 'website', '网站描述', 'site_description', 'textarea', 'KevinFei，博客管理系统，blog，kevinfei，jingfei，博客，凯文，成长的小白菜', '', 100, 1);
-INSERT INTO `ad_config` VALUES (6, 'website', '域名', 'site_host', 'input', 'http://blog.kevinfei.com/', NULL, 100, 1);
-INSERT INTO `ad_config` VALUES (7, 'website', '版权信息', 'site_copyright', 'input', '博客后台管理系统-遵循Apache2开源协议-发布', '', 100, 1);
-INSERT INTO `ad_config` VALUES (8, 'website', 'ICP备案号', 'site_icp', 'input', '京ICP备16022068号', '', 100, 1);
-INSERT INTO `ad_config` VALUES (9, 'website', '统计代码', 'site_code', 'textarea', '<a href=\"https://www.cnzz.com/stat/website.php?web_id=1277360007\" target=\"_blank\" title=\"站长统计\">站长统计</a>', '', 100, 1);
-INSERT INTO `ad_config` VALUES (10, 'contact', '公司地址', 'address', 'input', '', '', 100, 1);
-INSERT INTO `ad_config` VALUES (11, 'contact', '联系电话', 'tel', 'input', '', '', 100, 1);
-INSERT INTO `ad_config` VALUES (12, 'contact', '联系邮箱', 'email', 'input', '', '', 100, 1);
-INSERT INTO `ad_config` VALUES (13, 'contact', '公司名称', 'company', 'input', '', '', 100, 1);
+INSERT INTO `ad_config` VALUES (1, 'website', '网站logo', 'logo', 'image', '', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (2, 'website', '网站名称', 'site_name', 'input', 'KevinFei-Blog', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (3, 'website', '网站标题', 'site_title', 'input', 'KevinFei博客', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (5, 'website', '网站描述', 'site_description', 'textarea', 'KevinFei，博客管理系统，blog，kevinfei，jingfei，博客，凯文，成长的小白菜', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (6, 'website', '域名', 'site_host', 'input', 'http://blog.kevinfei.com/', NULL, 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (7, 'website', '版权信息', 'site_copyright', 'input', '博客后台管理系统-遵循Apache2开源协议-发布', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (8, 'website', 'ICP备案号', 'site_icp', 'input', '京ICP备16022068号', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (9, 'website', '统计代码', 'site_code', 'textarea', '<a href=\"https://www.cnzz.com/stat/website.php?web_id=1277360007\" target=\"_blank\" title=\"站长统计\">站长统计</a>', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (10, 'contact', '公司地址', 'address', 'input', '', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (11, 'contact', '联系电话', 'tel', 'input', '', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (12, 'contact', '联系邮箱', 'email', 'input', '', '', 100, 1, 1583873993, 1583873993);
+INSERT INTO `ad_config` VALUES (13, 'contact', '公司名称', 'company', 'input', '', '', 100, 1, 1583873993, 1583873993);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for ad_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `ad_menu`;
+CREATE TABLE `ad_menu` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `pid` int(10) DEFAULT NULL,
+  `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
+  `href` varchar(255) NOT NULL DEFAULT '100' COMMENT '链接',
+  `icon` varchar(255) DEFAULT NULL COMMENT '图标',
+  `target` varchar(255) DEFAULT '' COMMENT '跳转方式',
+  `nickname` varchar(255) DEFAULT '' COMMENT '昵称',
+  `status` int(3) DEFAULT NULL COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+
+-- ----------------------------
+-- Records of ad_menu
+-- ----------------------------
+BEGIN;
+INSERT INTO `ad_menu` VALUES (1, 0, '常规管理', '100', 'fa fa-address-book', '_self', '常规管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (2, 1, '控制台', '/welcome/home.html', 'fa fa-home', '_self', '控制台', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (3, 1, '会员管理', '/users/index.html', 'fa fa-user', '_self', '会员管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (4, 1, '系统设置', '/systems/index.html', 'fa fa-gears', '_self', '系统设置', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (5, 0, '文章管理', '100', 'fa fa-book', '_self', '文章管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (6, 5, '图片管理', '/carouse/index.html', 'fa fa-photo', '_self', '图片管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (7, 5, '分类信息', '/categorys/index.html', 'fa fa-list', '_self', '分类信息', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (8, 5, '文章信息', '/articles/index.html', 'fa fa-file-text', '_self', '文章信息', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (9, 5, '商品信息', '/products/index.html', 'fa fa-file-text', '_self', '商品信息', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (10, 0, '权限管理', '100', 'fa fa-lock', '_self', '权限管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (11, 10, '管理员', '/admins/index.html', 'fa fa-user', '_self', '管理员', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (12, 10, '权限组', '/groups/index.html', 'fa fa-group', '_self', '权限组', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (13, 10, '规则管理', '/rules/index.html', 'fa fa-sitemap', '_self', '规则管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (14, 10, '管理员日志', '/admins/adminlog.html', 'fa fa-file-text', '_self', '管理员日志', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (15, 0, '组件管理', '100', 'fa fa-lemon-o', '_self', '组件管理', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (16, 15, '图标列表', '/component/icon.html', 'fa fa-dot-circle-o', '_self', '图标列表', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (17, 15, '图标选择', '/component/iconpicker.html', 'fa fa-adn', '_self', '图标选择', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (18, 15, '颜色选择', '/component/colorselect.html', 'fa fa-dashboard', '_self', '颜色选择', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (19, 15, '下拉选择', '/component/tableselect.html', 'fa fa-angle-double-down', '_self', '下拉选择', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (20, 15, '文件上传', '/component/upload.html', 'fa fa-arrow-up', '_self', '文件上传', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (21, 15, '富文本编辑器', '/component/editor.html', 'fa fa-edit', '_self', '富文本编辑器', 1, 0, 0);
+INSERT INTO `ad_menu` VALUES (22, 10, '菜单管理', '/menus/index.html', 'fa fa-file-text', '_self', '菜单管理', 1, 0, 0);
 COMMIT;
 
 -- ----------------------------
@@ -714,10 +764,10 @@ CREATE TABLE `ad_messageboard` (
   `comment` varchar(255) DEFAULT NULL COMMENT '留言内容',
   `comment_post_id` int(11) DEFAULT NULL COMMENT '文章id',
   `comment_parent` int(11) DEFAULT NULL COMMENT '回复的留言id',
-  `last_login_time` int(11) unsigned DEFAULT '0' COMMENT '最近留言时间',
-  `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0禁用/1启动',
+  `last_login_time` int(11) unsigned DEFAULT '0' COMMENT '最近留言时间',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='留言';
 
@@ -742,341 +792,336 @@ CREATE TABLE `ad_product` (
   `price` varchar(255) NOT NULL DEFAULT '100' COMMENT '排序',
   `name` varchar(255) DEFAULT '' COMMENT '关键字',
   `phone` varchar(255) DEFAULT '' COMMENT '描述',
-  `createtime` datetime DEFAULT NULL,
   `purl` varchar(255) DEFAULT NULL,
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=327 DEFAULT CHARSET=utf8 COMMENT='商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=321 DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 -- ----------------------------
 -- Records of ad_product
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_product` VALUES (1, 2, 'F343CX蜗轮传动扇形盲板阀/电动盲板阀/液动盲板阀/冶金非标阀门', '380.00元', '永嘉县科申阀门厂', '13587633367\n/\n0577-67997720', '2020-02-18 06:10:12', 'http://china.makepolo.com/product-detail/100353714835.html');
-INSERT INTO `ad_product` VALUES (2, 2, '供应高温球阀柱塞阀等特种阀门', '面议', '江阴市文和五金电器经营部', '15052240819\n/\n0510-81611681', '2020-02-18 06:10:12', 'http://china.makepolo.com/product-detail/100503493049.html');
-INSERT INTO `ad_product` VALUES (3, 2, 'QT450-10耐磨，耐腐蚀阀门', '1.00元', '临海市鼎星铸造有限公司', '15868601256\n/\n0576-85520211', '2020-02-18 06:10:12', 'http://china.makepolo.com/product-detail/100228015146.html');
-INSERT INTO `ad_product` VALUES (4, 2, 'Q41F-6PE 玻璃钢球阀 耐腐蚀阀门', '1750.00元', '浙江高创泵阀有限公司', '13738706958\n/\n0577-67973177', '2020-02-18 06:10:12', 'http://china.makepolo.com/product-detail/100136935080.html');
-INSERT INTO `ad_product` VALUES (5, 2, '德国EA阀门', '面议', '北京根炬科技发展有限公司', '13521004452\n/\n010-88457503', '2020-02-18 06:10:13', 'http://china.makepolo.com/product-detail/100311891001.html');
-INSERT INTO `ad_product` VALUES (6, 2, '批发供应铜螺纹煤气电磁阀、法兰铸铁煤气电磁阀', '480.00元', '广州市广首阀门机电有限公司', '13533304020\n/\n020-38602289/85698593/85699317', '2020-02-18 06:10:13', 'http://china.makepolo.com/product-detail/100269518413.html');
-INSERT INTO `ad_product` VALUES (7, 3, 'CNC龙门式数控机床', '150000元/件', '连云港天梦机械有限公司', '18605261695\n/\n-', '2020-02-18 06:10:13', '//china.makepolo.com/product-detail/101061003977.html');
-INSERT INTO `ad_product` VALUES (8, 3, '二手日本兄弟机S500z1加工中心，钻攻中心', '66元/件', '深圳市发菱西数控技术有限公司', '13662569628\n/\n0755-2311872', '2020-02-18 06:10:13', 'http://china.makepolo.com/product-detail/101065049006.html');
-INSERT INTO `ad_product` VALUES (9, 3, '东莞车床厂家捷程数控JSWAY排刀式CNC机床CF36 加工速度快10%', '1元/件', '中山市捷程数控机床有限公司', '13715268010\n/\n0755-82862900', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101064999575.html');
-INSERT INTO `ad_product` VALUES (10, 3, 'VMC855加工中心 数控铣床 cnc机床 数控加工中心 厂家直销', '158000元/台', '山东莱欧智能装备有限公司', '18254465449\n/\n0632-5990061', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101064468632.html');
-INSERT INTO `ad_product` VALUES (11, 3, '厂家直销台湾高配数控加工中心 多功能立式加工中心稳定性好', '152000元/件', '滕州市科永达数控机床有限公司', '13280215078\n/\n0632-5505918', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101064395166.html');
-INSERT INTO `ad_product` VALUES (12, 3, '厂家直销1160立式加工中心发那科系统 台湾进口刀库', '145000元/件', '滕州大兴机床有限公司', '13280277936\n/\n0632-5505919', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101064464098.html');
-INSERT INTO `ad_product` VALUES (13, 3, 'cnc五轴联动加工中心雕刻机床 速必胜五轴隼卯数控', '190000元/件', '济南德玛仕自动化科技有限公司', '18654518769\n/\n-', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101064563987.html');
-INSERT INTO `ad_product` VALUES (14, 3, '锐业锋数控 厂家直销 五轴雕刻机', '235000元/件', '济南市历城区锐业锋机械厂', '18668928318\n/\n-', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101065466411.html');
-INSERT INTO `ad_product` VALUES (15, 3, '厚街,佛珠车床, 佛珠机视频优质', '3500元/台', '东莞市国鹰精密机械设备有限公司', '13720321699\n/\n0769-83623889', '2020-02-18 06:10:14', 'http://china.makepolo.com/product-detail/101064644374.html');
-INSERT INTO `ad_product` VALUES (16, 3, '保定伟业液压机械厂长期生产钢钎维机械', '10元/件', '清苑县伟业液压机械厂', '13082362195\n/\n0312-8101958', '2020-02-18 06:10:15', 'http://china.makepolo.com/product-detail/101063760128.html');
-INSERT INTO `ad_product` VALUES (17, 3, '供应齿轮加工设备，进口数控插齿机，滚齿机，磨齿机', '面议', '佛山市顺德区德吉机械设备有限公司', '15920733965\n/\n-', '2020-02-18 06:10:15', 'http://china.makepolo.com/product-detail/101063702309.html');
-INSERT INTO `ad_product` VALUES (18, 3, '轩业CK-30数控机床机械设备 高精度 45°斜床身线轨数控车床', '78000元/件', '山东轩业精密机械有限公司', '13256191730\n/\n0531-82814533', '2020-02-18 06:10:15', 'http://china.makepolo.com/product-detail/101063653897.html');
-INSERT INTO `ad_product` VALUES (19, 3, '供应厂家直销xq5032铣床-XQ5032立式铣床', '38000元/件', '山东亚森数控机床有限公司', '13280290850\n/\n-', '2020-02-18 06:10:15', 'http://china.makepolo.com/product-detail/101063030235.html');
-INSERT INTO `ad_product` VALUES (20, 3, '上海专业机械加工 各种五金精密件  机械 配件  模具', '1元/件', '上海龙澄金属制品有限公司', '15000114403\n/\n39292402', '2020-02-18 06:10:16', 'http://china.makepolo.com/product-detail/101063451529.html');
-INSERT INTO `ad_product` VALUES (21, 3, '厂家直销钢筋滚丝机 建筑工地钢筋套丝机', '4200元/件', '济宁国聚机械有限公司', '13258029618\n/\n-', '2020-02-18 06:10:16', 'http://china.makepolo.com/product-detail/101063570425.html');
-INSERT INTO `ad_product` VALUES (22, 3, '卧式刨槽机 高速刨槽机 1250×3200  龙门式刨槽机', '面议', '江苏创恒机械科技有限公司', '15250660299\n/\n-', '2020-02-18 06:10:16', 'http://china.makepolo.com/product-detail/101062376869.html');
-INSERT INTO `ad_product` VALUES (23, 3, '铣床配件钻铣床配件 变速箱齿轮配件滕州齿轮大全', '8元/件', '滕州市德沃数控机床有限公司', '13506327322\n/\n0632-5966211', '2020-02-18 06:10:16', 'http://china.makepolo.com/product-detail/101065072534.html');
-INSERT INTO `ad_product` VALUES (24, 3, '日本okk-vp600低价处理，在位机台，欢迎您来试机', '300000元/件', '广州艺宝科技有限公司', '18680480101\n/\n-', '2020-02-18 06:10:16', 'http://china.makepolo.com/product-detail/101062017910.html');
-INSERT INTO `ad_product` VALUES (25, 3, '天津全自动数控钻孔机', '8.0元/台', '东莞市中创数控设备科技有限公司天津分公司', '15822095075\n/\n-', '2020-02-18 06:10:16', 'http://china.makepolo.com/product-detail/101064098889.html');
-INSERT INTO `ad_product` VALUES (26, 3, '多功能钻铣床 数控机床 摇臂立式钻床  效率高厂家直销 整机保修', '95500元/件', '深圳市瑞源勋自动化设备有限公司', '13249396520\n/\n84006891', '2020-02-18 06:10:17', 'http://china.makepolo.com/product-detail/101062342040.html');
-INSERT INTO `ad_product` VALUES (27, 3, '骏宇科技立式加工中心855/850数控铣床', '190000元/台', '杭州骏宇科技有限公司', '13968156448\n/\n0571-82789195', '2020-02-18 06:10:17', 'http://china.makepolo.com/product-detail/101061978157.html');
-INSERT INTO `ad_product` VALUES (28, 3, '圆柱雕刻机 橄榄核菩提子雕刻机 立体雕刻机', '15000元/件', '济南鼎美克数控机械有限公司', '13220589980\n/\n-', '2020-02-18 06:10:17', 'http://china.makepolo.com/product-detail/101063026258.html');
-INSERT INTO `ad_product` VALUES (29, 3, '非标订制龙门式数控钻铣床', '150000元/件', '连云港天梦机械有限公司', '18652701518\n/\n-', '2020-02-18 06:10:17', 'http://china.makepolo.com/product-detail/101061495944.html');
-INSERT INTO `ad_product` VALUES (30, 3, '苏州珩磨机生产厂家，认准苏州红业生珩磨机', '面议', '江苏红业生智能科技有限公司', '13913705177\n/\n0512-66098335', '2020-02-18 06:10:17', 'http://china.makepolo.com/product-detail/101060313093.html');
-INSERT INTO `ad_product` VALUES (31, 3, '千岛QD520五轴联动数控工具磨床 工厂直销  数控刀具磨床', '590000元/件', '东莞市千岛机械制造有限公司', '13926899797\n/\n0769-85349400', '2020-02-18 06:10:18', 'http://china.makepolo.com/product-detail/101060014157.html');
-INSERT INTO `ad_product` VALUES (32, 3, '派克机器DMCC3大三轴数控高速加工中心', '435361元/台', '济南派克机器有限公司', '13188934348\n/\n0531-88977166', '2020-02-18 06:10:18', 'http://china.makepolo.com/product-detail/101060436866.html');
-INSERT INTO `ad_product` VALUES (33, 3, '长安千岛QD420四轴数控刀具磨床', '380000元/件', '东莞市志强机械设备有限公司', '13826968726\n/\n85349400', '2020-02-18 06:10:18', 'http://china.makepolo.com/product-detail/101061082033.html');
-INSERT INTO `ad_product` VALUES (34, 3, '新款高速铁管冲孔机 液压圆管冲弧机 直销防盗网冲孔机 扶手坡口', '3500元/台', '佛山市广通精诚液压机械有限公司', '18942440360\n/\n0757-86681349', '2020-02-18 06:10:18', 'http://china.makepolo.com/product-detail/101064431504.html');
-INSERT INTO `ad_product` VALUES (35, 3, 'VL-855立式加工中心整机', '147000元/件', '山东大侨发展股份有限公司', '13245488808\n/\n0634-8830777', '2020-02-18 06:10:18', 'http://china.makepolo.com/product-detail/101059549729.html');
-INSERT INTO `ad_product` VALUES (36, 3, '东泽全电伺服数控冲床DES-300', '580000元/件', '青岛东泽数控科技有限公司', '15763962887\n/\n-', '2020-02-18 06:10:19', 'http://china.makepolo.com/product-detail/101059213631.html');
-INSERT INTO `ad_product` VALUES (37, 3, '供应高速液压冲床，防盗网冲孔机，锌钢护栏冲孔机', '5800元/台', '佛山市广通精诚液压有限公司', '15816952855\n/\n0757-86681349', '2020-02-18 06:10:19', 'http://china.makepolo.com/product-detail/101059806755.html');
-INSERT INTO `ad_product` VALUES (38, 3, '重型高精度双端面研磨机刀具2MK84891B-DJ研磨机生产厂家', '455555元/台', '洛阳聚享新科智能科技有限公司', '18338124395\n/\n0379-60116019', '2020-02-18 06:10:19', 'http://china.makepolo.com/product-detail/101058615167.html');
-INSERT INTO `ad_product` VALUES (39, 3, '供应台湾3号炮塔式数显铣床 3H', '40000元/件', '东莞市荣田精密机械有限公司', '13650131911\n/\n0769-81871911', '2020-02-18 06:10:19', 'http://china.makepolo.com/product-detail/101057759048.html');
-INSERT INTO `ad_product` VALUES (40, 3, '阀门专用加工设备 水泵 消防栓 三通管件专用机床 数控车床 钻床', '99000元/件', '河北禹创重工机械有限公司', '13111778751\n/\n0317-8337982', '2020-02-18 06:10:19', 'http://china.makepolo.com/product-detail/101057140152.html');
-INSERT INTO `ad_product` VALUES (41, 3, '专业生产自动数控车床 小五金加工车床 效率高', '53800元/台', '宁波市鄞州邱隘海鼎机械厂', '18067229182\n/\n0574-88396117', '2020-02-18 06:10:19', 'http://china.makepolo.com/product-detail/101057046742.html');
-INSERT INTO `ad_product` VALUES (42, 3, '厂家直销0640数控车床卧式高精度数控车床', '5000元/件', '邢台凌盛机械制造有限公司', '13363712671\n/\n0319-7623926', '2020-02-18 06:10:20', 'http://china.makepolo.com/product-detail/101056987688.html');
-INSERT INTO `ad_product` VALUES (43, 3, '钢筋直螺纹剥肋滚丝机 建筑工地钢筋套丝机', '4850元/台', '济宁方诚工矿设备有限公司', '15265875059\n/\n0537-2246996', '2020-02-18 06:10:20', 'http://china.makepolo.com/product-detail/101064697046.html');
-INSERT INTO `ad_product` VALUES (44, 3, '远诚数控45D高精密数控车床', '面议', '东莞市远诚数控科技有限公司', '18819505909\n/\n-', '2020-02-18 06:10:20', 'http://china.makepolo.com/product-detail/101056488540.html');
-INSERT INTO `ad_product` VALUES (45, 3, '霍夫勒RAPID 1250成型砂轮磨齿机', '面议', '温州迈欧克机电设备有限公司', '18124298181\n/\n0577-86880577', '2020-02-18 06:10:20', 'http://china.makepolo.com/product-detail/101056742577.html');
-INSERT INTO `ad_product` VALUES (46, 4, '供应JA23--100锻压机床', '面议', '淄博市淄川机床厂', '13806485119\n/\n0533-5410671', '2020-02-18 06:10:21', 'http://china.makepolo.com/product-detail/100442890644.html');
-INSERT INTO `ad_product` VALUES (47, 4, 'JB23-100T开式可倾压力机 冲床 锻压机床', '52000.00元', '南京中辉锻压机床制造厂（普通合伙）', '18761621616\n/\n025-57277855', '2020-02-18 06:10:21', 'http://china.makepolo.com/product-detail/100285568261.html');
-INSERT INTO `ad_product` VALUES (48, 4, '厂家推荐 供应锻压机床', '100000.00元', '余姚市吉德惠铜压铸厂', '13705847698\n/\n0574-62585220', '2020-02-18 06:10:21', 'http://china.makepolo.com/product-detail/100312173497.html');
-INSERT INTO `ad_product` VALUES (49, 4, '供应二手闭式单点压力机/630T冲床/俄罗斯锻压机床', '55000元/台', '东宁泰瑞贸易有限公司', '18606777707\n/\n0453-3637335', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/101037289978.html');
-INSERT INTO `ad_product` VALUES (50, 4, '安徽名牌 JB23-25型冲床压力机锻压机床', '12000.00元', '马鞍山市环锐重工机械制造有限公司', '15955516252\n/\n0555-2925298', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/100342086191.html');
-INSERT INTO `ad_product` VALUES (51, 4, '龙门型钢板整平及弯曲成型专用液压机 ，自动液压机，锻压机床', '面议', '无锡大帝液压机械有限公司', '13771518561\n/\n0510-83383808', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/100450574759.html');
-INSERT INTO `ad_product` VALUES (52, 4, '我厂热销卷锥体中型卷板机 锻压机床', '面议', '桓台县果里镇宏泰锻压机床厂', '13589585016\n/\n0533-7975628', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/100217736711.html');
-INSERT INTO `ad_product` VALUES (53, 4, '现货俄罗斯6300吨热模锻压力机 二手K8548B锻压机床', '888元/台', '浙江鼎能机械制造有限公司', '18738004640\n/\n0577-58127366', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/101060159326.html');
-INSERT INTO `ad_product` VALUES (54, 4, '维修定制锻压机床摩擦压力机', '3333.00元', '青岛蜗牛机械有限公司', '13963928249\n/\n0532-82299525', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/100289857897.html');
-INSERT INTO `ad_product` VALUES (55, 4, '供应剪板机 机械剪板机 电动剪板机 脚踏式剪板机 小型电动剪板机', '16000.00元', '马鞍山市旭天机床制造有限公司', '18605551480\n/\n0555-6775189', '2020-02-18 06:10:22', 'http://china.makepolo.com/product-detail/100355314541.html');
-INSERT INTO `ad_product` VALUES (56, 4, '供应 JB23-25吨开式可倾压力机(图) 锻压机床 四柱液压机', '13000.00元', '马鞍山市金宇冲压机床厂', '13965546410\n/\n0555-6064936', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100462437332.html');
-INSERT INTO `ad_product` VALUES (57, 4, '高密锻压机床机械压力机锻压机械冲床', '200000元/件', '山东省高密市东辰机械制造有限公司', '13863689999\n/\n0536-2869928', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/101061307777.html');
-INSERT INTO `ad_product` VALUES (58, 4, '供应JZ23高性能开式可倾压力机 锻压机床 冲床', '43200.00元', '浙江博仑高精机械有限公司', '15158259588\n/\n0575-83362228', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100468005041.html');
-INSERT INTO `ad_product` VALUES (59, 4, '厂家生产 高品质C41-75kg空气锤 锻压机床 电动空气锤', '35000.00元', '滕州宏铭机床有限公司', '13475245243\n/\n0632-5615397/13666328630', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100460382348.html');
-INSERT INTO `ad_product` VALUES (60, 4, '厂家热销 开式锻压机床冲床 J-23-6.3开式可倾压力机', '5700.00元', '浙江双穗锻压机床有限公司', '13736358088\n/\n0577-65270158', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100212111396.html');
-INSERT INTO `ad_product` VALUES (61, 4, '供应 手动压力机 锻压机床 压力机 二手压力 冲压设备 摩擦压力机', '1000.00元', '辽阳锻压机床备件销售处', '13081783303\n/\n0419-2146176', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100044847130.html');
-INSERT INTO `ad_product` VALUES (62, 4, '供应变频节能复合材料成型液压机 湖州液压机 四柱液压机专业制造', '170000.00元', '湖州鑫科锻压机床有限公司', '13967295257\n/\n0572-2698886', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100356536853.html');
-INSERT INTO `ad_product` VALUES (63, 4, '供应JS23-25T冲床（锻压机床、冲床系列设备）', '面议', '高密三江机械制造有限公司', '15965038999\n/\n0536-2582133', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100394551721.html');
-INSERT INTO `ad_product` VALUES (64, 4, '供应优质重型锻压机床设备C41-75kg双体系列空气锤（图）', '36000.00元', '滕州市龙阳弘发机床厂', '13475247524\n/\n0632-2034129', '2020-02-18 06:10:23', 'http://china.makepolo.com/product-detail/100214129196.html');
-INSERT INTO `ad_product` VALUES (65, 4, '南京双力锻压机床 Q11机械剪板机', '面议', '南京双力锻压机床有限公司', '13690355830\n/\n025-57263775', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100156233704.html');
-INSERT INTO `ad_product` VALUES (66, 4, '转让2.5米二手折弯机一台', '面议', '东莞市凤岗新鸿翔机械设备经营部', '13929255256\n/\n0769-87883455', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100141036432.html');
-INSERT INTO `ad_product` VALUES (67, 4, '剪板机折弯机卷板机扫地机', '面议', '南通铭德机床有限公司', '15371923336\n/\n0513-88212192', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100084285990.html');
-INSERT INTO `ad_product` VALUES (68, 4, '供应液压机 单柱式六台联动液压机 滕州锻压机床二厂', '1000000.00元', '山东滕州市锻压机床二厂', '18600033194\n/\n 0632 5512006', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100383222998.html');
-INSERT INTO `ad_product` VALUES (69, 4, '专业生产电动剪板机、脚踏剪板机等大型机床', '65000.00元', '马鞍山奇锋刀模具厂', '13515553666\n/\n0555-6761149', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100434802430.html');
-INSERT INTO `ad_product` VALUES (70, 4, '沃得锻压机床深圳代理，吨位齐全，价格优惠', '100000.00元', '深圳市恒冠精密机械有限公司', '13723433842\n/\n0755-18124795613', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100397927901.html');
-INSERT INTO `ad_product` VALUES (71, 4, '厂家直销 12吨 小型冲床 锻压机床', '2800.00元', '孙恺', '13012718101\n/\n0533-5411816', '2020-02-18 06:10:24', 'http://china.makepolo.com/product-detail/100249154894.html');
-INSERT INTO `ad_product` VALUES (72, 4, '多种型号 欢迎订购 专业供应压力机, 锻压机床 品质保证', '面议', '瑞安市瑞泰冲压机械厂', '13705786055\n/\n0577-65209055', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100475999834.html');
-INSERT INTO `ad_product` VALUES (73, 4, '黔南锻压机床 Q11Y—系列液压闸式剪板机', '面议', '广州市黄埔险峰黔南机床总汇', '13922242703\n/\n020-82292672', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100285948887.html');
-INSERT INTO `ad_product` VALUES (74, 4, '厦门锻压机床有限公司 J21M-200T 气动冲床', '54元', '沈阳一机4S店', '15816839156\n/\n0769-33219199', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100197520092.html');
-INSERT INTO `ad_product` VALUES (75, 4, '厂家推荐 供应锻压机床', '100000.00元', '余姚市吉德惠铜压铸厂', '13705847698\n/\n0574-62585220', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100312480906.html');
-INSERT INTO `ad_product` VALUES (76, 4, '安徽名牌 J21S-63型冲床压力机锻压机床', '35000.00元', '马鞍山市环锐重工机械制造有限公司', '15955516252\n/\n0555-2925298', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100342086200.html');
-INSERT INTO `ad_product` VALUES (77, 4, '供400摩擦压力机 及 锻压机床配件', '3333.00元', '青岛蜗牛机械有限公司', '13963928249\n/\n0532-82299525', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100287740830.html');
-INSERT INTO `ad_product` VALUES (78, 4, '厂家热销 锻压机床冲床 J23-25开式可倾压力机', '15500.00元', '浙江双穗锻压机床有限公司', '13736358088\n/\n0577-65270158', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100212084678.html');
-INSERT INTO `ad_product` VALUES (79, 4, '供应： 锻压机床 二手 冲床', '5000.00元', '辽阳锻压机床备件销售处', '13081783303\n/\n0419-2146176', '2020-02-18 06:10:25', 'http://china.makepolo.com/product-detail/100044937509.html');
-INSERT INTO `ad_product` VALUES (80, 4, '供应锻压机床C41-16KG空气锤 出口品质 气锤 国标品质', '5900.00元', '滕州宏铭机床有限公司', '15965117685\n/\n0632-5615397/13666328630', '2020-02-18 06:10:26', 'http://china.makepolo.com/product-detail/100466210802.html');
-INSERT INTO `ad_product` VALUES (81, 4, '供应优质重型锻压机床设备C41-75kg、150kg系列空气锤', '36000.00元', '滕州市龙阳弘发机床厂', '13475247524\n/\n0632-2034129', '2020-02-18 06:10:26', 'http://china.makepolo.com/product-detail/100211808651.html');
-INSERT INTO `ad_product` VALUES (82, 4, '供应Y79汽车刹车片成型液压机 复合材料成型 加热 湖州液压机', '450000.00元', '湖州鑫科锻压机床有限公司', '13967295257\n/\n0572-2698886', '2020-02-18 06:10:26', 'http://china.makepolo.com/product-detail/100356536834.html');
-INSERT INTO `ad_product` VALUES (83, 4, 'Y32系列橡塑制品液压机，大帝液压，锻压机床，液压机生产商', '面议', '无锡大帝液压机械有限公司', '13771518561\n/\n0510-83383808', '2020-02-18 06:10:28', 'http://china.makepolo.com/product-detail/100450574768.html');
-INSERT INTO `ad_product` VALUES (84, 4, '黔南锻压机床 WS67K—系列电液同步数控板料折弯机', '面议', '广州市黄埔险峰黔南机床总汇', '13922242703\n/\n020-82292672', '2020-02-18 06:10:28', 'http://china.makepolo.com/product-detail/100285994558.html');
-INSERT INTO `ad_product` VALUES (85, 4, '功能齐全 性能优秀 供应 锻压机床 J23-35T 瑞泰产品 欢迎订购', '面议', '瑞安市瑞泰冲压机械厂', '13705786055\n/\n0577-65209055', '2020-02-18 06:10:28', 'http://china.makepolo.com/product-detail/100482658729.html');
-INSERT INTO `ad_product` VALUES (86, 5, '台捷火花机  特种加工机床&gt;电火花加工机床', '68000元/台', '东莞市胜诺五金机械有限公司', '13556684188\n/\n0769-85336170', '2020-02-18 06:10:28', 'http://china.makepolo.com/product-detail/100858076540.html');
-INSERT INTO `ad_product` VALUES (87, 5, '星辉数控油泥五轴加工机床E10-3760', '100元/台', '济南星辉数控机械科技有限公司', '18653131757\n/\n0531-69987188', '2020-02-18 06:10:29', 'http://china.makepolo.com/product-detail/101041086454.html');
-INSERT INTO `ad_product` VALUES (88, 5, '液压机床，深内孔加工机床', '面议', '潍坊弘安机械装备有限公司', '15306368330\n/\n536-6733668', '2020-02-18 06:10:29', 'http://china.makepolo.com/product-detail/100066494965.html');
-INSERT INTO `ad_product` VALUES (89, 5, '螺纹加工机床榆林滚丝机销售部', '18000元/台', '任县厚德机械制造厂', '13731594382\n/\n0319-7588336', '2020-02-18 06:10:29', 'http://china.makepolo.com/product-detail/100181130060.html');
-INSERT INTO `ad_product` VALUES (90, 5, 'CJS0640切、车精密机床', '面议', '玉环县巨星机床厂', '13967674477\n/\n0576-87491531', '2020-02-18 06:10:29', 'http://china.makepolo.com/product-detail/100098438181.html');
-INSERT INTO `ad_product` VALUES (91, 5, '生产销售 JQ32-200液压机床 四柱三梁液压机械 图 现货供应', '面议', '滕州市新田力机床有限公司', '13188925018\n/\n 0632 6252169', '2020-02-18 06:10:29', 'http://china.makepolo.com/product-detail/100106915141.html');
-INSERT INTO `ad_product` VALUES (92, 5, '超薄型小剪式举升机枣庄锐锋数控机床', '面议', '枣庄市锐锋数控机床有限公司', '13561133445\n/\n0632-3972300', '2020-02-18 06:10:30', 'http://china.makepolo.com/product-detail/100131091239.html');
-INSERT INTO `ad_product` VALUES (93, 5, 'PCB冲压专用机床', '面议', '深圳市圣诺亚科技有限公司', '13751199658\n/\n0755-28020048', '2020-02-18 06:10:30', 'http://china.makepolo.com/product-detail/100090854078.html');
-INSERT INTO `ad_product` VALUES (94, 5, '富翔供应专用旋管数控机床', '面议', '广州富翔数控机床设备有限公司', '13560159507\n/\n 020 87033487', '2020-02-18 06:10:30', 'http://china.makepolo.com/product-detail/100141626320.html');
-INSERT INTO `ad_product` VALUES (95, 5, '主动轮螺纹退火机床', '面议', '十堰深思科技有限公司', '13508686548\n/\n0719-8266885', '2020-02-18 06:10:31', 'http://china.makepolo.com/product-detail/100146999920.html');
-INSERT INTO `ad_product` VALUES (96, 5, '本厂长期供应全新25t冲压机床', '面议', '淄博新盛机床', '13506435900\n/\n 0533 5552357', '2020-02-18 06:10:31', 'http://china.makepolo.com/product-detail/100187209180.html');
-INSERT INTO `ad_product` VALUES (97, 5, 'YDK7760直齿锥齿轮专用电火花线切割机床', '180000元/台', '泰州市晨虹数控设备制造有限公司', '13365200209\n/\n0523-86261606', '2020-02-18 06:10:31', 'http://china.makepolo.com/product-detail/100030730682.html');
-INSERT INTO `ad_product` VALUES (98, 5, 'YL27系列四柱式单动薄板拉伸机床', '面议', '徐义清', '13601711389\n/\n021-59750637', '2020-02-18 06:10:31', 'http://china.makepolo.com/product-detail/100084555953.html');
-INSERT INTO `ad_product` VALUES (99, 5, 'QA34-25机械联合冲剪机', '面议', '安徽中德机床股份有限公司', '13777089869\n/\n0574-28809000', '2020-02-18 06:10:32', 'http://china.makepolo.com/product-detail/100097388228.html');
-INSERT INTO `ad_product` VALUES (100, 5, '电火花小孔加工机床，电火花穿孔机，诚招各地代理经销商', '面议', '苏州市庆诚数控设备有限公司', '18994425691\n/\n0512-66724156', '2020-02-18 06:10:32', 'http://china.makepolo.com/product-detail/100181012837.html');
-INSERT INTO `ad_product` VALUES (101, 5, '售SUC8119P凸轮轴径向孔加工数控机床', '面议', '沈阳第一机床厂机床销售中心', '13555877025\n/\n024-25846605/25845232/25558577', '2020-02-18 06:10:33', 'http://china.makepolo.com/product-detail/100050933854.html');
-INSERT INTO `ad_product` VALUES (102, 5, '枣庄市滕东机床有限公司', '48000元', '枣庄市滕东机床有限公司', '15588222117\n/\n0632-5552206', '2020-02-18 06:10:33', 'http://china.makepolo.com/product-detail/100136033449.html');
-INSERT INTO `ad_product` VALUES (103, 5, '武重产机床齿轮配件', '100元', '湖北剑江工程技术有限公司', '13886132610\n/\n027-51881033', '2020-02-18 06:10:33', 'http://china.makepolo.com/product-detail/100141390594.html');
-INSERT INTO `ad_product` VALUES (104, 5, '铁工 铁工机 铁工机床 钢铁加工机床', '98000元', '上海金三力机械有限公司', '18818068823\n/\n021-58008813', '2020-02-18 06:10:33', 'http://china.makepolo.com/product-detail/100392409153.html');
-INSERT INTO `ad_product` VALUES (105, 5, '重庆浩斌机床有限公司', '面议', '九龙坡区浩斌机床设备经营部', '13500347795\n/\n023-86352048', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/100131799142.html');
-INSERT INTO `ad_product` VALUES (106, 5, '线切割机床.原装进口瑞士夏米尔CHARMILLES机台二十台', '650000元', '东莞市誉满五金机械有限公司', '139257677011\n/\n 0769 85331509', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/100139693753.html');
-INSERT INTO `ad_product` VALUES (107, 5, 'sowin硕方供应车铣复合加工机床，微型车削中心', '面议', '深圳硕方精密机械有限公司--业务部', '13684970251\n/\n 0755 29874501', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/100103597353.html');
-INSERT INTO `ad_product` VALUES (108, 5, '回收二手数控机床及销售', '面议', '昆山市玉山镇明星亮机械经营部', '15190121304\n/\n0512-57939328', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/100107796332.html');
-INSERT INTO `ad_product` VALUES (109, 5, '数控淬火机床', '80000元/台', '株洲市湘宁高中频设备有限责任公司', '13873354441\n/\n0731-22580023', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/26871708.html');
-INSERT INTO `ad_product` VALUES (110, 5, '云帆机床水箱纸带过滤机', '12000元/个', '烟台云帆过滤系统有限公司', '13515452159\n/\n0535-6029680', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/20782201.html');
-INSERT INTO `ad_product` VALUES (111, 5, '玉环华锐数控自动送料机床', '32000元/台', '玉环华锐数控机床有限公司', '13511436261\n/\n0576-87558582', '2020-02-18 06:10:34', 'http://china.makepolo.com/product-detail/100185715532.html');
-INSERT INTO `ad_product` VALUES (112, 5, '株洲友平厂家低价批发{轴类淬火机床}', '242300.00元/件', '株洲市友平机电设备有限公司', '13786380604\n/\n0731-27271816', '2020-02-18 06:10:35', 'http://china.makepolo.com/product-detail/100683402124.html');
-INSERT INTO `ad_product` VALUES (113, 5, '供应HWJ300约翰逊网焊接机床', '56万', '石家庄仁春网业设备有限公司（原河北正大机械制造有限公司）', '15303231857\n/\n0153-03231857', '2020-02-18 06:10:35', 'http://china.makepolo.com/product-detail/100349318382.html');
-INSERT INTO `ad_product` VALUES (114, 5, 'CNC-A35高精密镜面电火花成型机床', '210000元/台', '东莞市日鑫机械有限公司', '15086609627\n/\n0769-82302096', '2020-02-18 06:10:35', 'http://china.makepolo.com/product-detail/101060313938.html');
-INSERT INTO `ad_product` VALUES (115, 5, 'CH-40KW感应淬火设备数控淬火机床', '36000元/个', '常州创辉高频淬火设备有限公司', '13915057685\n/\n0519-82068168', '2020-02-18 06:10:35', 'http://china.makepolo.com/product-detail/100104732365.html');
-INSERT INTO `ad_product` VALUES (116, 5, '机床自动下料装置改造', '100000元/件', '北京安培通科技有限公司', '13366223264\n/\n010-59418496', '2020-02-18 06:10:35', 'http://china.makepolo.com/product-detail/100584747681.html');
-INSERT INTO `ad_product` VALUES (117, 5, '东莞市马扎克龙门数控机床', '1980000元/台', '东莞市马扎克数控科技有限公司', '18689492620\n/\n82186689', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/101047459138.html');
-INSERT INTO `ad_product` VALUES (118, 5, '机床工作灯金属软管，机械照明定型金属软管，工作灯支架', '面议', '东莞市寮步天杰五金厂', '15814118837\n/\n0769-82219387', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/100119828491.html');
-INSERT INTO `ad_product` VALUES (119, 5, '高质量高标准冲压机床', '面议', '常州市旭辉机电有限公司', '13813694118\n/\n0519-83985488', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/100117668265.html');
-INSERT INTO `ad_product` VALUES (120, 5, '新型铁皮轧边机价格-机床/金属切削机床', '面议', '廊坊兴耀保温材料有限公司', '15032461382\n/\n0316-3289372', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/100804019035.html');
-INSERT INTO `ad_product` VALUES (121, 5, '苏州大型五轴机床加工', '面议', '苏州巨龙电力器材有限公司', '18913137473\n/\n0152-50404558', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/100019611009.html');
-INSERT INTO `ad_product` VALUES (122, 5, 'CY6140/4000机床', '面议', '南宁欧法利机械设备有限公司', '15277028338\n/\n0771-3113985', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/30828613.html');
-INSERT INTO `ad_product` VALUES (123, 5, 'DK7732A线切割机床', '面议', '宁波市江北数控设备厂', '18668861920\n/\n574-87635088', '2020-02-18 06:10:36', 'http://china.makepolo.com/product-detail/100053247847.html');
-INSERT INTO `ad_product` VALUES (124, 5, '高品质 高质量 高性价比 RPA-110T锻压设备机床', '面议', '扬州日高锻压自动化有限公司', '13684986698\n/\n0755-25022870', '2020-02-18 06:10:37', 'http://china.makepolo.com/product-detail/100198343268.html');
-INSERT INTO `ad_product` VALUES (125, 5, '厂家机床测头／三维测头／3D测头／加工中心在线检测／机床测量头', '18000元/台', '广东广世共盈网络科技有限公司', '13794986111\n/\n0769-89778777', '2020-02-18 06:10:37', 'http://china.makepolo.com/product-detail/101024769560.html');
-INSERT INTO `ad_product` VALUES (126, 6, '厂家提供机床附件拖板加长型滑台 机械单向工作滑台', '3000.00元', '台州市珠峰工具有限公司', '15957655376\n/\n0576-86968069', '2020-02-18 06:10:38', 'http://china.makepolo.com/product-detail/100423675807.html');
-INSERT INTO `ad_product` VALUES (127, 6, '钢铝拖链，塑料拖链，机床附件', '140.00元', '河北经纬机械制造有限公司', '0534-7081851/7085786\n/\n0534-7081851/7085786', '2020-02-18 06:10:38', 'http://china.makepolo.com/product-detail/100358346176.html');
-INSERT INTO `ad_product` VALUES (128, 6, '专业维修机床 机床附件', '1.00元', '东莞市大朗台鑫机械维修部', '18825548885\n/\n0769-81738853', '2020-02-18 06:10:39', 'http://china.makepolo.com/product-detail/100296679043.html');
-INSERT INTO `ad_product` VALUES (129, 6, '厂家直销 尼龙拖链 型号齐全一米起订-沧州天锐机床附件', '150.00元', '张明寨', '13373239376\n/\n0317-6348556', '2020-02-18 06:10:39', 'http://china.makepolo.com/product-detail/100450496941.html');
-INSERT INTO `ad_product` VALUES (130, 6, '桥式TL钢拖链沧州机床附件', '1256元/米', '盐山县木子李机床附件厂', '13731711230\n/\n0317-6345330', '2020-02-18 06:10:39', 'http://china.makepolo.com/product-detail/100874604336.html');
-INSERT INTO `ad_product` VALUES (131, 6, 'FIBRO 分度台，直线导轨，机床附件', '10元/个', '上海狄放贸易有限公司', '15618994997\n/\n021-63063805', '2020-02-18 06:10:39', 'http://china.makepolo.com/product-detail/100459196986.html');
-INSERT INTO `ad_product` VALUES (132, 6, '防尘罩方罩 丝杠护罩 防护罩 圆筒式防护罩 机床附件', '50.00元', '张志文', '13582473997\n/\n317-6348897', '2020-02-18 06:10:39', 'http://china.makepolo.com/product-detail/100356796655.html');
-INSERT INTO `ad_product` VALUES (133, 6, '套装攻丝夹头 锥柄丝攻夹头 快换攻丝夹头 泗水机床附件', '700.00元', '泗水县浩源机床附件厂', '13176755984\n/\n0537-4018637', '2020-02-18 06:10:39', 'http://china.makepolo.com/product-detail/100434127942.html');
-INSERT INTO `ad_product` VALUES (134, 6, '山东厂家直销 CBT滚珠丝杆副 滚珠丝杠副 机床附件', '1.00元', '济宁瑞特尔精密机械有限公司', '13583707187\n/\n0537-3623952', '2020-02-18 06:10:40', 'http://china.makepolo.com/product-detail/100350752665.html');
-INSERT INTO `ad_product` VALUES (135, 6, '机床Z轴设定仪/机床对刀仪/机床附件/机械式对刀仪/数控机床附件', '270.00元', '杨名法', '13798596947\n/\n0755-27162024', '2020-02-18 06:10:40', 'http://china.makepolo.com/product-detail/100260015143.html');
-INSERT INTO `ad_product` VALUES (136, 6, '台州大久厂家批发DJ-02004R8变径套 机床附件', '面议', '台州大久机床附件有限公司', '0576-82935656\n/\n 0576 82935656', '2020-02-18 06:10:40', 'http://china.makepolo.com/product-detail/100308495772.html');
-INSERT INTO `ad_product` VALUES (137, 6, '苏州供应机床灯具刮屑板拖链等机床附件 并可定做异型机床附件', '122.00元', '苏州悦丰烁机电设备有限公司', '13915515689\n/\n0512-68386176', '2020-02-18 06:10:41', 'http://china.makepolo.com/product-detail/100269307636.html');
-INSERT INTO `ad_product` VALUES (138, 6, '优质镀鉻转动手柄M8*63北京批发机床附件', '5.50元', '北京市木樨园永隆五金商店', '13910415911\n/\n010-67990143', '2020-02-18 06:10:42', 'http://china.makepolo.com/product-detail/100216735654.html');
-INSERT INTO `ad_product` VALUES (139, 6, '专业生产 销售普通顶尖、质优价廉 机床附件', '6.00元', '泗水县宏鑫机床附件厂(普通合伙)', '13505475412\n/\n0537-4010078', '2020-02-18 06:10:42', 'http://china.makepolo.com/product-detail/100208947104.html');
-INSERT INTO `ad_product` VALUES (140, 6, '生产销售 TL-3拖链 盐山拖链¶ 机床附件 塑料拖链', '60.00元', '盐山聚丰机床附件制造有限公司', '13131721325\n/\n0317-6349776', '2020-02-18 06:10:42', 'http://china.makepolo.com/product-detail/100355068573.html');
-INSERT INTO `ad_product` VALUES (141, 6, '专业生产铝型材防护帘.及各种机床附件', '50.00元', '庆云天城机床附件有限公司', '15564410871\n/\n0534-3778444', '2020-02-18 06:10:42', 'http://china.makepolo.com/product-detail/100423699327.html');
-INSERT INTO `ad_product` VALUES (142, 6, '机床专用刻度盘/供应机床各类刻度盘/刻度环/机床配件/机床附件', '1.00元', '泰兴市天星金属工艺有限公司', '13805265302\n/\n0523-87455010', '2020-02-18 06:10:42', 'http://china.makepolo.com/product-detail/100385839809.html');
-INSERT INTO `ad_product` VALUES (143, 6, '批发供应SBS电子走刀器齿轮 机床附件（图）', '30.00元', '余姚市冈野机械有限公司', '13780020070\n/\n574-66225682', '2020-02-18 06:10:42', 'http://china.makepolo.com/product-detail/100189833091.html');
-INSERT INTO `ad_product` VALUES (144, 6, '供应机床防护罩，风琴防护罩，天津机床附件', '95.00元', '王长亮', '13861784466\n/\n0317-6344888', '2020-02-18 06:10:43', 'http://china.makepolo.com/product-detail/100460804527.html');
-INSERT INTO `ad_product` VALUES (145, 6, '重型机械专用钢铝拖链、冶金设备专用钢铝拖链、机床附件', '185.00元', '沧州富盛精密机床附件制造有限公司', '13803238971\n/\n 0317 6304178', '2020-02-18 06:10:43', 'http://china.makepolo.com/product-detail/100309147352.html');
-INSERT INTO `ad_product` VALUES (146, 6, '机床附件批发 通用配件 精密机床配件附件', '面议', '禹州市万昌机械有限公司', '13613747868\n/\n-', '2020-02-18 06:10:43', 'http://china.makepolo.com/product-detail/100294800760.html');
-INSERT INTO `ad_product` VALUES (147, 6, '机床附件，万向冷却管生产厂家，四分1/2系列', '1.00元', '东莞市长安昊通五金工具商行', '13751411350\n/\n0769-81622946', '2020-02-18 06:10:43', 'http://china.makepolo.com/product-detail/100360808886.html');
-INSERT INTO `ad_product` VALUES (148, 6, '销售生产批发机床防护罩等机床附件', '100.00元', '盐山县精益机床附件制造有限公司销售处', '13831768985\n/\n0317-3086598', '2020-02-18 06:10:43', 'http://china.makepolo.com/product-detail/101052677790.html');
-INSERT INTO `ad_product` VALUES (149, 6, '昆山机床附件 机床CNC防护罩', '3000.00元', '昆山泰科尤斯机械科技有限公司', '18914986906\n/\n0512-57554800', '2020-02-18 06:10:43', 'http://china.makepolo.com/product-detail/100388252542.html');
-INSERT INTO `ad_product` VALUES (150, 6, '刀套、机床附件、导套', '38.00元', '德州北宇机械有限公司1', '13316880767\n/\n0755-32902887', '2020-02-18 06:10:44', 'http://china.makepolo.com/product-detail/100312455155.html');
-INSERT INTO `ad_product` VALUES (151, 6, '高精度 莫氏高速回转顶尖 机床附件批发 厂家直销', '100.00元', '济宁勤丰机械五金有限公司', '0537-3281595\n/\n 0537 3281595', '2020-02-18 06:10:44', 'http://china.makepolo.com/product-detail/100425102032.html');
-INSERT INTO `ad_product` VALUES (152, 6, '排屑机--渤海精益机床附件制造有限公司', '3000.00元', '王福祥', '15133735207\n/\n0317-6344887', '2020-02-18 06:10:44', 'http://china.makepolo.com/product-detail/100420601904.html');
-INSERT INTO `ad_product` VALUES (153, 6, '北京机床附件厂烟台经销处 供JXT 25系列铣夹头 三箭铣夹头', '1560.00元', '烟台宏益机电设备有限公司', '18615011592\n/\n 0535 6852906', '2020-02-18 06:10:44', 'http://china.makepolo.com/product-detail/100507387289.html');
-INSERT INTO `ad_product` VALUES (154, 6, 'TL系列钢制拖链,钢制拖链,拖链_钢制拖链系列山东盛达', '150元', '庆云日盛数控机床附件制造有限公司', '18866008203\n/\n534-3662000', '2020-02-18 06:10:44', 'http://china.makepolo.com/product-detail/100186109215.html');
-INSERT INTO `ad_product` VALUES (155, 6, '供应机床附件/手轮手柄/铁手轮、3寸电镀手轮 木工机械设备', '3.00元', '佛山市顺德区伦教景茂机械配件店', '13929195567\n/\n0757-22171255', '2020-02-18 06:10:45', 'http://china.makepolo.com/product-detail/100451385702.html');
-INSERT INTO `ad_product` VALUES (156, 6, '供应机床附件电缆防爆软管系列', '8.00元', '沧州誉丰数控机床附件制造有限公司', '13731735599\n/\n0317-6222995/6222997', '2020-02-18 06:10:45', 'http://china.makepolo.com/product-detail/100467443793.html');
-INSERT INTO `ad_product` VALUES (157, 6, '厂家直销机床附件、工程塑料拖链、桥式型塑料拖链', '40.00元', '王智政', '13962442440\n/\n0317-6344187', '2020-02-18 06:10:45', 'http://china.makepolo.com/product-detail/100318155641.html');
-INSERT INTO `ad_product` VALUES (158, 6, '数控车床配件 机床附件 风机护罩 排风设备配件 厂家直销', '12.00元', '玉环县安川数控机床厂', '18658682315\n/\n 0576 81712733', '2020-02-18 06:10:45', 'http://china.makepolo.com/product-detail/100507462134.html');
-INSERT INTO `ad_product` VALUES (159, 6, '厂家优质供应机床附件-卷帘式防护罩', '25.00元', '盐山县天工机床附件制造厂', '15076714165\n/\n0317-6340156', '2020-02-18 06:10:45', 'http://china.makepolo.com/product-detail/100489140552.html');
-INSERT INTO `ad_product` VALUES (160, 6, '大量供应可打开式 丝杠防护罩 （拉链型）-天锐机床附件', '18.00元', '张明寨', '13373239376\n/\n0317-6348556', '2020-02-18 06:10:45', 'http://china.makepolo.com/product-detail/100450497217.html');
-INSERT INTO `ad_product` VALUES (161, 6, '撞块槽板铝合金沧州机床附件', '1元/件', '盐山县木子李机床附件厂', '13731711230\n/\n0317-6345330', '2020-02-18 06:10:46', 'http://china.makepolo.com/product-detail/100875091976.html');
-INSERT INTO `ad_product` VALUES (162, 6, 'KNOLL 机床附件', '10元/个', '上海狄放贸易有限公司', '15618994997\n/\n021-63063805', '2020-02-18 06:10:46', 'http://china.makepolo.com/product-detail/100485888358.html');
-INSERT INTO `ad_product` VALUES (163, 6, '批发机床灯具等各种机床附件', '99.00元', '苏州悦丰烁机电设备有限公司', '13915515689\n/\n0512-68386176', '2020-02-18 06:10:46', 'http://china.makepolo.com/product-detail/100269258738.html');
-INSERT INTO `ad_product` VALUES (164, 6, '山东厂家直销 强力加长回转合金顶尖 机床附件', '2.00元', '济宁瑞特尔精密机械有限公司', '13583707187\n/\n0537-3623952', '2020-02-18 06:10:46', 'http://china.makepolo.com/product-detail/100350752680.html');
-INSERT INTO `ad_product` VALUES (165, 6, '生产定做 加长变径套 特长型变径套 直柄变径套等各类机床附件', '1.00元', '泗水县宏鑫机床附件厂(普通合伙)', '13505475412\n/\n0537-4010078', '2020-02-18 06:10:46', 'http://china.makepolo.com/product-detail/100373875757.html');
-INSERT INTO `ad_product` VALUES (166, 8, '上海煜柯 真空获取与应用设备 大型罗茨泵', '15000.00元/个', '上海煜柯机电科技有限公司', '13916539828\n/\n021-62288709', '2020-02-18 06:10:46', 'http://china.makepolo.com/product-detail/100975959553.html');
-INSERT INTO `ad_product` VALUES (167, 10, '甘草粉碎机-超微粉碎机-果壳粉碎机-粉碎设备-粉碎机', '5000.00元', '常州市钱江干燥设备工程有限公司', '13861058898\n/\n0519-88670786', '2020-02-18 06:10:47', 'http://china.makepolo.com/product-detail/100394893035.html');
-INSERT INTO `ad_product` VALUES (168, 10, '特价产品：粉碎机，粉碎设备，20B粉碎机', '11000.00元', '常州市金象干燥设备有限公司', '13906117130\n/\n0519-88909773', '2020-02-18 06:10:47', 'http://china.makepolo.com/product-detail/100350026000.html');
-INSERT INTO `ad_product` VALUES (169, 10, '特价供应涡轮粉碎机/多功能粉碎设备/江阴粉碎机/嵊州粉碎机', '9000元', '上海亿筛机械有限公司', '18049754649\n/\n021-64423600', '2020-02-18 06:10:48', 'http://china.makepolo.com/product-detail/100167118423.html');
-INSERT INTO `ad_product` VALUES (170, 10, '药用粉碎设备 高效不锈钢粉碎机', '6000元/个', '广州市旭朗机械设备工厂', '13533749137\n/\n020-23327056', '2020-02-18 06:10:48', 'http://china.makepolo.com/product-detail/100139474977.html');
-INSERT INTO `ad_product` VALUES (171, 10, '磨粉机.粉碎设备.粉碎机.食品粉碎机', '7000元/个', '广州市旭朗机械设备总公司', '13556053205\n/\n020-23327058', '2020-02-18 06:10:48', 'http://china.makepolo.com/product-detail/100181743735.html');
-INSERT INTO `ad_product` VALUES (172, 10, '供应吸尘连续粉碎机 高效粉碎设备30B不锈钢白砂糖粉碎机', '14700元/台', '常州市东南干燥设备有限公司', '13584355559\n/\n0519-88902391', '2020-02-18 06:10:48', 'http://china.makepolo.com/product-detail/100465598578.html');
-INSERT INTO `ad_product` VALUES (173, 10, '供应种香菇木材粉碎设备 香菇料粉碎机 菇木粉碎机', '4500元/台', '郑州浩宇机械设备有限公司', '13526541622\n/\n0371-86003528', '2020-02-18 06:10:49', 'http://china.makepolo.com/product-detail/100098827196.html');
-INSERT INTO `ad_product` VALUES (174, 10, '金属粉碎设备 废旧家电粉碎机 铁盒粉碎机', '29000元', '郑州市中原区宏达机械制造厂', '13598875438\n/\n0371-56786677', '2020-02-18 06:10:49', 'http://china.makepolo.com/product-detail/100177105872.html');
-INSERT INTO `ad_product` VALUES (175, 10, '玉米秸秆粉碎设备宁夏 大豆粉碎机', '860元/台', '曲阜市恒信机械设备销售中心', '18369815679\n/\n0537-4651499', '2020-02-18 06:10:50', 'http://china.makepolo.com/product-detail/101061583239.html');
-INSERT INTO `ad_product` VALUES (176, 10, '饲料加工厂专用粉碎设备 豆粕、麸皮粉碎机 猪饲料粉碎机', '12500元/件', '山东双鹤机械制造股份有限公司', '15010592154\n/\n0534-6683777', '2020-02-18 06:10:50', 'http://china.makepolo.com/product-detail/101041904664.html');
-INSERT INTO `ad_product` VALUES (177, 10, '调味品齿盘打碎机-粉碎设备-粉碎机-打粉机', '1180元/台', '山东昌隆节能环保工程有限公司', '15563120618\n/\n0537-4719789', '2020-02-18 06:10:50', 'http://china.makepolo.com/product-detail/101063738993.html');
-INSERT INTO `ad_product` VALUES (178, 10, '供应金格瑞粉碎机65X100，多功能粉碎机，粉碎设备，粉碎机', '面议', '山东金格瑞机械有限公司', '13953126301\n/\n-', '2020-02-18 06:10:50', 'http://china.makepolo.com/product-detail/100571237465.html');
-INSERT INTO `ad_product` VALUES (179, 10, '硅灰石粉碎，水镁石粉碎设备，原煤粉碎机，青石粉碎机', '180000.00元', '河南佰辰机械设备有限公司', '15736798222\n/\n0371-86555711', '2020-02-18 06:10:51', 'http://china.makepolo.com/product-detail/100806263894.html');
-INSERT INTO `ad_product` VALUES (180, 10, '粉碎设备 粉碎机 破碎机', '1元/件', '山东中煤工矿集团', '18463728400\n/\n400-086-0537', '2020-02-18 06:10:51', 'http://china.makepolo.com/product-detail/100851450728.html');
-INSERT INTO `ad_product` VALUES (181, 10, '供应日照粉碎设备除尘粉碎机，粉碎机械万能除尘粉碎机', '1400.00元', '历城区飞驰机械设备经营部销售部门', '13808928353\n/\n 0531 82319157', '2020-02-18 06:10:51', 'http://china.makepolo.com/product-detail/100290397045.html');
-INSERT INTO `ad_product` VALUES (182, 10, '专业厂家 提供各类粉碎机 粉碎设备 锤式粉碎机 厂家直销', '面议', '潍坊市寒亭区正强机械厂', '13964613977\n/\n536-7588945', '2020-02-18 06:10:52', 'http://china.makepolo.com/product-detail/100366452483.html');
-INSERT INTO `ad_product` VALUES (183, 10, '工程机械粉碎设备粉碎机', '面议', '永州恒丰机械有限公司', '15869978888\n/\n0746-8229288', '2020-02-18 06:10:52', 'http://china.makepolo.com/product-detail/100243277787.html');
-INSERT INTO `ad_product` VALUES (184, 10, '厂家供应新一代金属粉碎机 易拉罐粉碎机 废旧金属粉碎设备', '22000.00元', '巩义市大峪沟新阳机械厂', '18037861168\n/\n0371-86029962', '2020-02-18 06:10:53', 'http://china.makepolo.com/product-detail/100214451428.html');
-INSERT INTO `ad_product` VALUES (185, 10, '30B粉碎机 吸尘粉碎机组 粉碎与吸法为一体的新一代粉碎设备', '15000.00元', '常州市恒迈干燥设备有限公司', '15251911777\n/\n0519-88912279', '2020-02-18 06:10:53', 'http://china.makepolo.com/product-detail/100455106137.html');
-INSERT INTO `ad_product` VALUES (186, 10, '化工粉碎设备 粉碎机 设备先进质量佳 十年销量领先', '8000.00元', '鹤山市沙坪和康机械销售中心', '13048166388\n/\n0750-875029-0', '2020-02-18 06:10:53', 'http://china.makepolo.com/product-detail/100491485603.html');
-INSERT INTO `ad_product` VALUES (187, 10, '供应药用粉碎机械-中药材粉碎机-打碎机-药材粉碎机-万能粉碎设备', '80000.00元', '江苏瑰宝集团有限公司', '15950418511\n/\n0510-86382957', '2020-02-18 06:10:53', 'http://china.makepolo.com/product-detail/100378397063.html');
-INSERT INTO `ad_product` VALUES (188, 10, '提供二手饲料粉碎设备 二手万能粉碎机', '100元/件', '梁山县隆兴二手化工设备购销部', '15053770177\n/\n0537-7601886', '2020-02-18 06:10:54', 'http://china.makepolo.com/product-detail/100732138133.html');
-INSERT INTO `ad_product` VALUES (189, 10, '化工粉碎设备，食品粉碎机', '88000元/台', '江阴市海顺机械设备制造有限公司', '13771284109\n/\n0510-86386777', '2020-02-18 06:10:54', 'http://china.makepolo.com/product-detail/101035833007.html');
-INSERT INTO `ad_product` VALUES (190, 10, '河南华东新型木头粉碎机绿色环保粉碎设备', '11111元/件', '河南省巩义市华东冶矿机械厂', '13607673581\n/\n0371-64564926', '2020-02-18 06:10:54', 'http://china.makepolo.com/product-detail/100779988121.html');
-INSERT INTO `ad_product` VALUES (191, 10, '中药白茅根粉碎设备WFJ超微粉碎机不锈钢脉冲除尘超细磨粉设备', '68000.00元', '江阴市丫匀机械制造有限公司', '18800575880\n/\n-', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100798784495.html');
-INSERT INTO `ad_product` VALUES (192, 10, '厂家直销 木材加工粉碎设备（木材粉碎机）', '5000元/台', '郑州市长兴机械设备有限公司', '13460212273\n/\n0371-67859371', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100952583858.html');
-INSERT INTO `ad_product` VALUES (193, 10, '厂家现货不锈钢多用粉碎机 打药材香辛料粉碎设备', '7000元/台', '广州市旭朗机械设备有限公司', '13556053205\n/\n020-28277188', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/101062638726.html');
-INSERT INTO `ad_product` VALUES (194, 10, '塑胶水桶粉碎设备 粉碎机/破碎机/打碎机 清洗运输生产线', '22000元/台', '东莞市赛柯机械有限公司', '13316624973\n/\n0769-82669936', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100887786939.html');
-INSERT INTO `ad_product` VALUES (195, 10, '粉碎设备 塑料粉碎机 香菇菌种专用粉碎机 快达牌粉碎机', '13800.00元', '常州市快达干燥设备有限公司', '18118011505\n/\n0519-81699369', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100533850732.html');
-INSERT INTO `ad_product` VALUES (196, 10, '超细粉碎机 超微粉碎设备 食品超微粉碎机', '面议', '潍坊正远粉体工程设备有限公司', '15963629458\n/\n0536-8880565', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100208460431.html');
-INSERT INTO `ad_product` VALUES (197, 10, '厂家直销 湿物料粉碎设备/超微胶体粉碎机/立时胶体磨机粉碎机', '2000.00元', '泉州市洛江区富迪食品技术研发服务中心', '13720853668\n/\n0595-22689169', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100359759560.html');
-INSERT INTO `ad_product` VALUES (198, 10, '玉米秸秆饲料粉碎设备 锤片粉碎机', '面议', '曲阜市颗粒机械研究所', '15653784378\n/\n0537-4567399', '2020-02-18 06:10:55', 'http://china.makepolo.com/product-detail/100292286293.html');
-INSERT INTO `ad_product` VALUES (199, 10, '粉碎设备--粉碎机，高效，节能项目工程', '面议', '青岛奥博机械有限公司', '15969881108\n/\n0532-68001586', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/100351349724.html');
-INSERT INTO `ad_product` VALUES (200, 10, '厂家直销 久品 打粉机 打粉机色粉 粉碎设备 粉碎机', '180.00元', '永康市久品工贸有限公司', ' 0579 87182269\n/\n 0579 87182269', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/100233478783.html');
-INSERT INTO `ad_product` VALUES (201, 10, '专业供应 碳酸钙食品粉碎设备 高速多功能大型药物粉碎机', '85005.00元', '嵊州市欣乐粉碎设备有限公司', '13905853407\n/\n0575-83104217', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/100799359575.html');
-INSERT INTO `ad_product` VALUES (202, 10, '杂木木屑粉碎机 废旧木材边角料粉碎设备 大型木材粉碎机', '4200元/台', '郑州鑫磊机械设备有限公司', '13838015371\n/\n0371-53638083', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/101033576196.html');
-INSERT INTO `ad_product` VALUES (203, 10, '畅销干菠萝粉碎机 菠萝干粉碎设备 高效率磨粉机 WFJ超微粉碎机', '60000元/台', '江阴市佳科机械制造有限公司', '13656154624\n/\n0510-86388823', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/101010272778.html');
-INSERT INTO `ad_product` VALUES (204, 10, '树枝粉碎机 小型果园树杈粉碎设备 多功能 园林树枝木材粉碎机', '2800元/台', '郑州志乾机械设备有限公司', '18037812955\n/\n0371-64563622', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/101063664529.html');
-INSERT INTO `ad_product` VALUES (205, 10, '特价供应粉碎机，粉碎设备，30B粉碎机', '13000.00元', '常州市金象干燥设备有限公司', '13906117130\n/\n0519-88909773', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/100350025502.html');
-INSERT INTO `ad_product` VALUES (206, 10, '玉米秸秆粉碎设备重庆 单相电粉碎机', '860元/台', '曲阜市恒信机械设备销售中心', '18369815679\n/\n0537-4651499', '2020-02-18 06:10:56', 'http://china.makepolo.com/product-detail/101061301474.html');
-INSERT INTO `ad_product` VALUES (207, 11, '镍触媒（分离设备、镍催化剂）', '90元', '苏州市高科气体设备有限公司（营销部）', '13814890472\n/\n512 65561156-', '2020-02-18 06:10:57', 'http://china.makepolo.com/product-detail/28929754.html');
-INSERT INTO `ad_product` VALUES (208, 11, '低温空气分离设备、深冷氮氧分离装置', '面议', '富阳天澳空分设备有限公司', '15257148656\n/\n0571-63165088', '2020-02-18 06:10:57', 'http://china.makepolo.com/product-detail/30332756.html');
-INSERT INTO `ad_product` VALUES (209, 11, '杜尔气体VPSA制氧机设备节能环保技术先进', '90000元/件', '苏州杜尔气体化工装备有限公司', '18626101607\n/\n0139-15550577', '2020-02-18 06:10:57', 'http://china.makepolo.com/product-detail/101065611543.html');
-INSERT INTO `ad_product` VALUES (210, 11, '钯扩散氢气分离设备', '面议', '山东省聊城市科威化工仪器有限公司', '15063548238\n/\n 0635 8216269', '2020-02-18 06:10:57', 'http://china.makepolo.com/product-detail/100022495769.html');
-INSERT INTO `ad_product` VALUES (211, 11, '苏州高普牌铜带光亮退火用氮气和氢气机，自由制取气体。', '1元/套', '苏州市高普超纯气体技术有限公司', '13338698829\n/\n0512-66610166', '2020-02-18 06:10:57', 'http://china.makepolo.com/product-detail/100017262305.html');
-INSERT INTO `ad_product` VALUES (212, 11, '供应辰睿立方制氧设备', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:57', 'http://china.makepolo.com/product-detail/100471844756.html');
-INSERT INTO `ad_product` VALUES (213, 11, '供应APPSA制氮机，氮气发生机，PSA制氧', '面议', '深圳中航迪赛科技有限公司', '13827436630\n/\n0755-86174730', '2020-02-18 06:10:58', 'http://china.makepolo.com/product-detail/100200936689.html');
-INSERT INTO `ad_product` VALUES (214, 11, '瑞仁净化氨分解专业生产厂家', '5000000元/台', '苏州瑞仁净化设备有限公司', '13862598519\n/\n0512-65862671', '2020-02-18 06:10:58', 'http://china.makepolo.com/product-detail/100785123223.html');
-INSERT INTO `ad_product` VALUES (215, 11, '杜尔气体公司设计的VPSA制氧机设备更节能环保技术更先进', '90000元/件', '苏州杜尔气体化工装备有限公司', '18626101607\n/\n0139-15550577', '2020-02-18 06:10:58', 'http://china.makepolo.com/product-detail/101065611554.html');
-INSERT INTO `ad_product` VALUES (216, 11, '供应辰睿立方氧气设备', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:58', 'http://china.makepolo.com/product-detail/100471844751.html');
-INSERT INTO `ad_product` VALUES (217, 11, '醋酐生产加工储运用氮气设备', '面议', '苏州市高普超纯气体技术有限公司', '13338698829\n/\n0512-66610166', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100018754902.html');
-INSERT INTO `ad_product` VALUES (218, 11, '杜尔气体公司制造的VPSA制氧机设备更节能环保技术更先进', '90000元/件', '苏州杜尔气体化工装备有限公司', '18626101607\n/\n0139-15550577', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/101065611549.html');
-INSERT INTO `ad_product` VALUES (219, 11, '供应辰睿制氧吸附设备', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844713.html');
-INSERT INTO `ad_product` VALUES (220, 11, '供应辰睿制氧机报价', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844721.html');
-INSERT INTO `ad_product` VALUES (221, 11, '供应辰睿食品制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844780.html');
-INSERT INTO `ad_product` VALUES (222, 11, '供应辰睿小型工业制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844714.html');
-INSERT INTO `ad_product` VALUES (223, 11, '供应辰睿真空变压吸附制氧', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844765.html');
-INSERT INTO `ad_product` VALUES (224, 11, '供应辰睿空分制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844782.html');
-INSERT INTO `ad_product` VALUES (225, 11, '供应辰睿造纸制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844741.html');
-INSERT INTO `ad_product` VALUES (226, 11, '供应轻工行业制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844738.html');
-INSERT INTO `ad_product` VALUES (227, 11, '供应辰睿助燃设备制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844694.html');
-INSERT INTO `ad_product` VALUES (228, 11, '供应辰睿鼓风炉富氧燃烧用制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:10:59', 'http://china.makepolo.com/product-detail/100471844755.html');
-INSERT INTO `ad_product` VALUES (229, 11, '供应辰睿制氧机系统', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844750.html');
-INSERT INTO `ad_product` VALUES (230, 11, '供应辰睿立方氧气发生器', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844757.html');
-INSERT INTO `ad_product` VALUES (231, 11, '供应辰睿工业制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844776.html');
-INSERT INTO `ad_product` VALUES (232, 11, '供应辰睿制氧机原理', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844749.html');
-INSERT INTO `ad_product` VALUES (233, 11, '供应辰睿大型制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844775.html');
-INSERT INTO `ad_product` VALUES (234, 11, '供应辰睿水产养殖制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844773.html');
-INSERT INTO `ad_product` VALUES (235, 11, '供应辰睿助燃制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844761.html');
-INSERT INTO `ad_product` VALUES (236, 11, '供应辰睿冶炼用制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844762.html');
-INSERT INTO `ad_product` VALUES (237, 11, '供应辰睿热销制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844770.html');
-INSERT INTO `ad_product` VALUES (238, 11, '供应辰睿生物技术制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844726.html');
-INSERT INTO `ad_product` VALUES (239, 11, '供应辰睿变压吸附制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:00', 'http://china.makepolo.com/product-detail/100471844769.html');
-INSERT INTO `ad_product` VALUES (240, 11, '供应辰睿水产制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844730.html');
-INSERT INTO `ad_product` VALUES (241, 11, '供应辰睿制氧机配件', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844784.html');
-INSERT INTO `ad_product` VALUES (242, 11, '供应辰睿污水处理制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844742.html');
-INSERT INTO `ad_product` VALUES (243, 11, '供应辰睿氧气发生器', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844783.html');
-INSERT INTO `ad_product` VALUES (244, 11, '供应辰睿工业制氧机价格', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844716.html');
-INSERT INTO `ad_product` VALUES (245, 11, '供应辰睿工业用制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844717.html');
-INSERT INTO `ad_product` VALUES (246, 11, '供应辰睿制氧机', '10000元/个', '杭州辰睿空分设备制造有限公司', '13735897417\n/\n0571-63492966', '2020-02-18 06:11:01', 'http://china.makepolo.com/product-detail/100471844715.html');
-INSERT INTO `ad_product` VALUES (247, 13, '过滤分离筛分设备筛分设备', '10000元/台', '宁津县鑫力达机械设备有限公司', '15969765954\n/\n0534-5682828', '2020-02-18 06:11:02', 'http://china.makepolo.com/product-detail/100601297015.html');
-INSERT INTO `ad_product` VALUES (248, 13, '过滤 分离 筛分设备遥控器双推杆模拟量输出功能可定制', '15800元/件', '成都易德莱斯科技有限公司', '19940500542\n/\n028-84215008', '2020-02-18 06:11:02', 'http://china.makepolo.com/product-detail/101063753308.html');
-INSERT INTO `ad_product` VALUES (249, 13, '农业粮食过滤、分离、筛分设备-hyl-25型谷物筛分机，玉米振动筛', '26000元/件', '新乡市宏源振动设备有限公司', '13223734129\n/\n0373-2677463', '2020-02-18 06:11:02', 'http://china.makepolo.com/product-detail/100822078946.html');
-INSERT INTO `ad_product` VALUES (250, 13, '玉米中杂质过滤、分离、筛分设备 多功能清粮机', '8000元/台', '宏源振动设备有限公司', '18339546509\n/\n0373-2678390', '2020-02-18 06:11:03', 'http://china.makepolo.com/product-detail/101018398312.html');
-INSERT INTO `ad_product` VALUES (251, 13, '三级过滤器三大优点 过滤、分离、筛分设备', '面议', '山东神华机械制造有限公司', '18553715758\n/\n0537-3151329', '2020-02-18 06:11:03', 'http://china.makepolo.com/product-detail/100909827164.html');
-INSERT INTO `ad_product` VALUES (252, 13, '厂家过滤除沫器，分离筛分设备丝网除沫器，张家口丝网除沫器', '100元/件', '安平县九鑫过滤网业有限公司', '13833888883\n/\n0318-7800015', '2020-02-18 06:11:03', 'http://china.makepolo.com/product-detail/101052678437.html');
-INSERT INTO `ad_product` VALUES (253, 13, '固液分离筛分设 450过滤机30年质造厂家 新乡液体除杂过滤', '4880元/台', '新乡市辰威机械有限公司', '13083801818\n/\n0373-7035908', '2020-02-18 06:11:04', 'http://china.makepolo.com/product-detail/101065508245.html');
-INSERT INTO `ad_product` VALUES (254, 13, '特价上海低价筛分设备/筛选设备/过滤设备/分级设备', '5000.00元', '上海亿筛机械有限公司', '18049754649\n/\n021-64423600', '2020-02-18 06:11:04', 'http://china.makepolo.com/product-detail/100190469990.html');
-INSERT INTO `ad_product` VALUES (255, 13, '塑料颗粒用双电机直排筛粉机 明洋直排筛分设备', '7800.00元', '新乡市明洋筛分机械有限公司', '15903033385\n/\n0373-5755777', '2020-02-18 06:11:04', 'http://china.makepolo.com/product-detail/100324891335.html');
-INSERT INTO `ad_product` VALUES (256, 13, '圆形振动筛 食品调料 果汁多用振动筛 筛分过滤分离多功能旋振筛', '1000元/件', '新乡市鹏鼎机械设备有限公司', '13525011399\n/\n-', '2020-02-18 06:11:05', 'http://china.makepolo.com/product-detail/101064735998.html');
-INSERT INTO `ad_product` VALUES (257, 13, '天龙牌旋振筛，振动筛，筛分设备，分离设备', '面议', '河南天龙机械制造有限公司(销售部)', '13569873228\n/\n 0373 3350555', '2020-02-18 06:11:05', 'http://china.makepolo.com/product-detail/100119446228.html');
-INSERT INTO `ad_product` VALUES (258, 13, '壤土振动筛 过筛壤土里的粉粒、砂粒-壤土筛分过滤分离机械', '5300.00元', '新乡市东升环保设备有限公司', '18937367711\n/\n-', '2020-02-18 06:11:05', 'http://china.makepolo.com/product-detail/100620242926.html');
-INSERT INTO `ad_product` VALUES (259, 13, '矿石筛分装置 旋转筛分斗 水砂过滤 沙石分离 滚筒筛分斗', '16880元/个', '山东松川工程机械有限公司', '13355126961\n/\n-', '2020-02-18 06:11:05', 'http://china.makepolo.com/product-detail/101059581124.html');
-INSERT INTO `ad_product` VALUES (260, 13, '质量最好 价格低 供应旋转振动筛 用于筛分过滤、固液分离', '6500.00元', '新乡市绿声通用机械设备制造有限公司', '13937348704\n/\n0373-5860668/3333922', '2020-02-18 06:11:06', 'http://china.makepolo.com/product-detail/100334113497.html');
-INSERT INTO `ad_product` VALUES (261, 13, '新乡世华厂家供应加缘式过滤筛 专用固液分离高效筛分机 供应全国', '7000元/台', '新乡市世华振动机械有限公司', '13949620946\n/\n0373-2685760', '2020-02-18 06:11:06', 'http://china.makepolo.com/product-detail/101024144083.html');
-INSERT INTO `ad_product` VALUES (262, 13, '轻质碳酸钙专用筛分设备三元旋振筛新乡振威厂价直销', '9500.00元', '新乡市振威筛分机械有限公司', '13623906771\n/\n0373-5726998', '2020-02-18 06:11:06', 'http://china.makepolo.com/product-detail/100332028146.html');
-INSERT INTO `ad_product` VALUES (263, 13, '肥料筛分设备 固液分离振动筛  树脂粉直排筛', '10000元/件', '新乡市恒宇机械设备有限公司', '15937327517\n/\n0373-5712316', '2020-02-18 06:11:06', 'http://china.makepolo.com/product-detail/100745629817.html');
-INSERT INTO `ad_product` VALUES (264, 13, '涂料筛分设备_专用加缘筛_过滤分离筛机', '1000元/台', '新乡市锐成机械设备有限公司', '13462348443\n/\n0373-5058600', '2020-02-18 06:11:06', 'http://china.makepolo.com/product-detail/100754319362.html');
-INSERT INTO `ad_product` VALUES (265, 13, '浙江供应建筑机械筛沙机 沙石分离 全自动筛沙机 筛分设备', '4100.00元', '安平县飞天机械厂', '13833897705\n/\n0318-5183466', '2020-02-18 06:11:07', 'http://china.makepolo.com/product-detail/100346994750.html');
-INSERT INTO `ad_product` VALUES (266, 13, '转让二手过滤几 二手分离机 离心机设备  二手筛分设备', '10000元/台', '梁山县浩运二手化工设备经营部', '13615479600\n/\n0136-1547960', '2020-02-18 06:11:07', 'http://china.makepolo.com/product-detail/101046918979.html');
-INSERT INTO `ad_product` VALUES (267, 13, 'VIP批发供应高岭土筛分设备 振动筛 筛选设备 直线振动筛', '22000.00元', '新乡市德重机械有限公司', '15837386795\n/\n 0373 5077026', '2020-02-18 06:11:07', 'http://china.makepolo.com/product-detail/100222133807.html');
-INSERT INTO `ad_product` VALUES (268, 13, '碎米分离振动筛  花生抽风式大小分级筛分机 五谷杂粮过滤除杂机', '1000元/台', '济宁市丰瑞机械有限公司', '15345377639\n/\n0537-3650334', '2020-02-18 06:11:07', 'http://china.makepolo.com/product-detail/101036321128.html');
-INSERT INTO `ad_product` VALUES (269, 13, '厂家不锈钢液体筛分机 固液分离电筛机 振动筛机豆浆果汁过滤', '5500元/台', '新乡市大用振动设备有限公司', '15637336530\n/\n-', '2020-02-18 06:11:08', 'http://china.makepolo.com/product-detail/101056119453.html');
-INSERT INTO `ad_product` VALUES (270, 13, 'Finex22筛分机高速过滤树脂干湿分离振动筛', '200000元/件', '拉塞尔工业设备（上海）有限公司', '18621517678\n/\n021-64264030', '2020-02-18 06:11:08', 'http://china.makepolo.com/product-detail/101040324068.html');
-INSERT INTO `ad_product` VALUES (271, 13, '淀粉专用振动筛 圆形筛分设备，圆振动筛', '12000元/台', '新乡市未来振动设备有限公司', '13333738691\n/\n-', '2020-02-18 06:11:08', 'http://china.makepolo.com/product-detail/101062243768.html');
-INSERT INTO `ad_product` VALUES (272, 13, '高速振动筛 粉体振动筛机 固液分离筛分设备', '6300.00元', '东莞市建星环保科技有限公司', '13829249968\n/\n0769-89870061', '2020-02-18 06:11:08', 'http://china.makepolo.com/product-detail/100430939787.html');
-INSERT INTO `ad_product` VALUES (273, 13, '筛分设备/旋振筛', '6500元/台', '新乡市共成振动设备有限公司', '13525008219\n/\n0373-2513806', '2020-02-18 06:11:09', 'http://china.makepolo.com/product-detail/32509745.html');
-INSERT INTO `ad_product` VALUES (274, 13, '厂家直销 筛分分级设备', '6600.00元', '新乡市天丰振动机械有限公司', '13603730156\n/\n0373-3358862', '2020-02-18 06:11:09', 'http://china.makepolo.com/product-detail/100365164458.html');
-INSERT INTO `ad_product` VALUES (275, 13, '粮食过滤、分离、筛分设备--hyl-25型谷物筛分机，玉米振动筛', '26000元/件', '新乡市宏源振动设备有限公司', '13223734129\n/\n0373-2677463', '2020-02-18 06:11:09', 'http://china.makepolo.com/product-detail/100820735997.html');
-INSERT INTO `ad_product` VALUES (276, 13, '供应过滤、分离、筛分设备 DZSF系列沙土筛分机', '5500元/台', '宏源振动设备有限公司', '18339546509\n/\n0373-2678390', '2020-02-18 06:11:09', 'http://china.makepolo.com/product-detail/101020910048.html');
-INSERT INTO `ad_product` VALUES (277, 13, '过滤、分离、筛分设备筛沙机选矿设备', '10000元/台', '宁津县鑫力达机械设备有限公司', '15969765954\n/\n0534-5682828', '2020-02-18 06:11:10', 'http://china.makepolo.com/product-detail/100771195606.html');
-INSERT INTO `ad_product` VALUES (278, 13, '滤尘过滤器产品特点 过滤、分离、筛分设备', '面议', '山东神华机械制造有限公司', '18553715758\n/\n0537-3151329', '2020-02-18 06:11:10', 'http://china.makepolo.com/product-detail/100909828929.html');
-INSERT INTO `ad_product` VALUES (279, 13, '热销过滤除沫器，分离筛分设备丝网除沫器，张家口丝网除沫器', '100元/件', '安平县九鑫过滤网业有限公司', '13833888883\n/\n0318-7800015', '2020-02-18 06:11:10', 'http://china.makepolo.com/product-detail/101050025184.html');
-INSERT INTO `ad_product` VALUES (280, 13, '食品调料 果汁多用振动筛 筛分过滤分离多功能旋振筛', '1000元/件', '新乡市鹏鼎机械设备有限公司', '13525011399\n/\n-', '2020-02-18 06:11:10', 'http://china.makepolo.com/product-detail/101064736018.html');
-INSERT INTO `ad_product` VALUES (281, 13, '特价筛选设备、筛分设备、分级机械,旋振筛-筛分行业的优选', '5000元', '上海亿筛机械有限公司', '18049754649\n/\n021-64423600', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/100193323879.html');
-INSERT INTO `ad_product` VALUES (282, 13, '陶瓷浆液筛分设备_专用加缘筛_过滤分离筛机', '1000元/台', '新乡市锐成机械设备有限公司', '13462348443\n/\n0373-5058600', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/100754319093.html');
-INSERT INTO `ad_product` VALUES (283, 13, '提供不锈钢液体筛分机 固液分离电筛机 振动筛机豆浆果汁过滤', '5500元/台', '新乡市大用振动设备有限公司', '15637336530\n/\n-', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/101053213407.html');
-INSERT INTO `ad_product` VALUES (284, 13, '供应安平筛沙机 民用筛沙机 电动筛分设备', '4100.00元', '安平县飞天机械厂', '13833897705\n/\n0318-5183466', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/100347006444.html');
-INSERT INTO `ad_product` VALUES (285, 13, '供应食品调味剂旋振筛 多层振动筛分 过滤 分离筛分设备', '1元/台', '宏源振动设备有限公司', '18339546509\n/\n0373-2678390', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/100940054471.html');
-INSERT INTO `ad_product` VALUES (286, 13, '振动筛 亚麻籽筛分设备 振动过滤亚麻籽颗粒 大小分离筛', '4500元/台', '新乡市宏源振动设备有限公司', '13569833759\n/\n0373-2610868', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/100910976935.html');
-INSERT INTO `ad_product` VALUES (287, 14, '德国EFD感应热处理设备', '1200元/台', '天津赛力斯自动化科技有限公司', '18622238076\n/\n022-27312816', '2020-02-18 06:11:11', 'http://china.makepolo.com/product-detail/101060929340.html');
-INSERT INTO `ad_product` VALUES (288, 14, 'JX-15 热处理设备', '5000.00元', '深圳市聚鑫感应加热设备技术有限公司', '15816876556\n/\n0755-28670086', '2020-02-18 06:11:12', 'http://china.makepolo.com/product-detail/100378235502.html');
-INSERT INTO `ad_product` VALUES (289, 14, '高频淬火炉-链轮热处理设备', '1000元/件', '河南郑州英福伦高频设备有限公司', '15838311591\n/\n0371-67995355', '2020-02-18 06:11:12', 'http://china.makepolo.com/product-detail/101033455696.html');
-INSERT INTO `ad_product` VALUES (290, 14, '供应订做钢铁两用式浇包/铸造设备八环铸造公司生产/热处理设备', '5000.00元', '武穴市八环冲天炉成套设备有限公司', '13872041137\n/\n0713-6273211', '2020-02-18 06:11:12', 'http://china.makepolo.com/product-detail/100449576730.html');
-INSERT INTO `ad_product` VALUES (291, 14, '塑料成型产品加热水煮箱、塑料热处理设备', '98000元', '余姚市巨能节能科技有限公司', '13567459477\n/\n0574-66204788', '2020-02-18 06:11:12', 'http://china.makepolo.com/product-detail/100167885828.html');
-INSERT INTO `ad_product` VALUES (292, 14, '大型金属五金件热锻 淬火 回火 热熔 钎焊 烧结等热处理设备', '19800.00元', '台州市路桥红日电子设备厂', '15068662186\n/\n0576-82338825', '2020-02-18 06:11:12', 'http://china.makepolo.com/product-detail/100379929053.html');
-INSERT INTO `ad_product` VALUES (293, 14, '佛山卖大齿轮淬火机、大轴心淬火机，高频加热机，金属热处理设备', '1元/套', '佛山市顺德区伟迪生精密机电有限公司', '13433119639\n/\n0757-28797980', '2020-02-18 06:11:12', 'http://china.makepolo.com/product-detail/101006221828.html');
-INSERT INTO `ad_product` VALUES (294, 14, '细长轴 淬火机床 成套设备 卧式通用 10米长轴 感应热处理设备', '面议', '十堰天舒机电科技有限公司', '13597863170\n/\n0719-8208681', '2020-02-18 06:11:13', 'http://china.makepolo.com/product-detail/100429084639.html');
-INSERT INTO `ad_product` VALUES (295, 14, '供应大型压力容器球罐焊前预热焊后消氢热处理设备', '面议', '广州市蓝炬燃烧设备有限公司', '13380030281\n/\n020-84854520/815', '2020-02-18 06:11:13', 'http://china.makepolo.com/product-detail/100363020011.html');
-INSERT INTO `ad_product` VALUES (296, 14, '供应热处理设备，热处理温度控制箱', '4500.00元', '苏州航达热处理科技有限公司', '13511612432\n/\n0512-63670028/663670066', '2020-02-18 06:11:13', 'http://china.makepolo.com/product-detail/100060035597.html');
-INSERT INTO `ad_product` VALUES (297, 14, '淬火，退火，热处理设备，到张家港刚华高频电子厂', '18000.00元', '张家港市塘桥镇鹿苑钢华高频电子厂', '18913613313\n/\n0512-58389811', '2020-02-18 06:11:13', 'http://china.makepolo.com/product-detail/100381705598.html');
-INSERT INTO `ad_product` VALUES (298, 14, '五金工具表面热处理设备', '10000.00元/个', '江阴市瑞邦机电有限公司', '18961678400\n/\n0510-81699399', '2020-02-18 06:11:14', 'http://china.makepolo.com/product-detail/100539690438.html');
-INSERT INTO `ad_product` VALUES (299, 14, '供应超音频热处理设备', '10000.00元', '潍坊华研机电技术有限公司', '13853633083\n/\n0536-8303708', '2020-02-18 06:11:14', 'http://china.makepolo.com/product-detail/100454358217.html');
-INSERT INTO `ad_product` VALUES (300, 14, '焊接热处理设备出租，品种全，价格低，服务优', '10000.00元', '吴江市平望中创电热电器厂', '13606252967\n/\n0512-63671878', '2020-02-18 06:11:14', 'http://china.makepolo.com/product-detail/100387064588.html');
-INSERT INTO `ad_product` VALUES (301, 14, '供应DWK便携式智能温度控制箱热处理设备', '15800.00元', '吴江市龙马电器有限公司', '15851689699\n/\n0512-63680766', '2020-02-18 06:11:14', 'http://china.makepolo.com/product-detail/100295161117.html');
-INSERT INTO `ad_product` VALUES (302, 14, '供应高频热处理设备、超音频锻造加热设备', '面议', '昆山鑫鑫高频加热设备有限公司', '18962423858\n/\n0512-50192758', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/100368205229.html');
-INSERT INTO `ad_product` VALUES (303, 14, '供应热处理设备用于轧辊和轴类淬火即淬火机床', '面议', '无锡市理田机电设备有限公司', '13301510710\n/\n0510-85262952', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/100081854606.html');
-INSERT INTO `ad_product` VALUES (304, 14, '批发供应耐热钢铸件，热处理设备配件 开封中宇电炉', '面议', '开封中宇科技电炉工程有限公司', '18637807720\n/\n0371-22810123', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/100275419806.html');
-INSERT INTO `ad_product` VALUES (305, 14, '九辰烘干设备 热处理设备', '2500元/台', '淄博九辰节能科技有限公司', '13031782006\n/\n0533-3593344/3593322/3590990', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/100048507161.html');
-INSERT INTO `ad_product` VALUES (306, 14, '高频加热设备 淬火设备 热处理设备', '面议', '义乌市巡科电器有限公司', '13325791520\n/\n0579-85797305', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/100450301964.html');
-INSERT INTO `ad_product` VALUES (307, 14, '优价提供美国原厂WAUKEE 热处理设备 加热设备 S-5SS流量计', '面议', '南京南鼎商贸有限公司', '13218026044\n/\n025-68853616', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/100213815892.html');
-INSERT INTO `ad_product` VALUES (308, 14, '不锈钢制品热处理设备', '3800元/台', '济南亿冠机电设备有限公司', '18865928583\n/\n-', '2020-02-18 06:11:15', 'http://china.makepolo.com/product-detail/101048229598.html');
-INSERT INTO `ad_product` VALUES (309, 14, '汽车配件 摩拖车配件高频淬火热处理设备', '1元/套', '中山市豪宇机电有限公司', '13680141789\n/\n0760-86151989', '2020-02-18 06:11:16', 'http://china.makepolo.com/product-detail/101061772963.html');
-INSERT INTO `ad_product` VALUES (310, 14, '比亚特全自动焊接热处理设备', '36000元/台', '郑州比亚特自动化设备有限公司', '18103828979\n/\n0371-61369929', '2020-02-18 06:11:16', 'http://china.makepolo.com/product-detail/101033009114.html');
-INSERT INTO `ad_product` VALUES (311, 14, '供应高频透热、焊接、回火、 退火、 热处理设备', '18000元/套', '河南中兴电气有限公司', '15038917136\n/\n0374-5611999', '2020-02-18 06:11:16', 'http://china.makepolo.com/product-detail/100804978885.html');
-INSERT INTO `ad_product` VALUES (312, 14, '供应汽车配件、摩配高频淬火处理设备热处理设备13683820215', '38000.00元', '郑州华韵电磁科技有限公司', '13683820215\n/\n0371-86599898', '2020-02-18 06:11:16', 'http://china.makepolo.com/product-detail/100491271762.html');
-INSERT INTO `ad_product` VALUES (313, 14, '高频感应加热炉厂家高频热处理设备', '18000元/台', '河南超锋电气设备有限公司', '18317459662\n/\n0374-2355679', '2020-02-18 06:11:16', 'http://china.makepolo.com/product-detail/100744313547.html');
-INSERT INTO `ad_product` VALUES (314, 14, '供应高频电源， 高频机 ，热处理设备', '88888/套', '株洲市华阳高中频设备有限公司', '13307335218\n/\n0731-28289859', '2020-02-18 06:11:16', 'http://china.makepolo.com/product-detail/100308519197.html');
-INSERT INTO `ad_product` VALUES (315, 14, '厂家直销金属热处理设备', '8300元/台', '永康市跃龙电子设备有限公司', '13967974710\n/\n0579-87218762', '2020-02-18 06:11:19', 'http://china.makepolo.com/product-detail/100791698838.html');
-INSERT INTO `ad_product` VALUES (316, 14, '永达高频淬火感应加热设备热处理设备', '30000元/台', '沈丘永达高频设备有限公司', '13839481109\n/\n-', '2020-02-18 06:11:19', 'http://china.makepolo.com/product-detail/101062833455.html');
-INSERT INTO `ad_product` VALUES (317, 14, '昆山超音频锻打热处理设备', '18000元/台', '昆山泰斗机电设备有限公司', '15962677950\n/\n0512-50126138', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100996237532.html');
-INSERT INTO `ad_product` VALUES (318, 14, '多种高品质的热处理设备', '38000.00元', '江阴市新源机械制造有限公司', '13616167695\n/\n- - -', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100205262459.html');
-INSERT INTO `ad_product` VALUES (319, 14, '高频加热炉高效钢套热处理设备', '32000元/件', '河南超锋电气有限公司', '13069504241\n/\n0374-2355679', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100405654162.html');
-INSERT INTO `ad_product` VALUES (320, 14, '超高频感应加热设备 6KW加热机 金属工件表面热处理设备', '13000.00元', '深圳市中星科高频技术有限公司', '18923429199\n/\n0755-18923429199', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100370885747.html');
-INSERT INTO `ad_product` VALUES (321, 14, '数控淬火机床 高频感应加热热处理设备', '15000.00元', '东莞市力华机械设备有限公司', '13412622426\n/\n0769-82380901', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100534135183.html');
-INSERT INTO `ad_product` VALUES (322, 14, '厂家生产供应HR-TP70超音频感应加热设备 热处理设备', '19800.00元', '台州市路桥红日电子设备厂', '15068662186\n/\n0576-82338825', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100379606241.html');
-INSERT INTO `ad_product` VALUES (323, 14, '轧辊 淬火机床 成套设备 立式 感应器扫描淬火 感应热处理设备', '面议', '十堰天舒机电科技有限公司', '13597863170\n/\n0719-8208681', '2020-02-18 06:11:20', 'http://china.makepolo.com/product-detail/100428326922.html');
-INSERT INTO `ad_product` VALUES (324, 14, '压花辊表面淬火热处理设备', '1000元/件', '河南郑州英福伦高频设备有限公司', '15838311591\n/\n0371-67995355', '2020-02-18 06:11:21', 'http://china.makepolo.com/product-detail/101038981105.html');
-INSERT INTO `ad_product` VALUES (325, 14, '张家港高频退火 淬火  热处理设备厂家', '18000.00元', '张家港市塘桥镇鹿苑钢华高频电子厂', '18913613313\n/\n0512-58389811', '2020-02-18 06:11:21', 'http://china.makepolo.com/product-detail/100285924170.html');
-INSERT INTO `ad_product` VALUES (326, 14, '供应耐热钢铸件，开封中宇电炉 热处理设备配件', '面议', '开封中宇科技电炉工程有限公司', '18637807720\n/\n0371-22810123', '2020-02-18 06:11:21', 'http://china.makepolo.com/product-detail/100267513314.html');
+INSERT INTO `ad_product` VALUES (1, 2, 'F343CX蜗轮传动扇形盲板阀/电动盲板阀/液动盲板阀/冶金非标阀门', '380.00元', '永嘉县科申阀门厂', '13587633367\n/\n0577-67997720', 'http://china.makepolo.com/product-detail/100353714835.html', 1583878343, 1583878343);
+INSERT INTO `ad_product` VALUES (2, 2, 'QT450-10耐磨，耐腐蚀阀门', '1.00元', '临海市鼎星铸造有限公司', '15868601256\n/\n0576-85520211', 'http://china.makepolo.com/product-detail/100228015146.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (3, 2, '德国EA阀门', '面议', '北京根炬科技发展有限公司', '13521004452\n/\n010-88457503', 'http://china.makepolo.com/product-detail/100311891001.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (4, 2, '美国Butech高压开关阀 球阀 计量阀 安全溢流阀 高压单向阀 阀门', '面议', '厦门鑫茂德机电设备有限公司', '18030200299\n/\n0592-5361939', 'http://china.makepolo.com/product-detail/100418577579.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (5, 2, '氨用球阀 专业球阀厂家直销 质量值得保证 经济实惠 欢迎加盟', '2400.00元', '永嘉县欧利泵阀厂', '13777715926\n/\n0577-67372818', 'http://china.makepolo.com/product-detail/100498656236.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (6, 2, '坤泰1/2寸不锈钢迷你球阀 304 316迷你阀 不锈钢小阀门', '19元/件', '沧州市坤泰金属制品制造有限公司', '13832749853\n/\n0317-5295332', 'http://china.makepolo.com/product-detail/101042546159.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (7, 2, '广式内螺纹球阀，阀门', '10.00元', '温州市龙湾永中美通阀门厂', '13989704657\n/\n0577-86933848', 'http://china.makepolo.com/product-detail/100065227756.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (8, 2, '厂家供应3.2G压力桶球阀价格压力桶阀门储水桶球阀旋转式快接球阀', '4.00元', '深圳市陶氏水处理设备技术开发有限公司', '18123625341\n/\n0755-89458187', 'http://china.makepolo.com/product-detail/100313898677.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (9, 2, '供应高温球阀柱塞阀等特种阀门', '面议', '江阴市文和五金电器经营部', '15052240819\n/\n0510-81611681', 'http://china.makepolo.com/product-detail/100503493049.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (10, 2, '供应不同阀门', '20.40元', '绍兴市聚源管业有限公司', '13967541999\n/\n0575-87666588', 'http://china.makepolo.com/product-detail/100288519790.html', 1583878344, 1583878344);
+INSERT INTO `ad_product` VALUES (11, 2, 'l批发热销供应多种 阀门', '面议', '射阳县帅升阀业有限公司', ' 515 82843338\n/\n-', 'http://china.makepolo.com/product-detail/100471578463.html', 1583878345, 1583878345);
+INSERT INTO `ad_product` VALUES (12, 2, '无死角球阀.快装球阀.螺纹球阀. 卫生级球阀 手动球阀', '100.00元', '温州市龙湾永中万源阀门管件厂', '13004715078\n/\n0577-86932886', 'http://china.makepolo.com/product-detail/100366503831.html', 1583878345, 1583878345);
+INSERT INTO `ad_product` VALUES (13, 2, '供应不锈钢2PC球阀 2PC外螺纹丝扣球阀 片式球阀 Q21F-16P阀门', '888.00元', '温州正特阀门有限公司', '0577-86921137\n/\n 0577 86571578', 'http://china.makepolo.com/product-detail/100486490346.html', 1583878345, 1583878345);
+INSERT INTO `ad_product` VALUES (14, 2, '富鼎阀门供应 优质蒸汽调节阀 气动蒸汽调节阀', '1588.00元', '浙江富鼎自控阀门有限公司', '13646585582\n/\n0577-57983555', 'http://china.makepolo.com/product-detail/100259848304.html', 1583878345, 1583878345);
+INSERT INTO `ad_product` VALUES (15, 2, '阀门厂家直销 卫生级球阀 欢迎来图来样订制 实力打造', '1550.00元', '温州市龙湾永兴天力流体设备机械厂', '13777782865\n/\n 0577 86920055', 'http://china.makepolo.com/product-detail/100507897694.html', 1583878345, 1583878345);
+INSERT INTO `ad_product` VALUES (16, 4, '维修摩擦压力机锻压机床', '3333.00元', '青岛蜗牛机械有限公司', '13963928249\n/\n0532-82299525', 'http://china.makepolo.com/product-detail/100289825126.html', 1583878346, 1583878346);
+INSERT INTO `ad_product` VALUES (17, 4, '供应JA23--100锻压机床', '面议', '淄博市淄川机床厂', '13806485119\n/\n0533-5410671', 'http://china.makepolo.com/product-detail/100442890644.html', 1583878346, 1583878346);
+INSERT INTO `ad_product` VALUES (18, 4, 'JB23-100T开式可倾压力机 冲床 锻压机床', '52000.00元', '南京中辉锻压机床制造厂（普通合伙）', '18761621616\n/\n025-57277855', 'http://china.makepolo.com/product-detail/100285568261.html', 1583878346, 1583878346);
+INSERT INTO `ad_product` VALUES (19, 4, '厂家推荐 供应锻压机床', '100000.00元', '余姚市吉德惠铜压铸厂', '13705847698\n/\n0574-62585220', 'http://china.makepolo.com/product-detail/100312173497.html', 1583878346, 1583878346);
+INSERT INTO `ad_product` VALUES (20, 4, '供应： 压力机 摩擦压力机 二手摩擦压力机 摩擦压 锻压机床', '500.00元', '辽阳锻压机床备件销售处', '13081783303\n/\n0419-2146176', 'http://china.makepolo.com/product-detail/100045484525.html', 1583878348, 1583878348);
+INSERT INTO `ad_product` VALUES (21, 4, '供应二手闭式单点压力机/630T冲床/俄罗斯锻压机床', '55000元/台', '东宁泰瑞贸易有限公司', '18606777707\n/\n0453-3637335', 'http://china.makepolo.com/product-detail/101037289978.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (22, 4, '安徽名牌 JB23-16型冲床压力机锻压机床', '7000.00元', '马鞍山市环锐重工机械制造有限公司', '15955516252\n/\n0555-2925298', 'http://china.makepolo.com/product-detail/100342086611.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (23, 4, '龙门型钢板整平及弯曲成型专用液压机 ，自动液压机，锻压机床', '面议', '无锡大帝液压机械有限公司', '13771518561\n/\n0510-83383808', 'http://china.makepolo.com/product-detail/100450574759.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (24, 4, '我厂热销卷锥体中型卷板机 锻压机床', '面议', '桓台县果里镇宏泰锻压机床厂', '13589585016\n/\n0533-7975628', 'http://china.makepolo.com/product-detail/100217736711.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (25, 4, '现货俄罗斯6300吨热模锻压力机 二手K8548B锻压机床', '888元/台', '浙江鼎能机械制造有限公司', '18738004640\n/\n0577-58127366', 'http://china.makepolo.com/product-detail/101060159326.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (26, 4, '高精密通用型冲床（锻压机床）', '面议', '江苏汇田数控机械有限公司', '18851565882\n/\n0510-85592608', 'http://china.makepolo.com/product-detail/100246079979.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (27, 4, '供应剪板机 机械剪板机 电动剪板机 脚踏式剪板机 小型电动剪板机', '16000.00元', '马鞍山市旭天机床制造有限公司', '18605551480\n/\n0555-6775189', 'http://china.makepolo.com/product-detail/100355314541.html', 1583878349, 1583878349);
+INSERT INTO `ad_product` VALUES (28, 4, '供应 JB23-25吨开式可倾压力机(图) 锻压机床 四柱液压机', '13000.00元', '马鞍山市金宇冲压机床厂', '13965546410\n/\n0555-6064936', 'http://china.makepolo.com/product-detail/100462437332.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (29, 4, '高密锻压机床机械压力机锻压机械冲床', '200000元/件', '山东省高密市东辰机械制造有限公司', '13863689999\n/\n0536-2869928', 'http://china.makepolo.com/product-detail/101061307777.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (30, 4, '供应JZ23高性能开式可倾压力机 锻压机床 冲床', '43200.00元', '浙江博仑高精机械有限公司', '15158259588\n/\n0575-83362228', 'http://china.makepolo.com/product-detail/100468005041.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (31, 4, '厂家生产 高品质C41-75kg空气锤 锻压机床 电动空气锤', '35000.00元', '滕州宏铭机床有限公司', '13475245243\n/\n0632-5615397/13666328630', 'http://china.makepolo.com/product-detail/100460382348.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (32, 4, '厂家热销 开式锻压机床冲床 J-23-6.3开式可倾压力机', '5700.00元', '浙江双穗锻压机床有限公司', '13736358088\n/\n0577-65270158', 'http://china.makepolo.com/product-detail/100212111396.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (33, 4, '供应变频节能复合材料成型液压机 湖州液压机 四柱液压机专业制造', '170000.00元', '湖州鑫科锻压机床有限公司', '13967295257\n/\n0572-2698886', 'http://china.makepolo.com/product-detail/100356536853.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (34, 4, '供应JS23-25T冲床（锻压机床、冲床系列设备）', '面议', '高密三江机械制造有限公司', '15965038999\n/\n0536-2582133', 'http://china.makepolo.com/product-detail/100394551721.html', 1583878350, 1583878350);
+INSERT INTO `ad_product` VALUES (35, 4, '供应优质重型锻压机床设备C41-75kg双体系列空气锤（图）', '36000.00元', '滕州市龙阳弘发机床厂', '13475247524\n/\n0632-2034129', 'http://china.makepolo.com/product-detail/100214129196.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (36, 4, '南京双力锻压机床 Q11机械剪板机', '面议', '南京双力锻压机床有限公司', '13690355830\n/\n025-57263775', 'http://china.makepolo.com/product-detail/100156233704.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (37, 4, '剪板机折弯机卷板机扫地机', '面议', '南通铭德机床有限公司', '15371923336\n/\n0513-88212192', 'http://china.makepolo.com/product-detail/100084285990.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (38, 4, '转让2.5米二手折弯机一台', '面议', '东莞市凤岗新鸿翔机械设备经营部', '13929255256\n/\n0769-87883455', 'http://china.makepolo.com/product-detail/100141036432.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (39, 4, '供应液压机 单柱式六台联动液压机 滕州锻压机床二厂', '1000000.00元', '山东滕州市锻压机床二厂', '18600033194\n/\n 0632 5512006', 'http://china.makepolo.com/product-detail/100383222998.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (40, 4, '专业生产电动剪板机、脚踏剪板机等大型机床', '65000.00元', '马鞍山奇锋刀模具厂', '13515553666\n/\n0555-6761149', 'http://china.makepolo.com/product-detail/100434802430.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (41, 4, '供应锻压机床锻压设备摩擦压力机 欢迎洽谈', '面议', '青岛鑫裕源机械有限公司', '13969689266\n/\n0532-82290736', 'http://china.makepolo.com/product-detail/100426524390.html', 1583878351, 1583878351);
+INSERT INTO `ad_product` VALUES (42, 4, '沃得锻压机床深圳代理，吨位齐全，价格优惠', '100000.00元', '深圳市恒冠精密机械有限公司', '13723433842\n/\n0755-18124795613', 'http://china.makepolo.com/product-detail/100397927901.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (43, 4, '厂家直销 12吨 小型冲床 锻压机床', '2800.00元', '孙恺', '13012718101\n/\n0533-5411816', 'http://china.makepolo.com/product-detail/100249154894.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (44, 4, '多种型号 欢迎订购 专业供应压力机, 锻压机床 品质保证', '面议', '瑞安市瑞泰冲压机械厂', '13705786055\n/\n0577-65209055', 'http://china.makepolo.com/product-detail/100475999834.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (45, 4, '黔南锻压机床 Q11Y—系列液压闸式剪板机', '面议', '广州市黄埔险峰黔南机床总汇', '13922242703\n/\n020-82292672', 'http://china.makepolo.com/product-detail/100285948887.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (46, 4, '供应TUP5T冲床,10T锻压机床，桌上冲床，小吨位冲床', '面议', '东莞市佑亿精密自动化设备有限公司', '13509018706\n/\n0769-87913817', 'http://china.makepolo.com/product-detail/100156574299.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (47, 4, '厦门锻压机床有限公司 J21M-200T 气动冲床', '54元', '沈阳一机4S店', '15816839156\n/\n0769-33219199', 'http://china.makepolo.com/product-detail/100197520092.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (48, 4, '厂家推荐 供应锻压机床', '100000.00元', '余姚市吉德惠铜压铸厂', '13705847698\n/\n0574-62585220', 'http://china.makepolo.com/product-detail/100312480906.html', 1583878352, 1583878352);
+INSERT INTO `ad_product` VALUES (49, 4, '安徽名牌 J21-125型冲床压力机锻压机床', '62000.00元', '马鞍山市环锐重工机械制造有限公司', '15955516252\n/\n0555-2925298', 'http://china.makepolo.com/product-detail/100342086023.html', 1583878353, 1583878353);
+INSERT INTO `ad_product` VALUES (50, 4, '维修定制锻压机床摩擦压力机', '3333.00元', '青岛蜗牛机械有限公司', '13963928249\n/\n0532-82299525', 'http://china.makepolo.com/product-detail/100289857897.html', 1583878353, 1583878353);
+INSERT INTO `ad_product` VALUES (51, 4, '供应 手动压力机 锻压机床 压力机 二手压力 冲压设备 摩擦压力机', '1000.00元', '辽阳锻压机床备件销售处', '13081783303\n/\n0419-2146176', 'http://china.makepolo.com/product-detail/100044847130.html', 1583878353, 1583878353);
+INSERT INTO `ad_product` VALUES (52, 4, '厂家热销 锻压机床冲床 J23-25开式可倾压力机', '15500.00元', '浙江双穗锻压机床有限公司', '13736358088\n/\n0577-65270158', 'http://china.makepolo.com/product-detail/100212084678.html', 1583878353, 1583878353);
+INSERT INTO `ad_product` VALUES (53, 4, '供应锻压机床C41-16KG空气锤 出口品质 气锤 国标品质', '5900.00元', '滕州宏铭机床有限公司', '15965117685\n/\n0632-5615397/13666328630', 'http://china.makepolo.com/product-detail/100466210802.html', 1583878354, 1583878354);
+INSERT INTO `ad_product` VALUES (54, 4, '供应优质重型锻压机床设备C41-75kg、150kg系列空气锤', '36000.00元', '滕州市龙阳弘发机床厂', '13475247524\n/\n0632-2034129', 'http://china.makepolo.com/product-detail/100211808651.html', 1583878354, 1583878354);
+INSERT INTO `ad_product` VALUES (55, 4, '供应Y79汽车刹车片成型液压机 复合材料成型 加热 湖州液压机', '450000.00元', '湖州鑫科锻压机床有限公司', '13967295257\n/\n0572-2698886', 'http://china.makepolo.com/product-detail/100356536834.html', 1583878354, 1583878354);
+INSERT INTO `ad_product` VALUES (56, 5, '供应河南英达尔卧式轴体自动淬火机床生产', '1元/台', '河南英达尔电子科技有限公司', '18738189218\n/\n0371-55016296', 'http://china.makepolo.com/product-detail/101064269134.html', 1583878354, 1583878354);
+INSERT INTO `ad_product` VALUES (57, 5, '高质量数控电动刀架找宏瑞莱数控机床配件', '面议', '温州宏瑞数控机电设备有限公司', '15868002047\n/\n-', 'http://china.makepolo.com/product-detail/101063930423.html', 1583878354, 1583878354);
+INSERT INTO `ad_product` VALUES (58, 5, '中走丝线切割厂家', '面议', '深圳屹诚机电设备有限公司', '17100767547\n/\n-', 'http://china.makepolo.com/product-detail/101064434746.html', 1583878355, 1583878355);
+INSERT INTO `ad_product` VALUES (59, 5, '不锈钢板材激光切割机', '200000元/件', '济南森特机械设备有限公司', '13220571797\n/\n-', 'http://china.makepolo.com/product-detail/101063766386.html', 1583878355, 1583878355);
+INSERT INTO `ad_product` VALUES (60, 5, '盾构机仿真模拟实训装置', '面议', '徐州硕博电子科技有限公司', '17712187939\n/\n0516-61232280', 'http://china.makepolo.com/product-detail/101062042764.html', 1583878355, 1583878355);
+INSERT INTO `ad_product` VALUES (61, 5, '速飞信品牌高速加工0.3-3mm电火花穿孔机DK-806', '26000元/件', '洛阳信成精密机械有限公司', '13014767809\n/\n-', 'http://china.makepolo.com/product-detail/101060703109.html', 1583878356, 1583878356);
+INSERT INTO `ad_product` VALUES (62, 5, '多功能液压冲孔机模具，冲不锈钢防盗网方孔圆孔楼梯扶手冲斜弧', '3500元/件', '佛山市广海盛创五金模具有限公司', '13726656410\n/\n-', 'http://china.makepolo.com/product-detail/101061824904.html', 1583878356, 1583878356);
+INSERT INTO `ad_product` VALUES (63, 5, '精密电火花微孔机床， 电火花微孔机0.07-0.5mm', '面议', '苏州明谷纳科技有限公司吴中分公司', '18913521887\n/\n-', 'http://china.makepolo.com/product-detail/101060264985.html', 1583878357, 1583878357);
+INSERT INTO `ad_product` VALUES (64, 5, '厂家直销特大口径联合传动无极变速仪表 车床车铣复合专用机床', '面议', '盐城科沃智能化设备有限公司', '18905109010\n/\n88509188', 'http://china.makepolo.com/product-detail/101063563504.html', 1583878357, 1583878357);
+INSERT INTO `ad_product` VALUES (65, 5, '1325巡边雕刻机自动生成路径', '面议', '山东泽尊数控机械有限公司', '13346261327\n/\n-', 'http://china.makepolo.com/product-detail/101061036324.html', 1583878357, 1583878357);
+INSERT INTO `ad_product` VALUES (66, 5, '厂家直供大铁火花机 电火花加工', '185000元/件', '东莞市荣田精密机械有限公司', '13650131911\n/\n0769-81871911', 'http://china.makepolo.com/product-detail/101064008204.html', 1583878357, 1583878357);
+INSERT INTO `ad_product` VALUES (67, 5, 'VMC850加工中心', '面议', '山东金雕智能科技有限公司', '18063223777\n/\n0632-5911599', 'http://china.makepolo.com/product-detail/101057141290.html', 1583878358, 1583878358);
+INSERT INTO `ad_product` VALUES (68, 5, '供应石家庄，沧州的板式定制家具造型雕刻机工厂', '70000元/台', '济南凯迪格数控设备有限公司', '18906442595\n/\n-', 'http://china.makepolo.com/product-detail/101055655220.html', 1583878358, 1583878358);
+INSERT INTO `ad_product` VALUES (69, 5, '倍速特火花机', '60000元/件', '东莞市众成机械有限公司', '13424702319\n/\n0769-82195622', 'http://china.makepolo.com/product-detail/101053051786.html', 1583878358, 1583878358);
+INSERT INTO `ad_product` VALUES (70, 5, 'ACE	缓冲器Buffer	MA 900M', '面议', '上海祥树欧茂机电设备有限公司', '15776584837\n/\n021-23505244', 'http://china.makepolo.com/product-detail/101053046416.html', 1583878358, 1583878358);
+INSERT INTO `ad_product` VALUES (71, 5, '上海线切割机（兆铭数控快走丝中走丝）', '1元/件', '上海兆铭数控设备有限公司', '13728677808\n/\n-', 'http://china.makepolo.com/product-detail/101060436618.html', 1583878358, 1583878358);
+INSERT INTO `ad_product` VALUES (72, 5, '沙迪克/sodick ALN400Qs 线切割机', '1.00元/台', '东莞市金梓旺机械有限公司', '13211007309\n/\n0769-85338567', 'http://china.makepolo.com/product-detail/101053661306.html', 1583878359, 1583878359);
+INSERT INTO `ad_product` VALUES (73, 5, '全自动桌式单轴数控钻床', '120000元/件', '昆山速远达机械科技有限公司', '18120093296\n/\n0512-57909839', 'http://china.makepolo.com/product-detail/101051367046.html', 1583878359, 1583878359);
+INSERT INTO `ad_product` VALUES (74, 5, '岳阳模具激光焊', '1元/件', '汩罗市罗江镇盛世零配件加工厂', '13412889600\n/\n-', 'http://china.makepolo.com/product-detail/101050720865.html', 1583878359, 1583878359);
+INSERT INTO `ad_product` VALUES (75, 5, '断桥铝门窗设备数控复合机 塑钢门窗设备复合机', '39000元/台', '济南市历城区金长城机械厂', '18353171358\n/\n0531-88015280', 'http://china.makepolo.com/product-detail/101054476339.html', 1583878359, 1583878359);
+INSERT INTO `ad_product` VALUES (76, 5, '数控刨槽机 数控开槽机', '1元/件', '河北星箭机械设备有限公司', '18233687188\n/\n-', 'http://china.makepolo.com/product-detail/101048273763.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (77, 5, '实木压花机 密度板压花机 松木木纹机 厂家直销', '1元/台', '徐州腾隆机械有限公司', '13372213570\n/\n0516-88210706', 'http://china.makepolo.com/product-detail/101048097572.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (78, 5, '体育器材生产 板管一体激光切割机2000W厂家性价比高', '188888元/件', '济南超卓数控设备有限公司', '18668937396\n/\n0531-88804128', 'http://china.makepolo.com/product-detail/101048107858.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (79, 5, '供应东莞市马扎克龙门加工中心', '1980000元/台', '东莞市马扎克数控科技有限公司', '18689492620\n/\n82186689', 'http://china.makepolo.com/product-detail/101050240051.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (80, 5, '台捷ZNC450精密火花机倍速特系统 电火花成型机床火花机价格', '48000元/台', '东莞市台捷机械设备有限公司', '15992726642\n/\n0769-82615108', 'http://china.makepolo.com/product-detail/101049511304.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (81, 5, '江西上饶买电火花，就选长梅机电', '面议', '江西长梅机电机床销售有限公司', '15807000484\n/\n-', 'http://china.makepolo.com/product-detail/101047863771.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (82, 5, '陕西机床维修 机床搬迁 机床保养', '面议', '西安力卡特精密机电有限公司', '18629325122\n/\n029-86143949', 'http://china.makepolo.com/product-detail/101049555010.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (83, 5, '750手制一体石墨火花机,侨茂大型非标火花机定制企业', '238000元/件', '东莞市日鑫机械有限公司', '15086609627\n/\n0769-82302096', 'http://china.makepolo.com/product-detail/101056511679.html', 1583878360, 1583878360);
+INSERT INTO `ad_product` VALUES (84, 5, '河北鑫鹏轮胎切割机视频', '11000元/台', '河北鑫鹏机械制造有限公司', '18233067722\n/\n0319-7581144', 'http://china.makepolo.com/product-detail/101047035684.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (85, 5, '鼎拓电火花机发展方向及注意', '80000元/台', '东莞市鼎拓机械科技有限公司', '13058589326\n/\n0769-85618039', 'http://china.makepolo.com/product-detail/101046897262.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (86, 5, '电动铭牌打码机  铝牌刻字机 不锈钢牌打字机铝牌刻字机 标牌刻字', '面议', '济南历下宇通数控设备销售中心', '18678399662\n/\n-', 'http://china.makepolo.com/product-detail/101043491764.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (87, 5, '提供牡丹江曲轴局部淬火专用感应器定制，凸轮轴中高频连续淬火感应器', '面议', '洛阳三恒感应加热科技有限公司', '15194585623\n/\n-', 'http://china.makepolo.com/product-detail/101048327019.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (88, 5, '乐清市东腾自动化非标全自动攻牙机生产厂家', '23000元/件', '乐清市东腾自动化设备有限公司', '15858882352\n/\n0577-57170493', 'http://china.makepolo.com/product-detail/101042693562.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (89, 5, '无锡域名备案 华商网络 网站建设运营', '1元/件', '无锡华商网络科技有限公司', '18551062135\n/\n0510-85229822', 'http://china.makepolo.com/product-detail/101039191163.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (90, 5, '卧加 630卧加 安田YASDA卧加', '面议', '昆山亚景仪器设备有限公司', '18915759330\n/\n-', 'http://china.makepolo.com/product-detail/101038326817.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (91, 5, '直销-台湾荣田精密型火花机-ZNC-345火花机', '85800元/台', '东莞市荣朕模具制品有限公司', '18198826616\n/\n-', 'http://china.makepolo.com/product-detail/101039335693.html', 1583878361, 1583878361);
+INSERT INTO `ad_product` VALUES (92, 5, '广西华丰厂家直供力博M2500数控加工中心', '20000元/件', '南宁市锐破商贸有限责任公司', '15607718398\n/\n0771-4300532', 'http://china.makepolo.com/product-detail/101057956916.html', 1583878362, 1583878362);
+INSERT INTO `ad_product` VALUES (93, 5, '台湾细孔放电机专用旋转头，穿孔机细孔放电机配件，高耐磨旋转头', '1688元/个', '东莞市嘉升机电科技有限公司', '13712381715\n/\n-', 'http://china.makepolo.com/product-detail/101054704418.html', 1583878362, 1583878362);
+INSERT INTO `ad_product` VALUES (94, 5, '全自动刮胶研磨机 全自动磨刮机', '15000元/台', '深圳市鑫众盛科技有限公司', '13509651558\n/\n-', 'http://china.makepolo.com/product-detail/101032226291.html', 1583878362, 1583878362);
+INSERT INTO `ad_product` VALUES (95, 5, '家庭智能语音系统 壹诚华宇 自己的私人影院', '1元/件', '无锡壹诚华宇科技有限公司', '18118916811\n/\n0510-81856711', 'http://china.makepolo.com/product-detail/101039322628.html', 1583878362, 1583878362);
+INSERT INTO `ad_product` VALUES (96, 6, '专业生产 销售普通顶尖、质优价廉 机床附件', '6.00元', '泗水县宏鑫机床附件厂(普通合伙)', '13505475412\n/\n0537-4010078', 'http://china.makepolo.com/product-detail/100208947104.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (97, 6, '生产销售 TL-3拖链 盐山拖链¶ 机床附件 塑料拖链', '60.00元', '盐山聚丰机床附件制造有限公司', '13131721325\n/\n0317-6349776', 'http://china.makepolo.com/product-detail/100355068573.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (98, 6, '专业生产铝型材防护帘.及各种机床附件', '50.00元', '庆云天城机床附件有限公司', '15564410871\n/\n0534-3778444', 'http://china.makepolo.com/product-detail/100423699327.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (99, 6, '机床专用刻度盘/供应机床各类刻度盘/刻度环/机床配件/机床附件', '1.00元', '泰兴市天星金属工艺有限公司', '13805265302\n/\n0523-87455010', 'http://china.makepolo.com/product-detail/100385839809.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (100, 6, '批发供应SBS电子走刀器齿轮 机床附件（图）', '30.00元', '余姚市冈野机械有限公司', '13780020070\n/\n574-66225682', 'http://china.makepolo.com/product-detail/100189833091.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (101, 6, '无锡机床工作灯，上海机床工作灯，杭州机床附件', '150.00元', '王长亮', '13861784466\n/\n0317-6344888', 'http://china.makepolo.com/product-detail/100460804531.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (102, 6, '重型机械专用钢铝拖链、冶金设备专用钢铝拖链、机床附件', '185.00元', '沧州富盛精密机床附件制造有限公司', '13803238971\n/\n 0317 6304178', 'http://china.makepolo.com/product-detail/100309147352.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (103, 6, '批发机床附件 回转顶尖 伞型顶尖 合金顶尖 固定顶尖 驱动顶尖', '5500.00元', '汪定华', '13758692345\n/\n0576-86966262', 'http://china.makepolo.com/product-detail/100455362547.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (104, 6, '机床附件，万向冷却管生产厂家，四分1/2系列', '1.00元', '东莞市长安昊通五金工具商行', '13751411350\n/\n0769-81622946', 'http://china.makepolo.com/product-detail/100360808886.html', 1583878363, 1583878363);
+INSERT INTO `ad_product` VALUES (105, 6, '机床附件批发 通用配件 精密机床配件附件', '面议', '禹州市万昌机械有限公司', '13613747868\n/\n-', 'http://china.makepolo.com/product-detail/100294800760.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (106, 6, '昆山机床附件 机床CNC防护罩', '3000.00元', '昆山泰科尤斯机械科技有限公司', '18914986906\n/\n0512-57554800', 'http://china.makepolo.com/product-detail/100388252542.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (107, 6, '销售生产批发机床防护罩等机床附件', '100.00元', '盐山县精益机床附件制造有限公司销售处', '13831768985\n/\n0317-3086598', 'http://china.makepolo.com/product-detail/101052677790.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (108, 6, '刀套、机床附件、导套', '38.00元', '德州北宇机械有限公司1', '13316880767\n/\n0755-32902887', 'http://china.makepolo.com/product-detail/100312455155.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (109, 6, '厂家经销 5#合金顶尖 合金半缺 加长顶尖 机床附件 固定顶尖 普通', '70.00元', '泗水县精密机床附件厂', '13153791222\n/\n0537-4011129', 'http://china.makepolo.com/product-detail/100374442340.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (110, 6, '高精度 莫氏高速回转顶尖 机床附件批发 厂家直销', '100.00元', '济宁勤丰机械五金有限公司', '0537-3281595\n/\n 0537 3281595', 'http://china.makepolo.com/product-detail/100425102032.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (111, 6, '供应机床附件/手轮手柄/电镀手轮、8寸手轮', '15.00元', '佛山市顺德区伦教景茂机械配件店', '13929195567\n/\n0757-22171255', 'http://china.makepolo.com/product-detail/100451385649.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (112, 6, '北京机床附件厂烟台经销处 供JXT 25系列铣夹头 三箭铣夹头', '1560.00元', '烟台宏益机电设备有限公司', '18615011592\n/\n 0535 6852906', 'http://china.makepolo.com/product-detail/100507387289.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (113, 6, '排屑机--渤海精益机床附件制造有限公司', '3000.00元', '王福祥', '15133735207\n/\n0317-6344887', 'http://china.makepolo.com/product-detail/100420601904.html', 1583878364, 1583878364);
+INSERT INTO `ad_product` VALUES (114, 6, 'TL系列钢制拖链,钢制拖链,拖链_钢制拖链系列山东盛达', '150元', '庆云日盛数控机床附件制造有限公司', '18866008203\n/\n534-3662000', 'http://china.makepolo.com/product-detail/100186109215.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (115, 6, '机床配件，机床附件，润滑系列，油路分配器', '10.00元', '诸暨市富威特机械厂', '18069598798\n/\n0575-87222269', 'http://china.makepolo.com/product-detail/100365428422.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (116, 6, '供应机床附件电缆防爆软管系列', '8.00元', '沧州誉丰数控机床附件制造有限公司', '13731735599\n/\n0317-6222995/6222997', 'http://china.makepolo.com/product-detail/100467443793.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (117, 6, '新型桥式 TL钢制拖链沧州机床附件', '1000元/个', '盐山县木子李机床附件厂', '13731711230\n/\n0317-6345330', 'http://china.makepolo.com/product-detail/100035496388.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (118, 6, '大量供应可打开式 丝杠防护罩 （拉链型）-天锐机床附件', '18.00元', '张明寨', '13373239376\n/\n0317-6348556', 'http://china.makepolo.com/product-detail/100450497217.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (119, 6, 'FIBRO 机床附件', '10元/个', '上海狄放贸易有限公司', '15618994997\n/\n021-63063805', 'http://china.makepolo.com/product-detail/100487606832.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (120, 6, '山东厂家直销 CBT滚珠丝杆副 滚珠丝杠副 机床附件', '1.00元', '济宁瑞特尔精密机械有限公司', '13583707187\n/\n0537-3623952', 'http://china.makepolo.com/product-detail/100350752665.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (121, 6, '苏州供应机床灯具刮屑板拖链等机床附件 并可定做异型机床附件', '122.00元', '苏州悦丰烁机电设备有限公司', '13915515689\n/\n0512-68386176', 'http://china.makepolo.com/product-detail/100269307636.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (122, 6, '生产定做 加长变径套 特长型变径套 直柄变径套等各类机床附件', '1.00元', '泗水县宏鑫机床附件厂(普通合伙)', '13505475412\n/\n0537-4010078', 'http://china.makepolo.com/product-detail/100373875757.html', 1583878365, 1583878365);
+INSERT INTO `ad_product` VALUES (123, 8, '4HB310-AH26风帕克漩涡鼓风机 医疗器械负压抽吸泵', '面议', '上海利楷机电设备有限公司', '15901997406\n/\n021-37773582', '//china.makepolo.com/product-detail/101041451851.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (124, 8, '上奥牌SK型直联式水环真空泵', '2350.00元/台', '上海正奥泵业制造有限公司', '13701662661\n/\n021-63099652', 'http://china.makepolo.com/product-detail/101065989656.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (125, 8, '万佳WJ3C高端熟食真空冷却机出锅热食品降温设备', '126800元/台', '东莞市万佳机械设备有限公司', '15914054185\n/\n0769-89805978', 'http://china.makepolo.com/product-detail/101065970749.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (126, 8, '小型真空泵美容产品黑头仪减肥机刮痧拔罐仪 电压订制工厂批发', '3元/件', '东莞市清田御实业有限公司', '18820196016\n/\n0769-88887815', 'http://china.makepolo.com/product-detail/101064413278.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (127, 8, '手机纳米防水镀膜机 全自动手机纳米防水镀膜机 纳米防水液厂家', '8800元/件', '强核新材料（深圳）有限公司', '15323892579\n/\n-', 'http://china.makepolo.com/product-detail/101063876121.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (128, 8, '九成新离子镀膜机转让', '1元/件', '合肥永信等离子技术有限公司', '18096677807\n/\n-', 'http://china.makepolo.com/product-detail/101063751266.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (129, 8, 'vmstr抽真空机小型家用迷你抽气泵电动抽气机zk-190源头厂家', '150元/个', '深圳市威曼斯特科技有限公司', '13723709306\n/\n-', 'http://china.makepolo.com/product-detail/101063517902.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (130, 8, '供应二手PP水喷射真空机组型号环保真空机组全新pp真空设备寿命', '3800元/件', '梁山荣亿二手化工设备购销中心', '18266825361\n/\n0537-7602077', 'http://china.makepolo.com/product-detail/101063294177.html', 1583878366, 1583878366);
+INSERT INTO `ad_product` VALUES (131, 8, 'CRYO-TORR 8 CRYO-U8 350 D8033034 真空低温泵促销', '8888元/件', '汕头市罗克自动化科技有限公司', '15918962164\n/\n-', 'http://china.makepolo.com/product-detail/101062391802.html', 1583878367, 1583878367);
+INSERT INTO `ad_product` VALUES (132, 8, '新款微型隔膜泵美容仪器 真空包装机 医疗设备 按摩设备增压', '180元/台', '东莞市新欣电子有限公司', '15976669241\n/\n0769-82256942', 'http://china.makepolo.com/product-detail/101061494066.html', 1583878367, 1583878367);
+INSERT INTO `ad_product` VALUES (133, 8, 'ZBK型罗茨真空泵', '1000元/件', '重庆华南玺焱泵业有限公司', '18030860368\n/\n023-62560060', 'http://china.makepolo.com/product-detail/101060856538.html', 1583878367, 1583878367);
+INSERT INTO `ad_product` VALUES (134, 8, '北京科伟 循环水式真空泵SHB-III  厂家直销', '面议', '黄骅市华辰实验仪器有限公司', '15511759001\n/\n-', 'http://china.makepolo.com/product-detail/101060093920.html', 1583878367, 1583878367);
+INSERT INTO `ad_product` VALUES (135, 8, '莱宝中央真空系统+电子行业贴片机用真空泵+纳西姆真空泵', '8000元/台', '深圳市托理拆利机电设备有限公司', '13823788380\n/\n-', 'http://china.makepolo.com/product-detail/101061780705.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (136, 8, '真空泵叶轮间隙环', '面议', '佶缔纳士机械有限公司', '18016360936\n/\n-', 'http://china.makepolo.com/product-detail/101060693644.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (137, 8, '中央厨房真空预冷机-熟食真空保鲜机报价', '13200元/台', '青岛中地捷特食品机械有限公司', '15092275385\n/\n-', 'http://china.makepolo.com/product-detail/101060305560.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (138, 8, '山东宇泽钛金真空镀膜-玫瑰红不锈钢制品厂家定制', '100元/件', '山东省宁津县炫宸五金加工厂', '15628643958\n/\n-', 'http://china.makepolo.com/product-detail/101060304024.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (139, 8, '卤肉真空预冷机', '195000元/台', '上海钢擎机械制造有限公司', '18918967075\n/\n021-51217865', 'http://china.makepolo.com/product-detail/101057023318.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (140, 8, '临沂食品包装机RA0160D普旭进口真空泵', '27500元/件', '东莞市鸿鑫真空设备有限公司', '13798889402\n/\n0769-82638892', 'http://china.makepolo.com/product-detail/101056926124.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (141, 8, '消防专用宝华空气泵JII-B-H配件压力表N4101', '100元/台', '山东齐安华业电子科技有限公司', '13386419780\n/\n0531-59874208', 'http://china.makepolo.com/product-detail/101065821357.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (142, 8, '水环真空泵抽气泵抽真空灭菌', '面议', '山东龙鼓重工机械有限公司', '13854139323\n/\n-', 'http://china.makepolo.com/product-detail/101056352498.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (143, 8, '直销旋抽真空泵工业用抽气泵 树脂胶水真空胶泡', '123元/台', '东莞市佰盛真空设备有限公司', '13530582612\n/\n-', 'http://china.makepolo.com/product-detail/101056049808.html', 1583878368, 1583878368);
+INSERT INTO `ad_product` VALUES (144, 8, '固体真空泵', '面议', '河北冠能分离输送设备有限公司', '18033643585\n/\n-', 'http://china.makepolo.com/product-detail/101054984837.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (145, 8, 'SITEMA	抱闸气缸	KSP-25', '面议', '上海祥树欧茂机电设备有限公司', '15776584837\n/\n021-23505244', 'http://china.makepolo.com/product-detail/101053114762.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (146, 8, '2BVA2071水环式真空泵', '2500元/台', '东莞市旭达真空机电设备有限公司', '17322112527\n/\n-', 'http://china.makepolo.com/product-detail/101051568839.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (147, 8, '上海欧沁优供施迈茨schmalz真空泵', '面议', '上海欧沁机电工程技术有限公司', '18930924783\n/\n021-52910015', 'http://china.makepolo.com/product-detail/101053700530.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (148, 8, '供应长沙浏阳周边食品包装普旭RA0100F真空泵', '1元/台', '湖南瑞峰腾润滑设备科技有限公司', '18973161801\n/\n0731-83637100', 'http://china.makepolo.com/product-detail/101061130496.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (149, 8, '大型parylene涂层系统 P300 德国 Diener原装进口', '1元/件', '旭阿科技（上海）有限公司', '15021401934\n/\n-', 'http://china.makepolo.com/product-detail/101050794881.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (150, 8, '自产自销PP水喷射真空机组 防腐蚀真空泵', '4000元/件', '邹平铭泰环保设备有限公司', '19954369577\n/\n0543-2242700', 'http://china.makepolo.com/product-detail/101051600046.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (151, 8, 'VALUE飞越VSV-020 0.75KW  单级油润滑真空泵', '200元/台', '阿斯诺机械（苏州）有限公司', '15262609113\n/\n0512-36601701', 'http://china.makepolo.com/product-detail/101052327425.html', 1583878369, 1583878369);
+INSERT INTO `ad_product` VALUES (152, 8, '齿科电动抽吸泵', '面议', '百瑞科技（南京）有限公司', '15005144988\n/\n025-57337833', 'http://china.makepolo.com/product-detail/101049581729.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (153, 8, '千岛泵业RPP水喷射真空泵', '650元/件', '杭州千岛泵业有限公司', '15158051028\n/\n0571-64704198', 'http://china.makepolo.com/product-detail/101048451803.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (154, 8, '供应厂家2019新款特卖3000KG型折板式保鲜真空预冷机', '255000元/件', '东莞市科美斯科技实业有限公司', '13510034546\n/\n0769-88621280', 'http://china.makepolo.com/product-detail/101048010745.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (155, 8, '厂家生产直销聚丙烯水喷射真空机组/立式真空泵', '10元/件', '江苏启鸿环保设备有限公司', '15365329683\n/\n0512-53106388', 'http://china.makepolo.com/product-detail/101050248226.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (156, 8, '比勒蠕动泵SP04ES03（带外壳）', '面议', '青岛润泽通科技有限公司', '18661788014\n/\n-', 'http://china.makepolo.com/product-detail/101046990131.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (157, 8, '快速降温真空大型预冷机', '面议', '诸城市爱思盛机械有限公司', '17863693396\n/\n0536-6090624', 'http://china.makepolo.com/product-detail/101047343100.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (158, 8, '直销保鲜速冷机批发价格-熟食真空预冷机-山东杰西玛科技', '80000元/件', '山东杰西玛机械科技有限公司', '15165694890\n/\n0536-6568788', 'http://china.makepolo.com/product-detail/101050044554.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (159, 8, 'NPM真空泵 KHB200-305-G1-KG132 AEMFBH4PE012', '面议', '深圳市桥南达飞科技有限公司', '18124055971\n/\n-', 'http://china.makepolo.com/product-detail/101047093592.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (160, 8, 'IHE 150-125-315 IHE150-100-315泵壳 叶轮', '3000元/件', '襄阳五二五泵业有限公司', '13871653355\n/\n-', 'http://china.makepolo.com/product-detail/101046713347.html', 1583878370, 1583878370);
+INSERT INTO `ad_product` VALUES (161, 8, '供应PISCO，真空开关VUSM10-6 真空发生器', '1689元/件', '深圳市星浩瑞精密工业有限公司', '15027215473\n/\n0755-29049485', 'http://china.makepolo.com/product-detail/101045927518.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (162, 8, '真空预冷机-蔬菜真空预冷机-山东真空预冷机制造商', '13000元/台', '诸城市邦厨机械有限公司', '13371065170\n/\n0536-6575567', 'http://china.makepolo.com/product-detail/101059134103.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (163, 9, '供应其他吉丰负压风机设备', '10000元/顶', '诸城市吉丰机械科技有限公司', '15063689888\n/\n0536-6558999', 'http://china.makepolo.com/product-detail/100261149311.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (164, 9, '厂家特供浙江杭州 义乌中小企业降温水帘墙 水帘降温 负压排风机设备', '500.00元', '义乌市吉昌机电设备有限公司', '13867993304\n/\n0579-85131646', 'http://china.makepolo.com/product-detail/101051202891.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (165, 9, '小型风机 风扇风机 降温风机 防尘风机设备 玻璃钢负压风机 风机', '2488.00元', '东莞市品顺科技有限公司', '13338838282\n/\n0513-84477983', 'http://china.makepolo.com/product-detail/100275187207.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (166, 9, '长盈轴流风机 设备用小风机风扇145FZY2-S/G', '45.00元', '乐清市长盈电器有限公司', '13989769495\n/\n0577-83505825', 'http://china.makepolo.com/product-detail/100479067575.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (167, 9, '偶合器主轴及涡轮 液力偶合器配件 机械配件 风机设备配件', '1元/个', '大连限矩偶合器制造有限公司', '13940944032\n/\n0411-86660569', 'http://china.makepolo.com/product-detail/32728342.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (168, 9, '厂家直供 DC7015 直流散热风扇 直流风机 设备风扇 量大优惠', '3.20元', '深圳市汇瑞丰电子科技有限公司', '15220206182\n/\n0755-29532602', 'http://china.makepolo.com/product-detail/100810981813.html', 1583878371, 1583878371);
+INSERT INTO `ad_product` VALUES (169, 9, '三叶罗茨鼓风机-风机设备', '3600元/件', '章丘纽迈特环保设备有限公司', '18560125169\n/\n0531-83791998', 'http://china.makepolo.com/product-detail/100929483267.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (170, 9, '370W铁壳 CZRLY80中压低噪音离心式鼓风机 厨用风机 通风设备', '210.00元', '江门市新会区翔威风机设备有限公司', '18929003213\n/\n0750-6328826', 'http://china.makepolo.com/product-detail/100354556767.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (171, 9, '供应HTF消防排烟风机设备', '2350.00元/台', '德州万维空调设备有限公司', '15806820857\n/\n0534-2327360', 'http://china.makepolo.com/product-detail/101028237605.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (172, 9, '诱导风机设备', '面议', '德州振兴空调设备有限公司', '15953445600\n/\n-', 'http://china.makepolo.com/product-detail/100990767218.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (173, 9, 'KCS-410D除尘风机设备', '1元/台', '泰安市鼎鑫矿用设备有限公司销售部', '18653850208\n/\n0538-8530396', 'http://china.makepolo.com/product-detail/101018225795.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (174, 9, '090C型玻璃钢风机 管道通风防腐阻燃风机设备 高效低噪声风机', '20000元/件', '中山市晴达环保设备有限公司', '17688101405\n/\n0760-85551092', 'http://china.makepolo.com/product-detail/101060109910.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (175, 9, '虎门餐厅厨房排烟风管，不锈钢排烟管，烟罩，油网，后厨排烟风机设备', '80元/件', '东莞市旭永通风机电设备有限公司', '13826913253\n/\n-', 'http://china.makepolo.com/product-detail/101031985928.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (176, 9, '厂家直销鸡舍降温水帘 大棚温室 降温风机设备', '1元/平方米', '潍坊中凯润源机械科技有限公司', '15725623667\n/\n400-6165986', 'http://china.makepolo.com/product-detail/101034076227.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (177, 9, '广州市工业负压风机设备安装/工厂抽风机环保设备/空调设备', '980元/件', '广州风晟环保设备工程有限公司', '15217441800\n/\n-', 'http://china.makepolo.com/product-detail/101061406779.html', 1583878372, 1583878372);
+INSERT INTO `ad_product` VALUES (178, 9, '营美除尘风机设备 工业不锈钢离心风机 4-72离心风机', '10元/件', '泊头市营美风机销售处', '15833775448\n/\n-', 'http://china.makepolo.com/product-detail/101059385559.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (179, 9, '供应BXRZ-70防爆暖风机组矿场专用风机设备', '4000元/台', '山东宇捷通风设备有限公司', '18653418111\n/\n0534-2553177', 'http://china.makepolo.com/product-detail/101057290788.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (180, 9, '风机设备 养殖业优选', '700.00元', '青州市大正温控设备厂', '15965095441\n/\n0536-3520880', 'http://china.makepolo.com/product-detail/100289330990.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (181, 9, '厂家供应 9-19 4A 3KW 不锈钢高压离心风机 风机设备', '3250.00元', '上海史密斯实业有限公司', '18806597111\n/\n576-86383677', 'http://china.makepolo.com/product-detail/100710868993.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (182, 9, '最新脱硫氧化风机批发价格,气化风机,电厂专用风机设备', '5300元/件', '山东华东风机有限公司', '18764078716\n/\n0531-67804861', 'http://china.makepolo.com/product-detail/101032671986.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (183, 9, '煤矿通风机、隧道通风机、通道风机设备', '12000.00元', '运城市安泰节能风机有限公司', '13327590280\n/\n0359-13152794000', 'http://china.makepolo.com/product-detail/100089193571.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (184, 9, '2HB310-AH16风机设备 农业专用风机', '199元/台', '上海玺朗机电科技有限公司', '18221956038\n/\n021-31123765', 'http://china.makepolo.com/product-detail/100605811710.html', 1583878373, 1583878373);
+INSERT INTO `ad_product` VALUES (185, 9, '斜流风机设备', '面议', '王义（个体经营）', '15053460066\n/\n0534-2232391', 'http://china.makepolo.com/product-detail/100988767083.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (186, 9, '开展700w升级版电脑吹吸风机、吹灰机，鼓风机，除尘设备', '31.00元', '永康市开展电动工具有限公司', '13735700986\n/\n0579-87192290', 'http://china.makepolo.com/product-detail/100365236681.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (187, 9, '山东专业厂家长期供应优质风机设备 诱导风机专用风轮 图', '11.00元', '武城县鲁权屯亚美空调设备厂', '13515442185\n/\n0534-2177223', 'http://china.makepolo.com/product-detail/100534542100.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (188, 9, '轴流风扇 220V 17251风机通风设备', '48.00元', '泉州市丰泽谦亿电子有限公司', '18065280625\n/\n0595-22279990', 'http://china.makepolo.com/product-detail/100351111932.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (189, 9, '供应厂家直销风机设备用钢丝PU通风软管', '78元/米', '瑞德塑胶软管制品有限公司', '13853458550\n/\n0534-5533778', 'http://china.makepolo.com/product-detail/100744543179.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (190, 9, '供应PXG-4 型旋涡风机 配套机械风机 中压离心风机 通风设备', '1853.00元', '上海腾唯通风设备有限公司', '15000794968\n/\n021-61140048', 'http://china.makepolo.com/product-detail/100421529784.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (191, 9, '供应高品质HR-1250C型推拉式负压风机 畜牧风机 养殖降温设备', '1100.00元', '青州海润环境控制装置有限公司', '13475679998\n/\n0536-3520318', 'http://china.makepolo.com/product-detail/100385322146.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (192, 9, '供应负压风机 风机排风设备 厂房通风降温设备 猪场风机', '1350.00元', '佛山市威诺斯机电设备有限公司', '15899576945\n/\n0757-88049957', 'http://china.makepolo.com/product-detail/100444609930.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (193, 9, '厦门车间降温风机厂房降温水帘风机设备有限公司', '2800元/台', '厦门浦达兴节能设备有限公司', '18259229199\n/\n0592-3800188', 'http://china.makepolo.com/product-detail/100949937150.html', 1583878374, 1583878374);
+INSERT INTO `ad_product` VALUES (194, 9, '风机罩 安平远翔长期供应辽宁风机设备配件', '28元/件', '安平县远翔丝网制品厂', '15833184411\n/\n-', 'http://china.makepolo.com/product-detail/101041467269.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (195, 9, '风机，离心风机，印刷设备风机，涂装流水线风机', '面议', '上海蒙嘉电子有限公司', '13818185501\n/\n21-60483035/60483031', 'http://china.makepolo.com/product-detail/100515536510.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (196, 9, '批发各类工业风扇、风机、通风设备', '99.00元', '常州市大海机电有限公司', '13646121255\n/\n0519-88889800', 'http://china.makepolo.com/product-detail/100283655109.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (197, 9, '超大风量 ！大功率喇叭通风设备供应、厂家直销负压式风机', '3288.00元', '深圳市夏日风科技有限公司', '15050277237\n/\n0512-57873390', 'http://china.makepolo.com/product-detail/100268678176.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (198, 9, '风机设备配件双扣金属蛇皮管', '面议', '宝鸡福莱通机械有限公司', '15719273597\n/\n0917-2605766', 'http://china.makepolo.com/product-detail/101046384321.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (199, 9, '提供特供浙江杭州 义乌中小企业降温水帘墙 水帘降温 负压排风机设备', '500.00元', '义乌市吉昌机电设备有限公司', '13867993304\n/\n0579-85131646', 'http://china.makepolo.com/product-detail/101049323099.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (200, 9, '风机设备报价 市场行情', '10000元/台', '诸城市吉丰机械科技有限公司', '15063689888\n/\n0536-6558999', 'http://china.makepolo.com/product-detail/100260133917.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (201, 9, '轴流风机设备', '面议', '德州振兴空调设备有限公司', '15953445600\n/\n-', 'http://china.makepolo.com/product-detail/100991143540.html', 1583878375, 1583878375);
+INSERT INTO `ad_product` VALUES (202, 9, '080C型玻璃钢离心防腐风机 管道通风防腐阻燃风机设备', '14000元/件', '中山市晴达环保设备有限公司', '17688101405\n/\n0760-85551092', 'http://china.makepolo.com/product-detail/101060109554.html', 1583878376, 1583878376);
+INSERT INTO `ad_product` VALUES (203, 10, '甘草粉碎机-超微粉碎机-果壳粉碎机-粉碎设备-粉碎机', '5000.00元', '常州市钱江干燥设备工程有限公司', '13861058898\n/\n0519-88670786', 'http://china.makepolo.com/product-detail/100394893035.html', 1583878376, 1583878376);
+INSERT INTO `ad_product` VALUES (204, 10, '家用碎豆饼粉碎机 新型粉碎设备 稻草专用粉碎机', '2286元/件', '曲阜市恒信机械设备销售中心', '18369815679\n/\n0537-4651499', 'http://china.makepolo.com/product-detail/100892631857.html', 1583878376, 1583878376);
+INSERT INTO `ad_product` VALUES (205, 10, '特价产品：粉碎机，粉碎设备，20B粉碎机', '11000.00元', '常州市金象干燥设备有限公司', '13906117130\n/\n0519-88909773', 'http://china.makepolo.com/product-detail/100350026000.html', 1583878376, 1583878376);
+INSERT INTO `ad_product` VALUES (206, 10, '特价供应涡轮粉碎机/多功能粉碎设备/江阴粉碎机/嵊州粉碎机', '9000元', '上海亿筛机械有限公司', '18049754649\n/\n021-64423600', 'http://china.makepolo.com/product-detail/100167118423.html', 1583878376, 1583878376);
+INSERT INTO `ad_product` VALUES (207, 10, '药用粉碎设备 高效不锈钢粉碎机', '6000元/个', '广州市旭朗机械设备工厂', '13533749137\n/\n020-23327056', 'http://china.makepolo.com/product-detail/100139474977.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (208, 10, '磨粉机.粉碎设备.粉碎机.食品粉碎机', '7000元/个', '广州市旭朗机械设备总公司', '13556053205\n/\n020-23327058', 'http://china.makepolo.com/product-detail/100181743735.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (209, 10, '供应种香菇木材粉碎设备 香菇料粉碎机 菇木粉碎机', '4500元/台', '郑州浩宇机械设备有限公司', '13526541622\n/\n0371-86003528', 'http://china.makepolo.com/product-detail/100098827196.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (210, 10, '供应次品回收万能粉碎机-粉碎设备-粉碎机械-不锈钢打粉机', '12500.00元', '常州品正干燥设备有限公司', '13906129418\n/\n0519-88910291/88910391', 'http://china.makepolo.com/product-detail/100450481408.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (211, 10, '供应吸尘连续粉碎机 高效粉碎设备30B不锈钢白砂糖粉碎机', '14700元/台', '常州市东南干燥设备有限公司', '13584355559\n/\n0519-88902391', 'http://china.makepolo.com/product-detail/100465598578.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (212, 10, '厂家供应树枝粉碎机 高效树枝粉碎机 大型树枝粉碎设备 粉碎机', '6500.00元', '郑州博杰特机械设备有限公司', '15981876738\n/\n0371-67845563', 'http://china.makepolo.com/product-detail/100375352017.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (213, 10, '金属粉碎设备 废旧家电粉碎机 铁盒粉碎机', '29000元', '郑州市中原区宏达机械制造厂', '13598875438\n/\n0371-56786677', 'http://china.makepolo.com/product-detail/100177105872.html', 1583878377, 1583878377);
+INSERT INTO `ad_product` VALUES (214, 10, '供应塑料再生颗粒机械设备 粉碎机 喂料机 废旧塑料粉碎机', '面议', '江苏涛琦机电设备有限公司', '400-990-8922\n/\n 0 15862272215', 'http://china.makepolo.com/product-detail/100459724024.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (215, 10, '饲料加工厂专用粉碎设备 豆粕、麸皮粉碎机 猪饲料粉碎机', '12500元/件', '山东双鹤机械制造股份有限公司', '15010592154\n/\n0534-6683777', 'http://china.makepolo.com/product-detail/101041904664.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (216, 10, '调味品齿盘打碎机-粉碎设备-粉碎机-打粉机', '1180元/台', '山东昌隆节能环保工程有限公司', '15563120618\n/\n0537-4719789', 'http://china.makepolo.com/product-detail/101063738993.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (217, 10, '供应金格瑞粉碎机65X100，多功能粉碎机，粉碎设备，粉碎机', '面议', '山东金格瑞机械有限公司', '13953126301\n/\n-', 'http://china.makepolo.com/product-detail/100571237465.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (218, 10, '硅灰石粉碎，水镁石粉碎设备，原煤粉碎机，青石粉碎机', '180000.00元', '河南佰辰机械设备有限公司', '15736798222\n/\n0371-86555711', 'http://china.makepolo.com/product-detail/100806263894.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (219, 10, '专业提供各类粉碎机 通用粉碎设备 超细磨机 气流粉碎机质量保证', '100000.00元', '绵阳巨子粉体工程设备有限公司', '13778025838\n/\n 816 2547699', 'http://china.makepolo.com/product-detail/100431896438.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (220, 10, '粉碎设备 粉碎机 破碎机', '1元/件', '山东中煤工矿集团', '18463728400\n/\n400-086-0537', 'http://china.makepolo.com/product-detail/100851450728.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (221, 10, '供应日照粉碎设备除尘粉碎机，粉碎机械万能除尘粉碎机', '1400.00元', '历城区飞驰机械设备经营部销售部门', '13808928353\n/\n 0531 82319157', 'http://china.makepolo.com/product-detail/100290397045.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (222, 10, '专业厂家 提供各类粉碎机 粉碎设备 锤式粉碎机 厂家直销', '面议', '潍坊市寒亭区正强机械厂', '13964613977\n/\n536-7588945', 'http://china.makepolo.com/product-detail/100366452483.html', 1583878378, 1583878378);
+INSERT INTO `ad_product` VALUES (223, 10, '工程机械粉碎设备粉碎机', '面议', '永州恒丰机械有限公司', '15869978888\n/\n0746-8229288', 'http://china.makepolo.com/product-detail/100243277787.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (224, 10, '厂家供应新一代金属粉碎机 易拉罐粉碎机 废旧金属粉碎设备', '22000.00元', '巩义市大峪沟新阳机械厂', '18037861168\n/\n0371-86029962', 'http://china.makepolo.com/product-detail/100214451428.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (225, 10, '大动力粉碎设备双轴撕碎机粉碎机金属破碎机', '27988元/台', '曲阜兴运输送机械设备有限公司', '13165478711\n/\n0537-4556217', 'http://china.makepolo.com/product-detail/101034337591.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (226, 10, '30B粉碎机 吸尘粉碎机组 粉碎与吸法为一体的新一代粉碎设备', '15000.00元', '常州市恒迈干燥设备有限公司', '15251911777\n/\n0519-88912279', 'http://china.makepolo.com/product-detail/100455106137.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (227, 10, '化工粉碎设备 粉碎机 设备先进质量佳 十年销量领先', '8000.00元', '鹤山市沙坪和康机械销售中心', '13048166388\n/\n0750-875029-0', 'http://china.makepolo.com/product-detail/100491485603.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (228, 10, '提供二手饲料粉碎设备 二手万能粉碎机', '100元/件', '梁山县隆兴二手化工设备购销部', '15053770177\n/\n0537-7601886', 'http://china.makepolo.com/product-detail/100732138133.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (229, 10, '粉碎设备打粉机、化工不锈钢粉碎机', '6000元/台', '广州金本机械设备有限公司', '15899967595\n/\n020-66347219', 'http://china.makepolo.com/product-detail/101019457024.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (230, 10, '河南华东新型木头粉碎机绿色环保粉碎设备', '11111元/件', '河南省巩义市华东冶矿机械厂', '13607673581\n/\n0371-64564926', 'http://china.makepolo.com/product-detail/100779988121.html', 1583878379, 1583878379);
+INSERT INTO `ad_product` VALUES (231, 10, '厂家直销 木材加工粉碎设备（木材粉碎机）', '5000元/台', '郑州市长兴机械设备有限公司', '13460212273\n/\n0371-67859371', 'http://china.makepolo.com/product-detail/100952583858.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (232, 10, '粉碎设备 塑料粉碎机 香菇菌种专用粉碎机 快达牌粉碎机', '13800.00元', '常州市快达干燥设备有限公司', '18118011505\n/\n0519-81699369', 'http://china.makepolo.com/product-detail/100533850732.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (233, 10, '塑胶水桶粉碎设备 粉碎机/破碎机/打碎机 清洗运输生产线', '22000元/台', '东莞市赛柯机械有限公司', '13316624973\n/\n0769-82669936', 'http://china.makepolo.com/product-detail/100887786939.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (234, 10, '超细粉碎机 超微粉碎设备 食品超微粉碎机', '面议', '潍坊正远粉体工程设备有限公司', '15963629458\n/\n0536-8880565', 'http://china.makepolo.com/product-detail/100208460431.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (235, 10, '厂家直销 湿物料粉碎设备/超微胶体粉碎机/立时胶体磨机粉碎机', '2000.00元', '泉州市洛江区富迪食品技术研发服务中心', '13720853668\n/\n0595-22689169', 'http://china.makepolo.com/product-detail/100359759560.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (236, 10, '天夏制造 供应粉碎设备 WFJ系列微粉碎机', '10000元', '常州市天夏干燥设备有限公司', '13506122931\n/\n0519-88673778', 'http://china.makepolo.com/product-detail/100167027555.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (237, 10, '特价供应粉碎机，粉碎设备，30B粉碎机', '13000.00元', '常州市金象干燥设备有限公司', '13906117130\n/\n0519-88909773', 'http://china.makepolo.com/product-detail/100350025502.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (238, 10, '玉米秸秆粉碎设备宁夏 大豆粉碎机', '860元/台', '曲阜市恒信机械设备销售中心', '18369815679\n/\n0537-4651499', 'http://china.makepolo.com/product-detail/101061583239.html', 1583878380, 1583878380);
+INSERT INTO `ad_product` VALUES (239, 10, '供应粮食粉碎设备 小麦粉碎机 玉米粉碎机', '12500元/件', '山东双鹤机械制造股份有限公司', '13793484299\n/\n0534-6683777', 'http://china.makepolo.com/product-detail/101045299274.html', 1583878381, 1583878381);
+INSERT INTO `ad_product` VALUES (240, 10, '玉米秸秆粉碎设备重庆 单相电粉碎机', '860元/台', '曲阜市恒信机械设备销售中心', '18369815679\n/\n0537-4651499', 'http://china.makepolo.com/product-detail/101061301474.html', 1583878381, 1583878381);
+INSERT INTO `ad_product` VALUES (241, 12, '出售租赁二手制冷设备RTHDD2D2E2特灵螺杆式冷水机水冷螺杆机', '面议', '上海瑞年实业有限公司', '15850382580\n/\n0512-36683338', 'http://china.makepolo.com/product-detail/101066002444.html', 1583878382, 1583878382);
+INSERT INTO `ad_product` VALUES (242, 12, '冠信工业冷却塔、圆形冷却塔、冷水塔、制冷设备', '3600.00元', '昆山冠信特种制冷设备有限公司', '15190159322\n/\n512-15051601611', 'http://china.makepolo.com/product-detail/100438898589.html', 1583878382, 1583878382);
+INSERT INTO `ad_product` VALUES (243, 12, '5匹谷轮压缩机 制冷设备 冷库设备', '3750.00元', '宁波市江北冰峰制冷设备经营部', '13958213395\n/\n0574-55120302', 'http://china.makepolo.com/product-detail/100045190029.html', 1583878382, 1583878382);
+INSERT INTO `ad_product` VALUES (244, 12, 'Daikin/大金JT160BCBY1L制冷压缩机 制冷设备', '1600元/件', '东莞市港汇制冷机电设备有限公司', '13450460020\n/\n0769-83034001', 'http://china.makepolo.com/product-detail/101065556516.html', 1583878382, 1583878382);
+INSERT INTO `ad_product` VALUES (245, 12, '大量供应全套制冷设备 全套制冷设备', '10000.00元', '绍兴市凯利制冷通风设备有限公司', '13857574698\n/\n0575-82575237', 'http://china.makepolo.com/product-detail/100451259004.html', 1583878382, 1583878382);
+INSERT INTO `ad_product` VALUES (246, 12, '供应香皂设备配套专用低温冷水机制冷机制冷设备', '48000.00元', '汕头市潮南区司马浦紫峰制冷设备厂', '13902718391\n/\n0754-87734988/87727329', 'http://china.makepolo.com/product-detail/100057309417.html', 1583878382, 1583878382);
+INSERT INTO `ad_product` VALUES (247, 12, '优质推荐3HP三洋制冷压缩机 大功率压缩机 低温冷冻制冷设备', '900.00元', '佛山市南海区奥营制冷设备经营部', '13928683187\n/\n0757-88717568', 'http://china.makepolo.com/product-detail/100307362291.html', 1583878383, 1583878383);
+INSERT INTO `ad_product` VALUES (248, 12, '15HP风冷机组等半封闭压缩机 制冷设备', '10800.00元', '金华市金东区飞龙制冷设备厂', '13957978780\n/\n0579-82818002', 'http://china.makepolo.com/product-detail/100084550747.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (249, 12, '汉钟低温冷水机 冷库库板制冷设备', '面议', '济南月宫冷冻设备有限公司', '15866631863\n/\n0531-58620577', 'http://china.makepolo.com/product-detail/101053454263.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (250, 12, '专业生产，工业冷水机，厂家，制冷设备', '4300.00元', '深圳市元钛工业设备有限公司', '18929360242\n/\n0755-27427083', 'http://china.makepolo.com/product-detail/100374132929.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (251, 12, '厂家提供优质制冷压缩机 家用制冷设备', '面议', '宁波良儿特种制冷设备制造有限公司', '13780089823\n/\n0574-88389098', 'http://china.makepolo.com/product-detail/100404451295.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (252, 12, '供应物流冷库-冷库设计安装-河南冷库工程建设-郑州豪德制冷设备', '4000元/件', '郑州豪德制冷设备有限公司', '13937125538\n/\n0371-69125398', 'http://china.makepolo.com/product-detail/100471945658.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (253, 12, '比泽尔半封闭风冷机组 冷风机 冷凝器 冷凝管 制冷设备', '面议', '上海帝亚制冷设备工程有限公司', '18857591602\n/\n000-00000000', 'http://china.makepolo.com/product-detail/100077222050.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (254, 12, '供应激光冷水机 北京九州同诚AG08 冷却水循环制冷设备', '8500元/台', '北京九州同诚科技有限公司', '13681345273\n/\n010-61506512', 'http://china.makepolo.com/product-detail/100002470409.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (255, 12, '供应冷风机/蒸发器、冷凝器、压缩机、制冷设备', '面议', '嵊州市奥申制冷设备有限公司', '13754358310\n/\n1375-4358310', 'http://china.makepolo.com/product-detail/100116582277.html', 1583878384, 1583878384);
+INSERT INTO `ad_product` VALUES (256, 12, '360HP 防爆型螺杆式工业制冷机组（深创亿制冷设备）', '428000.00元/个', '深圳市深创亿制冷设备有限公司', '13603095933\n/\n0755-29674863', 'http://china.makepolo.com/product-detail/100341056941.html', 1583878385, 1583878385);
+INSERT INTO `ad_product` VALUES (257, 12, '冷库厂家/谷轮V型风冷机组/制冷设备/lengk/冷库造价', '10200.00元', '常州市雪洋冷藏设备有限公司', '13914330029\n/\n0519-88795011', 'http://china.makepolo.com/product-detail/100450465314.html', 1583878385, 1583878385);
+INSERT INTO `ad_product` VALUES (258, 12, '热销2010新款-锦添制冷设备供应多种制冷设备', '面议', '福州市晋安区锦添制冷设备有限公司', '13055729019\n/\n0591-83270203/83204089', 'http://china.makepolo.com/product-detail/100313117455.html', 1583878385, 1583878385);
+INSERT INTO `ad_product` VALUES (259, 12, '湖南衡阳雁峰冷冻设备 半封闭压缩机 6WB30 冷库设备 制冷设备', '面议', '衡阳市雁峰冷冻设备配套服务中心', '13975401919\n/\n0734-8155528', 'http://china.makepolo.com/product-detail/100173990028.html', 1583878385, 1583878385);
+INSERT INTO `ad_product` VALUES (260, 12, '3匹一拖二鱼池制冷剂/冷水机组/制冷设备机组/工业冷水机/冷水机', '3000.00元', '广州市越秀宝荣冷冻配件经营部', ' 020 83360689\n/\n 020 81084861', 'http://china.makepolo.com/product-detail/100508446229.html', 1583878386, 1583878386);
+INSERT INTO `ad_product` VALUES (261, 12, '箱式冷水机 制冷设备 冷水机组 冷冻机 螺杆冷水机 普立', '8000.00元', '佛山市顺德区勒流镇显高冷冻设备厂', '0757-25635498\n/\n 0757 25635498', 'http://china.makepolo.com/product-detail/100466879349.html', 1583878386, 1583878386);
+INSERT INTO `ad_product` VALUES (262, 12, '换热制冷设备优质湿帘水帘 引进国际先进技术高质量的湿帘水帘', '600.00元', '东莞市天明环保节能工程有限公司', '13728119591\n/\n0769-38832878', 'http://china.makepolo.com/product-detail/100285581319.html', 1583878386, 1583878386);
+INSERT INTO `ad_product` VALUES (263, 12, '上海知信冷却液低温循环机ZX-LSJ-150封闭型实验室制冷设备', '5600元/台', '上海知信实验仪器技术有限公司', '15601650315\n/\n021-51696996-804', 'http://china.makepolo.com/product-detail/101038925863.html', 1583878386, 1583878386);
+INSERT INTO `ad_product` VALUES (264, 12, '香川美 厂家直销供应制冷设备TDEX6TD丹佛斯膨胀阀', '320.00元', '苏州香川美制冷设备有限公司', '18261633272\n/\n0512-57321372', 'http://china.makepolo.com/product-detail/100498637702.html', 1583878386, 1583878386);
+INSERT INTO `ad_product` VALUES (265, 12, '专业供应 制冷设备机组 品牌制冷机组 冷库制冷机组价格优惠', '6000.00元', '常州市国林冷藏设备厂', '13775011550\n/\n0519-88792649', 'http://china.makepolo.com/product-detail/100288826892.html', 1583878387, 1583878387);
+INSERT INTO `ad_product` VALUES (266, 12, '现货供应3HP韩国进口原装ARNG制冷设备 制冷机组 冷库机组', '9800.00元', '北京大河旭龙贸易有限公司', '18611585338\n/\n010-66513815', 'http://china.makepolo.com/product-detail/100500397705.html', 1583878387, 1583878387);
+INSERT INTO `ad_product` VALUES (267, 12, '杭州市海鲜机组制冷设备安装.景观鱼缸.亚克力大型景观鱼缸', '80999.00元', '杭州市下城区冰点制冷设备维修部', '13777457779\n/\n0571-56798398', 'http://china.makepolo.com/product-detail/100309140522.html', 1583878387, 1583878387);
+INSERT INTO `ad_product` VALUES (268, 12, '供应水冷冷凝器 压力容器 生产销售制冷设备欢迎合作', '380.00元', '浙江奥星制冷设备有限公司', '15258556561\n/\n575-83666668', 'http://china.makepolo.com/product-detail/100530028135.html', 1583878387, 1583878387);
+INSERT INTO `ad_product` VALUES (269, 12, '空气冷却器\\冷风机\\蒸发器\\表冷器\\氟制冷\\制冷设备\\制冷配件', '12000.00元', '嵊州市诺丰电机有限公司', '13806765653\n/\n0575-83666060', 'http://china.makepolo.com/product-detail/100387174485.html', 1583878387, 1583878387);
+INSERT INTO `ad_product` VALUES (270, 12, '大型箱式冷水机40P制冷设备冷冻机', '12500元/件', '华德鑫热工业机械（东莞）有限公司', '13829202759\n/\n0769-85640313', 'http://china.makepolo.com/product-detail/101055630743.html', 1583878387, 1583878387);
+INSERT INTO `ad_product` VALUES (271, 12, '出售租赁二手制冷设备CVHG670二手特灵离心式冷水机工业水冷机', '面议', '上海瑞年实业有限公司', '15850382580\n/\n0512-36683338', 'http://china.makepolo.com/product-detail/101066023500.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (272, 12, '冷库制冷机组风冷全套制冷设备', '1600元/件', '东莞市港汇制冷机电设备有限公司', '13450460020\n/\n0769-83034001', 'http://china.makepolo.com/product-detail/101063852919.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (273, 12, '供应工业冷水机专用化工设备制冷设备', '50000.00元', '汕头市潮南区司马浦紫峰制冷设备厂', '13902718391\n/\n0754-87734988/87727329', 'http://china.makepolo.com/product-detail/100045029016.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (274, 12, '厂家提供比泽尔冷库机组 风冷凝机组 冷水式压缩机 制冷设备', '4500.00元', '佛山市南海区奥营制冷设备经营部', '13928683187\n/\n0757-88717568', 'http://china.makepolo.com/product-detail/100307993124.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (275, 12, '厂家提供优质制冷压缩机 机械设备 制冷设备', '面议', '宁波良儿特种制冷设备制造有限公司', '13780089823\n/\n0574-88389098', 'http://china.makepolo.com/product-detail/100412884206.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (276, 12, '济南工业制冷压缩机 冷冻保鲜制冷设备', '面议', '济南月宫冷冻设备有限公司', '15866631863\n/\n0531-58620577', 'http://china.makepolo.com/product-detail/101060014773.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (277, 12, '谷轮半封闭风冷机组 冷风机 冷凝器 冷凝管 制冷设备', '面议', '上海帝亚制冷设备工程有限公司', '18857591602\n/\n000-00000000', 'http://china.makepolo.com/product-detail/100077222375.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (278, 12, '低温冷水机，超低温冷水机，复叠式低温冷水机，深创亿制冷设备', '60000元', '深圳市深创亿制冷设备有限公司', '13603095933\n/\n0755-29674863', 'http://china.makepolo.com/product-detail/100154286115.html', 1583878388, 1583878388);
+INSERT INTO `ad_product` VALUES (279, 12, '热销中-机械制冷设备-优质供应商供应多种（2010制冷设备）', '面议', '福州市晋安区锦添制冷设备有限公司', '13055729019\n/\n0591-83270203/83204089', 'http://china.makepolo.com/product-detail/100310615408.html', 1583878389, 1583878389);
+INSERT INTO `ad_product` VALUES (280, 12, '厂家直销冷风机/制冷机/冷凝器/散热器/制冷设备/保鲜冷藏设备', '面议', '嵊州市奥申制冷设备有限公司', '13754358310\n/\n1375-4358310', 'http://china.makepolo.com/product-detail/100116172271.html', 1583878389, 1583878389);
+INSERT INTO `ad_product` VALUES (281, 13, '过滤分离筛分设备筛分设备', '10000元/台', '宁津县鑫力达机械设备有限公司', '15969765954\n/\n0534-5682828', 'http://china.makepolo.com/product-detail/100601297015.html', 1583878389, 1583878389);
+INSERT INTO `ad_product` VALUES (282, 13, '过滤 分离 筛分设备遥控器双推杆模拟量输出功能可定制', '15800元/件', '成都易德莱斯科技有限公司', '19940500542\n/\n028-84215008', 'http://china.makepolo.com/product-detail/101063753308.html', 1583878389, 1583878389);
+INSERT INTO `ad_product` VALUES (283, 13, '粮食过滤、分离、筛分设备--hyl-25型谷物筛分机，玉米振动筛', '26000元/件', '新乡市宏源振动设备有限公司', '13223734129\n/\n0373-2677463', 'http://china.makepolo.com/product-detail/100820735997.html', 1583878389, 1583878389);
+INSERT INTO `ad_product` VALUES (284, 13, '供应过滤、分离、筛分设备 DZSF系列沙土筛分机', '5500元/台', '宏源振动设备有限公司', '18339546509\n/\n0373-2678390', 'http://china.makepolo.com/product-detail/101020910048.html', 1583878389, 1583878389);
+INSERT INTO `ad_product` VALUES (285, 13, '三级过滤器三大优点 过滤、分离、筛分设备', '面议', '山东神华机械制造有限公司', '18553715758\n/\n0537-3151329', 'http://china.makepolo.com/product-detail/100909827164.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (286, 13, '厂家过滤除沫器，分离筛分设备丝网除沫器，张家口丝网除沫器', '100元/件', '安平县九鑫过滤网业有限公司', '13833888883\n/\n0318-7800015', 'http://china.makepolo.com/product-detail/101052678437.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (287, 13, '固液分离筛分设 450过滤机30年质造厂家 新乡液体除杂过滤', '4880元/台', '新乡市辰威机械有限公司', '13083801818\n/\n0373-7035908', 'http://china.makepolo.com/product-detail/101065508245.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (288, 13, '特价上海低价筛分设备/筛选设备/过滤设备/分级设备', '5000.00元', '上海亿筛机械有限公司', '18049754649\n/\n021-64423600', 'http://china.makepolo.com/product-detail/100190469990.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (289, 13, '塑料颗粒用双电机直排筛粉机 明洋直排筛分设备', '7800.00元', '新乡市明洋筛分机械有限公司', '15903033385\n/\n0373-5755777', 'http://china.makepolo.com/product-detail/100324891335.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (290, 13, '食品调料 果汁多用振动筛 筛分过滤分离多功能旋振筛圆形振动筛', '1000元/件', '新乡市鹏鼎机械设备有限公司', '13525011399\n/\n-', 'http://china.makepolo.com/product-detail/101064799000.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (291, 13, '壤土振动筛 过筛壤土里的粉粒、砂粒-壤土筛分过滤分离机械', '5300.00元', '新乡市东升环保设备有限公司', '18937367711\n/\n-', 'http://china.makepolo.com/product-detail/100620242926.html', 1583878390, 1583878390);
+INSERT INTO `ad_product` VALUES (292, 13, '天龙牌旋振筛，振动筛，筛分设备，分离设备', '面议', '河南天龙机械制造有限公司(销售部)', '13569873228\n/\n 0373 3350555', 'http://china.makepolo.com/product-detail/100119446228.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (293, 13, '矿石筛分装置 旋转筛分斗 水砂过滤 沙石分离 滚筒筛分斗', '16880元/个', '山东松川工程机械有限公司', '13355126961\n/\n-', 'http://china.makepolo.com/product-detail/101059581124.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (294, 13, '供应小型滚筒筛 GS1230滚筒筛 石料场滚筒筛 沙石场筛分设备', '面议', '河南科帆矿山设备有限公司', '13937155063\n/\n371-87087999', 'http://china.makepolo.com/product-detail/100357518038.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (295, 13, '轻质碳酸钙专用筛分设备三元旋振筛新乡振威厂价直销', '9500.00元', '新乡市振威筛分机械有限公司', '13623906771\n/\n0373-5726998', 'http://china.makepolo.com/product-detail/100332028146.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (296, 13, '新乡世华厂家供应加缘式过滤筛 专用固液分离高效筛分机 供应全国', '7000元/台', '新乡市世华振动机械有限公司', '13949620946\n/\n0373-2685760', 'http://china.makepolo.com/product-detail/101024144083.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (297, 13, '振动分离筛分振动筛', '10000.00元', '新乡市汇鑫矿山设备有限公司', '13839081599\n/\n0373-2628072', 'http://china.makepolo.com/product-detail/100260886926.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (298, 13, '肥料筛分设备 固液分离振动筛  树脂粉直排筛', '10000元/件', '新乡市恒宇机械设备有限公司', '15937327517\n/\n0373-5712316', 'http://china.makepolo.com/product-detail/100745629817.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (299, 13, '涂料筛分设备_专用加缘筛_过滤分离筛机', '1000元/台', '新乡市锐成机械设备有限公司', '13462348443\n/\n0373-5058600', 'http://china.makepolo.com/product-detail/100754319362.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (300, 13, '转让二手过滤几 二手分离机 离心机设备  二手筛分设备', '10000元/台', '梁山县浩运二手化工设备经营部', '13615479600\n/\n0136-1547960', 'http://china.makepolo.com/product-detail/101046918979.html', 1583878391, 1583878391);
+INSERT INTO `ad_product` VALUES (301, 13, 'VIP批发供应高岭土筛分设备 振动筛 筛选设备 直线振动筛', '22000.00元', '新乡市德重机械有限公司', '15837386795\n/\n 0373 5077026', 'http://china.makepolo.com/product-detail/100222133807.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (302, 13, '碎米分离振动筛  花生抽风式大小分级筛分机 五谷杂粮过滤除杂机', '1000元/台', '济宁市丰瑞机械有限公司', '15345377639\n/\n0537-3650334', 'http://china.makepolo.com/product-detail/101036321128.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (303, 13, '厂家不锈钢液体筛分机 固液分离电筛机 振动筛机豆浆果汁过滤', '5500元/台', '新乡市大用振动设备有限公司', '15637336530\n/\n-', 'http://china.makepolo.com/product-detail/101056119453.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (304, 13, '厂家直销小型直线振动筛 振动筛选机 高效直线筛 筛分分离设备', '8000元/台', '郑州中厚机械设备有限公司', '15639271888\n/\n0371-56733555', 'http://china.makepolo.com/product-detail/101059339098.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (305, 13, 'Finex22筛分机高速过滤树脂干湿分离振动筛', '200000元/件', '拉塞尔工业设备（上海）有限公司', '18621517678\n/\n021-64264030', 'http://china.makepolo.com/product-detail/101040324068.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (306, 13, '淀粉专用振动筛 圆形筛分设备，圆振动筛', '12000元/台', '新乡市未来振动设备有限公司', '13333738691\n/\n-', 'http://china.makepolo.com/product-detail/101062243768.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (307, 13, '筛分设备/旋振筛', '6500元/台', '新乡市共成振动设备有限公司', '13525008219\n/\n0373-2513806', 'http://china.makepolo.com/product-detail/32509745.html', 1583878392, 1583878392);
+INSERT INTO `ad_product` VALUES (308, 13, '农业粮食过滤、分离、筛分设备-hyl-25型谷物筛分机，玉米振动筛', '26000元/件', '新乡市宏源振动设备有限公司', '13223734129\n/\n0373-2677463', 'http://china.makepolo.com/product-detail/100822078946.html', 1583878394, 1583878394);
+INSERT INTO `ad_product` VALUES (309, 13, '玉米中杂质过滤、分离、筛分设备 多功能清粮机', '8000元/台', '宏源振动设备有限公司', '18339546509\n/\n0373-2678390', 'http://china.makepolo.com/product-detail/101018398312.html', 1583878394, 1583878394);
+INSERT INTO `ad_product` VALUES (310, 13, '过滤、分离、筛分设备筛沙机选矿设备', '10000元/台', '宁津县鑫力达机械设备有限公司', '15969765954\n/\n0534-5682828', 'http://china.makepolo.com/product-detail/100771195606.html', 1583878394, 1583878394);
+INSERT INTO `ad_product` VALUES (311, 13, '滤尘过滤器产品特点 过滤、分离、筛分设备', '面议', '山东神华机械制造有限公司', '18553715758\n/\n0537-3151329', 'http://china.makepolo.com/product-detail/100909828929.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (312, 13, '热销过滤除沫器，分离筛分设备丝网除沫器，张家口丝网除沫器', '100元/件', '安平县九鑫过滤网业有限公司', '13833888883\n/\n0318-7800015', 'http://china.makepolo.com/product-detail/101050025184.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (313, 13, '特价筛选设备、筛分设备、分级机械,旋振筛-筛分行业的优选', '5000元', '上海亿筛机械有限公司', '18049754649\n/\n021-64423600', 'http://china.makepolo.com/product-detail/100193323879.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (314, 13, '陶瓷浆液筛分设备_专用加缘筛_过滤分离筛机', '1000元/台', '新乡市锐成机械设备有限公司', '13462348443\n/\n0373-5058600', 'http://china.makepolo.com/product-detail/100754319093.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (315, 13, '提供不锈钢液体筛分机 固液分离电筛机 振动筛机豆浆果汁过滤', '5500元/台', '新乡市大用振动设备有限公司', '15637336530\n/\n-', 'http://china.makepolo.com/product-detail/101053213407.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (316, 13, '铝灰筛分机 铝灰滚筒筛滚筒筛分机铝灰铜灰分离设备', '37000元/台', '郑州中厚机械设备有限公司', '15639271888\n/\n0371-56733555', 'http://china.makepolo.com/product-detail/101059049922.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (317, 13, '供应食品调味剂旋振筛 多层振动筛分 过滤 分离筛分设备', '1元/台', '宏源振动设备有限公司', '18339546509\n/\n0373-2678390', 'http://china.makepolo.com/product-detail/100940054471.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (318, 13, '振动筛 亚麻籽筛分设备 振动过滤亚麻籽颗粒 大小分离筛', '4500元/台', '新乡市宏源振动设备有限公司', '13569833759\n/\n0373-2610868', 'http://china.makepolo.com/product-detail/100910976935.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (319, 13, '过滤矿石粉筛子 精度高筛分效果好 多层粗细大小自动过滤分离', '3800元/台', '新乡市宏源振动设备有限公司', '13938732295\n/\n0373-2677972', 'http://china.makepolo.com/product-detail/101052656217.html', 1583878395, 1583878395);
+INSERT INTO `ad_product` VALUES (320, 13, '黄豆尘土秸秆分离筛/黄玉米瘪籽、虫蛀筛分振动筛', '7800元/件', '新乡市宏源振动设备有限公司', '18303650763\n/\n0373-7052850', 'http://china.makepolo.com/product-detail/100852523631.html', 1583878396, 1583878396);
 COMMIT;
 
 -- ----------------------------
@@ -1090,29 +1135,11 @@ CREATE TABLE `ad_search_log` (
   `method` varchar(50) NOT NULL DEFAULT '' COMMENT '请求类型',
   `type` varchar(50) NOT NULL DEFAULT '' COMMENT '资源类型',
   `param` text NOT NULL COMMENT '请求参数',
-  `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1319 DEFAULT CHARSET=utf8 COMMENT='搜索日志';
-
--- ----------------------------
--- Records of ad_search_log
--- ----------------------------
-BEGIN;
-INSERT INTO `ad_search_log` VALUES (1, 'PHP', 's=//home/category/search&stype=PHP', 'GET', 'search', 'stype=PHP', 1564965457, 1);
-INSERT INTO `ad_search_log` VALUES (2, 'API', 's=//home/category/search&stype=API', 'GET', 'search', 'stype=API', 1564965519, 1);
-INSERT INTO `ad_search_log` VALUES (3, '刷机', 's=//home/category/search&stype=%E5%88%B7%E6%9C%BA', 'GET', 'search', 'stype=刷机', 1564965616, 1);
-INSERT INTO `ad_search_log` VALUES (4, '生活', 's=//home/category/search&stype=%E7%94%9F%E6%B4%BB', 'GET', 'search', 'stype=生活', 1564965855, 1);
-INSERT INTO `ad_search_log` VALUES (5, 'igt', 's=/home/category/search.html&stype=igt&type=tags', 'GET', 'tags', 'stype=igt', 1578295176, 1);
-INSERT INTO `ad_search_log` VALUES (6, 'GIT', 's=/home/category/search.html&stype=GIT&type=tags', 'GET', 'tags', 'stype=GIT', 1578300163, 1);
-INSERT INTO `ad_search_log` VALUES (7, 'brew', 's=/home/category/search.html&stype=brew&type=tags', 'GET', 'tags', 'stype=brew', 1578310832, 1);
-INSERT INTO `ad_search_log` VALUES (8, 'git', 's=/home/category/search.html&stype=git&type=tags', 'GET', 'tags', 'stype=git', 1578316053, 1);
-INSERT INTO `ad_search_log` VALUES (9, '设计模式', 's=/home/category/search.html&stype=%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F&type=tags', 'GET', 'tags', 'stype=设计模式', 1578316704, 1);
-INSERT INTO `ad_search_log` VALUES (10, 'php', 's=/home/category/search.html&stype=php&type=tags', 'GET', 'tags', 'stype=php', 1578321929, 1);
-INSERT INTO `ad_search_log` VALUES (11, 'Restful', 's=/home/category/search.html&stype=Restful&type=tags', 'GET', 'tags', 'stype=Restful', 1578330394, 1);
-INSERT INTO `ad_search_log` VALUES (12, 'git私服', 's=/home/category/search.html&stype=git%E7%A7%81%E6%9C%8D&type=tags', 'GET', 'tags', 'stype=git私服', 1578331908, 1);
-INSERT INTO `ad_search_log` VALUES (13, 'mysql', 's=/home/category/search.html&stype=mysql&type=tags', 'GET', 'tags', 'stype=mysql', 1578339458, 1);
-COMMIT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='搜索日志';
 
 -- ----------------------------
 -- Table structure for ad_system
@@ -1120,26 +1147,26 @@ COMMIT;
 DROP TABLE IF EXISTS `ad_system`;
 CREATE TABLE `ad_system` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL COMMENT '名称',
-  `content` char(255) NOT NULL COMMENT '值',
+  `title` varchar(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '名称',
+  `content` char(255) CHARACTER SET utf8mb4 NOT NULL COMMENT '值',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态1启用，2禁用',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE KEY `title` (`title`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COMMENT='系统设置';
 
 -- ----------------------------
 -- Records of ad_system
 -- ----------------------------
 BEGIN;
-INSERT INTO `ad_system` VALUES (52, 'sitename', 'LuiciCms', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
-INSERT INTO `ad_system` VALUES (53, 'domain', 'http://luicicms.kevinfei.com/welcome/index', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
-INSERT INTO `ad_system` VALUES (54, 'cache', '|png|gif|jpg|jpeg|zip|rar|', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
-INSERT INTO `ad_system` VALUES (55, 'title', 'LuiciCms 简洁易用后台管理系统', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
-INSERT INTO `ad_system` VALUES (56, 'keywords', 'LuiciCms、快速搭建 、高效 、简洁 、小巧的后台内容管理系统', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
-INSERT INTO `ad_system` VALUES (57, 'descript', 'LuiciCms、快速搭建 、高效 、简洁 、小巧的后台内容管理系统', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
-INSERT INTO `ad_system` VALUES (58, 'copyright', '© 2020 luicicms.kevinfei.com MIT LICENSE', 1, '2019-12-31 12:17:04', '2019-12-31 12:17:04');
+INSERT INTO `ad_system` VALUES (52, 'sitename', 'LuiciCms', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` VALUES (53, 'domain', 'http://luicicms.kevinfei.com/welcome/index', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` VALUES (54, 'cache', '|png|gif|jpg|jpeg|zip|rar|', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` VALUES (55, 'title', 'LuiciCms 简洁易用后台管理系统', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` VALUES (56, 'keywords', 'LuiciCms、快速搭建 、高效 、简洁 、小巧的后台内容管理系统', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` VALUES (57, 'descript', 'LuiciCms、快速搭建 、高效 、简洁 、小巧的后台内容管理系统', 1, 1578330394, 1578330394);
+INSERT INTO `ad_system` VALUES (58, 'copyright', '© 2020 luicicms.kevinfei.com MIT LICENSE', 1, 1578330394, 1578330394);
 COMMIT;
 
 -- ----------------------------
@@ -1160,7 +1187,7 @@ CREATE TABLE `ad_user` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='会员';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='会员';
 
 -- ----------------------------
 -- Records of ad_user
@@ -1189,6 +1216,7 @@ CREATE TABLE `ad_user_log` (
   `param` text NOT NULL COMMENT '请求参数',
   `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '日志备注',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员日志';
 

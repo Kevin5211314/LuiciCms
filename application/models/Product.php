@@ -57,7 +57,6 @@ class Product extends CI_Model
      */
     public function insert_entry($data)
     {   
-        $data['password']    = md5($data['password']);
         $data['create_time'] = time();
         $data['update_time'] = time();
         $this->db->insert('product', $data);

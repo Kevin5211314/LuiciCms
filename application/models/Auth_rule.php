@@ -31,25 +31,22 @@ class Auth_rule extends CI_Model
         return $query->result_array();
     }
 
-    /**
-     * [insert_entry 增加数据入口]
-     */
+    // insert_entry 增加数据入口
     public function insert_entry($data)
-    {
-        $data['createTime'] = date('Y-m-d H:i:s', time());
-        $data['updateTime'] = date('Y-m-d H:i:s', time());
+    {   
+        $data['create_time'] = time();
+        $data['update_time'] = time();
         $this->db->insert('auth_rule', $data);
         return $this->db->insert_id('auth_rule', $data);
     }
 
-    /**
-     * [update_entry 修改数据入口]
-     */
+    // update_entry 修改数据入口
     public function update_entry($id, $data)
-    {
+    {   
+        $data['update_time'] = time();
         return $this->db->update('auth_rule', $data, array('authorityId' => $id));
     }
-
+    
     /**
      * delete_entry 删除数据入口
      */

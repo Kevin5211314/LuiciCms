@@ -20,19 +20,23 @@
                  data: {},
                  dataType: "json",
                  success: function(data){
-                    var result = data.data; var str = '';
-                    for (var i=0; i < result.length; i++)
-                    {   
-                        if(result[i].parentId == '-1')
-                        {
-                            result[i].authorityName = '|- &nbsp;'+result[i].authorityName;
-                        }else if(result[i].isMenu == '1'){
-                            result[i].authorityName = '|-- &nbsp;|-- &nbsp;'+result[i].authorityName;
-                        }
-                        str += '<option value="'+result[i].authorityId+'">'+result[i].authorityName+'</option>'; 
+                    var rulesArr = data.data;
+                    for (let index = 0; index < rulesArr.length; index++) {
+                         if( rulesArr[index].parentId == '-1' )
+                         {  
+                             var childStr = '';
+                             var pstr = '<option value="'+rulesArr[index].authorityId+'">' + '|- &nbsp;' + rulesArr[index].authorityName + '</option>'; 
+                             for (let j = 0; j < rulesArr.length; j++) {
+                                 if( rulesArr[j].parentId == rulesArr[index].authorityId)
+                                 {  
+                                    
+                                     childStr += '<option value="'+rulesArr[j].authorityId+'">' + '|-- &nbsp;|-- &nbsp;' + rulesArr[j].authorityName + '</option>'; 
+                                 }
+                             }
+                             $('#sePar').append( pstr+childStr) ;  
+                             layui.form.render("select");
+                         }
                     }
-                    $('#sePar').append(str);  
-                    layui.form.render("select");   
                  }
             });
         });

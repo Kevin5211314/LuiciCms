@@ -17,38 +17,92 @@ class Welcome extends Base_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('menu','',true);
         $this->load->model('user', '', true);
-        $this->load->model('category', '', true);
         $this->load->model('product', '', true);
+        $this->load->model('category', '', true);
         $this->_count = $this->user->get_count_users();
         $this->_admin_count = $this->admin->get_admin_list_count();
     }
 
+    // 主页
     public function index()
     {      
         $this->load->view('/welcome/index');
     }
 
+    // 控制台
     public function home()
     {   
         $categoryCount = $this->category->getCountCategory();
         $productCount  = $this->product->get_product_list_count();
 
         $data['userscount'] = $this->_count;
-        $data['categorycount'] = $categoryCount;
         $data['productCount'] = $productCount;
-        $this->load->view('/welcome/welcome', $data);
+        $data['categorycount'] = $categoryCount;
+
+        $this->hulk_template->parse('/welcome/google', $data); // 谷歌广告
+        // $this->hulk_template->parse('/welcome/welcome', $data);
     }
 
-    //登出
+    public function getmenu()
+    {
+        $menuList['homeInfo']['title'] = "首页";
+        $menuList['homeInfo']['icon'] = "fa fa-home";
+        $menuList['homeInfo']['href'] = "/welcome/home.html?mpi=m-p-i-0";
+
+        $menuList['logoInfo']['title'] = "LuiciCms";
+        $menuList['logoInfo']['image'] = "/resource/images/logo.png";
+        $menuList['logoInfo']['href'] = "/welcome/index";
+
+        $menuList['clearInfo']['clearUrl'] = "/welcome/clearruntime";
+
+        $menuList['menuInfo'] = $this->getMenuList();
+
+        sendSuccess('获取列表', $menuList, $this->_count);
+    }
+
+    //获取菜单
+    public function getMenuList()
+    {
+        $result = $this->menu->get_menu_list($this->_page, $this->_limit, $this->_searchParams);
+        $reply = array();
+        foreach ($result as $key => $value) {
+             if($value['pid'] == 0)
+             {  
+                $reply[$value['nickname']]['icon']  = $value['icon'];
+                $reply[$value['nickname']]['title'] = $value['title'];
+                foreach ($result as $k => $val) {
+                     if($val['pid'] == $value['id'])
+                     {  
+                        if( in_array($val['href'], $this->checkMenu()) )
+                        {
+                            $childArr[] = $val;
+                        }else{
+                            unset($val);
+                        }
+                     }
+                }
+                if( !empty($childArr) )
+                {
+                    $reply[$value['nickname']]['child'] = $childArr;
+                    $childArr = array();
+                }else{
+                    unset($reply[$value['nickname']]);
+                }
+             }
+        }
+        return $reply; 
+    }
+
+    // 登出
     public function loginout()
     {
-        $aid = $this->input->post('aid');
         $result = $this->session->unset_userdata('admin_auth');
         sendSuccess('登出成功', $result, $this->_admin_count);
     }
 
-    //获取管理员
+    // 获取管理员
     public function getUserAdmin()
     {
         $username = $this->input->get('username');
@@ -57,7 +111,7 @@ class Welcome extends Base_Controller
     }
 
 
-    //基本信息
+    // 基本信息
     public function setting()
     {
         $this->load->view('/welcome/userSetting');
@@ -74,12 +128,12 @@ class Welcome extends Base_Controller
         }
     }
 
-    //修改密码
+    // 修改密码
     public function uppass()
     {
         $this->load->view('/welcome/userPassword');
     }
-    
+        
     public function updatePassword()
     {
         $param          = $this->input->post('data');
@@ -96,5 +150,12 @@ class Welcome extends Base_Controller
         }
     }
 
+    //清除浏览器缓存
+    public function clearRuntime()
+    {
+        header("Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . "GMT" );  
+        header("Cache-Control: no-cache, must-revalidate" );  
+        echo json_encode(array('code' => 1, 'msg' => '服务端清理缓存成功'));
+    }
 
 }

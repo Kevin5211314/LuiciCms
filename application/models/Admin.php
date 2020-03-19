@@ -54,9 +54,7 @@ class Admin extends CI_Model
         }
     }
     
-    /**
-     * insert_entry 增加数据入口
-     */
+    // insert_entry 增加数据入口
     public function insert_entry($data)
     {   
         $data['password']    = md5($data['password']);
@@ -66,18 +64,14 @@ class Admin extends CI_Model
         return $this->db->insert_id('admin', $data);
     }
 
-    /**
-     * update_entry 修改数据入口
-     */
+    // update_entry 修改数据入口
     public function update_entry($id, $data)
     {   
         $data['update_time'] = time();
         return $this->db->update('admin', $data, array('id' => $id));
     }
 
-    /**
-     * delete_entry 删除数据入口
-     */
+    // delete_entry 删除数据入口
     public function delete_entry($id)
     {
         return $this->db->delete('admin',array('id'=>$id));

@@ -1,6 +1,6 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
+
 /**
  * HULK 模板引擎类库
  *
@@ -24,7 +24,7 @@ class Hulk_template
     public function __construct()
     {
         $this->src_path  = APPPATH . 'views/';
-        $this->dest_path = APPPATH . 'third_party/hulk_template/';
+        $this->dest_path = APPPATH . '../public/runtime/hulk_template/';
 
         $this->depth               = 0;
         $this->templates           = [];

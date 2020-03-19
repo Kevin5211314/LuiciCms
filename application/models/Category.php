@@ -30,20 +30,19 @@ class Category extends CI_Model
         return $this->db->count_all("category");
     }
     
-    /**
-     * [insert_entry 增加数据入口]
-     */
+    // insert_entry 增加数据入口
     public function insert_entry($data)
     {   
+        $data['create_time'] = time();
+        $data['update_time'] = time();
         $this->db->insert('category', $data);
         return $this->db->insert_id('category', $data);
     }
 
-    /**
-     * [update_entry 修改数据入口]
-     */
+    // update_entry 修改数据入口
     public function update_entry($id, $data)
     {   
+        $data['update_time'] = time();
         return $this->db->update('category', $data, array('id' => $id));
     }
 

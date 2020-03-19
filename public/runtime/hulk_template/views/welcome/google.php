@@ -1,3 +1,6 @@
+<?php /* HULK template engine v0.3
+a:2:{s:15:"/welcome/google";i:1582859416;s:15:"welcome/welcome";i:1584008331;}
+*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,7 +164,17 @@
                         <div class="layui-card">
                             <div class="layui-card-header"><i class="fa fa-google icon icon-tip"></i>广告</div>
                             <div class="layui-card-body"> 
-                                <# block adsense #>CodeIgniter<# /block #>
+                                	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- luicicms -->
+    <ins class="adsbygoogle"
+         style="display:block; height: 200px;"
+         data-ad-client="ca-pub-5438293843112972"
+         data-ad-slot="2070284821"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
                             </div>
                         </div>
                     </div>
@@ -282,7 +295,17 @@
                 <div class="layui-card">
                     <div class="layui-card-header"><i class="fa fa-google icon icon-tip"></i>广告</div>
                     <div class="layui-card-body layui-text layadmin-text" >
-                        <# block adsense #>CodeIgniter<# /block #>
+                        	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- luicicms -->
+    <ins class="adsbygoogle"
+         style="display:block; height: 200px;"
+         data-ad-client="ca-pub-5438293843112972"
+         data-ad-slot="2070284821"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
                     </div>
                 </div>
 
