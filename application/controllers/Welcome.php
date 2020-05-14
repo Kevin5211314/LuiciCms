@@ -51,7 +51,7 @@ class Welcome extends Base_Controller
         $menuList['homeInfo']['icon'] = "fa fa-home";
         $menuList['homeInfo']['href'] = "/welcome/home.html?mpi=m-p-i-0";
 
-        $menuList['logoInfo']['title'] = "LuiciCms";
+        $menuList['logoInfo']['title'] = "LuiciCMS";
         $menuList['logoInfo']['image'] = "/resource/images/logo.png";
         $menuList['logoInfo']['href'] = "/welcome/index";
 

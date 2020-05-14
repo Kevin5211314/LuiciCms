@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>LuiciCms - 基于LUI和CI框架的后台管理系统 - 登陆</title>
+    <title>LuiciCMS - 基于LUI前端框架和CI框架的后台管理系统 - 登陆</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,8 +24,8 @@
         .login-form .layui-form-item label {position:absolute;left:1px;top:1px;width:38px;line-height:36px;text-align:center;color:#d2d2d2;}
         .login-form .layui-form-item input {padding-left:36px;}
         .captcha {width:60%;display:inline-block;}
-        .captcha-img {display:inline-block;width:34%;float:right;}
-        .captcha-img img {height:34px;border:1px solid #e6e6e6;height:36px;width:100%;}
+        .captcha-img {display:inline-block;width:38%;}
+        .captcha-img img {height:34px;border:1px solid #e6e6e6;height:36px;width:100%;margin-top: -3px;}
     </style>
 </head>
 <body>
@@ -34,7 +34,7 @@
             <div class="layui-form login-form">
                 <form class="layui-form" action="/login/checklogin" method="post" >
                     <div class="layui-form-item logo-title">
-                        <h1>LuiciCms 登陆</h1>
+                        <h1>LuiciCMS 登陆</h1>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-icon layui-icon-username" for="username"></label>
